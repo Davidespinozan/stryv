@@ -290,8 +290,6 @@ nav {
 .sol-lista { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
 .sol-lista li { font-size: 13px; color: var(--sub); line-height: 1.55; padding-left: 20px; position: relative; }
 .sol-lista li::before { content: '—'; position: absolute; left: 0; color: var(--teal-l); font-size: 10px; top: 3px; }
-.sol-result { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; background: var(--card2); border-radius: var(--radius-sm); border: 1px solid var(--border2); font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.5; margin-bottom: 28px; }
-.sol-result-arrow { color: var(--lima-d); flex-shrink: 0; font-size: 16px; margin-top: 1px; }
 
 /* ─── PROYECTOS ─── */
 .proyectos { padding: 100px 0; overflow: hidden; border-bottom: 1px solid #e8e8e8; background: #F7F8F7; }
@@ -527,7 +525,6 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
     </div>
   </section>
 
-  <!-- Hero collage — visible on all screen sizes -->
   <div class="hero-collage">
     <div class="col-card col-c">
       <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771780213/6996270bf2fcc307a0a650d7_5a7e2a0f-33db-4ad3-8555-9434a46ae68d_yizlng.avif" alt="STRYV">
@@ -856,32 +853,28 @@ const solData = {
     title: 'Sistema de ventas y entrega',
     when: 'Cuando vendes online — cursos, membresías, servicios, consultoría o productos digitales.',
     desc: 'Del primer clic a la entrega: un flujo ordenado, sin pasos manuales y con continuidad operativa.',
-    lista: ['Captación y conversión (landing, página de oferta, checkout o solicitud)','Cobro (pagos, suscripciones, confirmaciones)','Onboarding (accesos, correos, pasos de activación)','Entrega (portal, recursos, comunidad o flujo de servicio)','Seguimiento y continuidad (renovación, reactivación, upsell)'],
-    result: 'Un proceso de venta y entrega con menos fricción, menos pasos manuales y mejor continuidad operativa.'
+    lista: ['Captación y conversión (landing, página de oferta, checkout o solicitud)','Cobro (pagos, suscripciones, confirmaciones)','Onboarding (accesos, correos, pasos de activación)','Entrega (portal, recursos, comunidad o flujo de servicio)','Seguimiento y continuidad (renovación, reactivación, upsell)']
   },
   sol2: {
     num: '02 — Atención Automatizada con IA',
     title: 'Sistema de atención y soporte',
     when: 'Cuando te llegan demasiados WhatsApps, DMs, emails o tickets, y eso te hace perder tiempo, seguimiento y clientes.',
     desc: 'Entradas organizadas, respuestas rápidas, cada caso trazable. Sin improvisar.',
-    lista: ['Entrada de solicitudes (WhatsApp, email, formularios, web)','Clasificación y prioridad','Respuesta asistida por IA (borradores, macros, base de conocimiento)','Asignación y escalamiento','Seguimiento y cierre','Registro y métricas de atención'],
-    result: 'Atención más rápida, consistente y medible, sin depender de respuestas improvisadas.'
+    lista: ['Entrada de solicitudes (WhatsApp, email, formularios, web)','Clasificación y prioridad','Respuesta asistida por IA (borradores, macros, base de conocimiento)','Asignación y escalamiento','Seguimiento y cierre','Registro y métricas de atención']
   },
   sol3: {
     num: '03 — Conversión y Retención Local',
     title: 'Sistema comercial para negocio local',
     when: 'Cuando tienes un negocio físico — restaurante, clínica, barber, gym — y quieres convertir mejor, dar seguimiento y aumentar recurrencia.',
     desc: 'Tráfico local que se convierte en ventas. Clientes que regresan y operación que se mide.',
-    lista: ['Captura (QR, links, formularios, campañas)','Conversión (WhatsApp, menú, agenda, solicitud o cierre)','Confirmación y seguimiento (recordatorios, atención post-contacto)','Reputación (flujo de reseñas y recuperación)','Retención local (reactivación, campañas, referidos)','Trazabilidad comercial básica'],
-    result: 'Mayor control del flujo comercial local y mejor seguimiento de clientes recurrentes.'
+    lista: ['Captura (QR, links, formularios, campañas)','Conversión (WhatsApp, menú, agenda, solicitud o cierre)','Confirmación y seguimiento (recordatorios, atención post-contacto)','Reputación (flujo de reseñas y recuperación)','Retención local (reactivación, campañas, referidos)','Trazabilidad comercial básica']
   },
   sol4: {
     num: '04 — Operación Interna (OPS / Mini-ERP)',
     title: 'Sistema de operación interna',
     when: 'Cuando hay inventario, producción o varias personas operando, y empiezan los errores, pérdidas, retrasos o falta de control.',
     desc: 'Procesos estructurados, menos errores, operación que no depende de una sola persona.',
-    lista: ['Entrada de órdenes, pedidos o solicitudes','Flujo operativo (estados, responsables, checklists)','Inventario y recursos','Producción / ejecución (prioridades, tiempos, colas)','Entrega / cierre (confirmación, evidencia, seguimiento)','Reportes y alertas (KPIs, incidencias, pendientes)'],
-    result: 'Operación más controlada, trazable y menos dependiente del dueño o del seguimiento manual.'
+    lista: ['Entrada de órdenes, pedidos o solicitudes','Flujo operativo (estados, responsables, checklists)','Inventario y recursos','Producción / ejecución (prioridades, tiempos, colas)','Entrega / cierre (confirmación, evidencia, seguimiento)','Reportes y alertas (KPIs, incidencias, pendientes)']
   }
 };
 
@@ -895,7 +888,6 @@ function openModal(id) {
     <p class="sol-desc">${d.desc}</p>
     <div class="sol-struct-label">Estructura del sistema</div>
     <ul class="sol-lista">${li}</ul>
-    <div class="sol-result"><span class="sol-result-arrow">→</span><span>${d.result}</span></div>
     <a href="https://wa.me/17373683464" class="btn-lima" target="_blank" style="display:inline-flex;text-decoration:none;margin-top:4px">
       <svg style="width:14px;height:14px;fill:var(--lima-text);flex-shrink:0"><use href="#wa-icon"/></svg>Agenda tu diagnóstico
     </a>
