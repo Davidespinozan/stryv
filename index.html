@@ -727,17 +727,24 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
     </div>
     <div class="contacto-form reveal d2">
       <h3>O déjanos tu mensaje</h3>
-      <div class="form-row">
-        <div class="fg"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
-        <div class="fg"><label>Apellido</label><input type="text" placeholder="Apellido"></div>
+      <form action="https://formspree.io/f/maqdldab" method="POST" id="contact-form">
+        <div class="form-row">
+          <div class="fg"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" required></div>
+          <div class="fg"><label>Apellido</label><input type="text" name="apellido" placeholder="Apellido"></div>
+        </div>
+        <div class="fg"><label>Correo electrónico</label><input type="email" name="email" placeholder="email@empresa.com" required></div>
+        <div class="fg"><label>¿Qué necesita tu negocio?</label><textarea name="mensaje" placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar."></textarea></div>
+        <div class="form-check">
+          <input type="checkbox" id="priv" required>
+          <label for="priv">Acepto la política de privacidad</label>
+        </div>
+        <button type="submit" class="btn-submit" id="submit-btn">Enviar mensaje</button>
+      </form>
+      <div id="form-success" style="display:none;text-align:center;padding:32px 0;">
+        <div style="font-size:32px;margin-bottom:12px;">✓</div>
+        <p style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;">¡Mensaje enviado!</p>
+        <p style="font-size:13px;color:var(--sub);">Te respondemos en menos de 24h.</p>
       </div>
-      <div class="fg"><label>Correo electrónico</label><input type="email" placeholder="email@empresa.com"></div>
-      <div class="fg"><label>¿Qué necesita tu negocio?</label><textarea placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar."></textarea></div>
-      <div class="form-check">
-        <input type="checkbox" id="priv">
-        <label for="priv">Acepto la política de privacidad</label>
-      </div>
-      <button class="btn-submit">Enviar mensaje</button>
     </div>
   </div>
 </section>
@@ -921,7 +928,14 @@ function openVideoModal() {
   const m = document.getElementById('video-modal');
   m.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  document.getElementById('modal-video').play();
+  const v = document.getElementById('modal-video');
+  v.load();
+  const p = v.play();
+  if (p !== undefined) {
+    p.catch(() => {
+      // iOS fallback: let user tap play button natively
+    });
+  }
 }
 function closeVideoModal() {
   const m = document.getElementById('video-modal');
@@ -935,7 +949,14 @@ function openVideoModal2() {
   const m = document.getElementById('video-modal-2');
   m.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  document.getElementById('modal-video-2').play();
+  const v = document.getElementById('modal-video-2');
+  v.load();
+  const p = v.play();
+  if (p !== undefined) {
+    p.catch(() => {
+      // iOS fallback: let user tap play button natively
+    });
+  }
 }
 function closeVideoModal2() {
   const m = document.getElementById('video-modal-2');
@@ -949,7 +970,14 @@ function openVideoModal3() {
   const m = document.getElementById('video-modal-3');
   m.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  document.getElementById('modal-video-3').play();
+  const v = document.getElementById('modal-video-3');
+  v.load();
+  const p = v.play();
+  if (p !== undefined) {
+    p.catch(() => {
+      // iOS fallback: let user tap play button natively
+    });
+  }
 }
 function closeVideoModal3() {
   const m = document.getElementById('video-modal-3');
@@ -962,13 +990,47 @@ function openVideoModal4() {
   const m = document.getElementById('video-modal-4');
   m.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  document.getElementById('modal-video-4').play();
+  const v = document.getElementById('modal-video-4');
+  v.load();
+  const p = v.play();
+  if (p !== undefined) {
+    p.catch(() => {
+      // iOS fallback: let user tap play button natively
+    });
+  }
 }
 function closeVideoModal4() {
   const m = document.getElementById('video-modal-4');
   m.style.display = 'none';
   document.body.style.overflow = '';
   document.getElementById('modal-video-4').pause();
+}
+
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/maqdldab', {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        contactForm.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Error, intenta de nuevo';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error, intenta de nuevo';
+      btn.disabled = false;
+    }
+  });
 }
 </script>
 
