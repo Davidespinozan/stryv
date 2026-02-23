@@ -186,15 +186,28 @@ nav {
 .col-l { width: 28%; height: 58%; bottom: 4%; left: 4%; z-index: 2; transform: rotate(-2.5deg); }
 .col-r { width: 32%; height: 62%; top: 4%; right: 4%; z-index: 2; transform: rotate(1.8deg); }
 
-/* Mobile: show only center image, full width */
+/* Mobile: 3 images stacked layout */
 @media(max-width:900px){
   .hero-collage {
-    height: 260px;
+    height: 340px;
     margin: 24px 20px 0;
     max-width: calc(100% - 40px);
   }
-  .col-c { width: 100%; height: 100%; top: 0; left: 0; transform: none; z-index: 1; border-radius: 10px; }
-  .col-l, .col-r { display: none; }
+  .col-c {
+    width: 62%; height: 80%; top: 10%;
+    left: 50%; transform: translateX(-50%);
+    z-index: 2; border-radius: 10px;
+  }
+  .col-l {
+    display: block;
+    width: 42%; height: 55%; bottom: 4%; left: 0%;
+    z-index: 3; transform: rotate(-2deg); border-radius: 10px;
+  }
+  .col-r {
+    display: block;
+    width: 42%; height: 50%; top: 4%; right: 0%;
+    z-index: 3; transform: rotate(2deg); border-radius: 10px;
+  }
 }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
