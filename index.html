@@ -57,7 +57,10 @@ body::after {
 nav {
   position: sticky; top: 0; z-index: 900;
   height: 148px;
-  display: grid; grid-template-columns: 80px auto 1fr; align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
   padding: 0 40px;
   background: rgba(13,17,23,.97);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -66,7 +69,7 @@ nav {
 .nav-logo {
   display: flex; align-items: center; justify-content: center;
   text-decoration: none;
-  grid-column: 2;
+  grid-column: 2; grid-row: 1;
 }
 .nav-logo-name {
   font-size: 18px; font-weight: 900; color: var(--text);
@@ -75,7 +78,7 @@ nav {
 .nav-logo-img {
   height: 128px; width: auto; display: block;
 }
-.nav-links { display: none; list-style: none; grid-column: 1; justify-content: flex-start; }
+.nav-links { display: flex; gap: 2px; list-style: none; align-items: center; justify-self: start; grid-column: 1; grid-row: 1; }
 .nav-links a {
   font-size: 13px; font-weight: 500; color: var(--sub);
   text-decoration: none; padding: 7px 13px; border-radius: var(--radius-sm);
@@ -88,13 +91,12 @@ nav {
   padding: 9px 18px; border-radius: var(--radius-sm);
   font-size: 13px; font-weight: 700; letter-spacing: -.01em;
   text-decoration: none; transition: background .15s, transform .15s;
-  justify-self: end; grid-column: 3;
-  display: inline-flex;
+  justify-self: end;
   align-self: center;
 }
 .nav-cta:hover { background: #ffffff; transform: translateY(-1px); }
 .nav-cta svg { width: 13px; height: 13px; fill: #0D1117; flex-shrink: 0; }
-.hamburger { display: flex; flex-direction: column; justify-content: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 8px; width: 48px; height: 48px; grid-column: 1; align-self: center; }
+.hamburger { display: none; flex-direction: column; justify-content: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 8px; width: 48px; height: 48px; justify-self: start; align-self: center; }
 .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .3s, opacity .3s; transform-origin: center; }
 .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -312,12 +314,12 @@ nav {
 .section-white .section-title { color: #111111; }
 .section-white .section-sub { color: #555555; }
 .section-white .tag { color: #999999; }
-.section-white .res-item { background: #f7f7f7; border-bottom: 1px solid #ebebeb; }
-.section-white .res-item:hover { background: #f0f0f0; }
-.section-white .res-list { border-color: #e4e4e4; }
-.section-white .res-item-num { color: #19c37d; }
-.section-white .res-item-text { color: #555; }
-.section-white .res-item-text strong { color: #111; }
+.section-white 
+.section-white 
+.section-white 
+.section-white 
+.section-white 
+.section-white 
 .section-white .banda-text { color: #555; }
 .section-white .banda-text strong { color: #111; }
 .section-white .banda-label { color: #aaa; }
@@ -355,6 +357,49 @@ nav {
 .col-l { width: 28%; height: 58%; bottom: 4%; left: 4%; z-index: 2; transform: rotate(-2.5deg); }
 .col-r { width: 32%; height: 62%; top: 4%; right: 4%; z-index: 2; transform: rotate(1.8deg); }
 @media(max-width:900px){ .hero-collage { display: none; } }
+
+
+/* ─── RES CHECKS ─── */
+.res-checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid #e4e4e4;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.res-check {
+  padding: 18px 20px 18px 48px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111;
+  border-bottom: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+  position: relative;
+  line-height: 1.4;
+}
+.res-check:nth-child(even) { border-right: none; }
+.res-check:nth-last-child(-n+2) { border-bottom: none; }
+.res-check::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #6C8F8A;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media(max-width:900px){
+  .res-checks { grid-template-columns: 1fr; }
+  .res-check { border-right: none; }
+  .res-check:nth-last-child(-n+2) { border-bottom: 1px solid #e8e8e8; }
+  .res-check:last-child { border-bottom: none; }
+}
 
 /* ─── BANDA ─── */
 .banda {
@@ -399,26 +444,13 @@ nav {
 }
 .resultados-top .section-title { margin-bottom: 0; }
 
-.res-list {
-  display: flex; flex-direction: column; gap: 0;
-  border: 1px solid var(--border2); border-radius: var(--radius); overflow: hidden;
-}
-.res-item {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border);
-  background: var(--card);
-  transition: background .18s;
-}
+
+
 .res-item:last-child { border-bottom: none; }
-.res-item:hover { background: var(--card2); }
-.res-item-num {
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px; font-weight: 600; color: var(--lima-d);
-  letter-spacing: .04em; flex-shrink: 0; margin-top: 2px; width: 24px;
-}
-.res-item-text { font-size: 13.5px; color: var(--sub); line-height: 1.65; }
-.res-item-text strong { color: var(--text); font-weight: 600; }
+
+
+
+
 
 /* ─── SOLUCIONES ─── */
 .soluciones {
@@ -727,6 +759,10 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
   /* ── NAV ── */
   nav { height: 64px; padding: 0 20px; grid-template-columns: 44px 1fr 44px; }
   .nav-logo-img { height: 36px; max-width: 160px; object-fit: contain; }
+  .hamburger { display: flex !important; }
+  .nav-links { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 9999; background: var(--bg2); border-bottom: 1px solid var(--border); flex-direction: column; gap: 0; padding: 8px 20px 20px; box-shadow: 0 8px 32px rgba(0,0,0,.6); }
+  .nav-links.open { display: flex !important; }
+  .nav-cta.nav-cta-desktop { display: none !important; }
   .hamburger { width: 44px; height: 44px; }
   .nav-cta.nav-cta-desktop { display: none !important; }
   .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; z-index: 999;
@@ -794,8 +830,8 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
   .tag { font-size: 9px; }
   .section-title { font-size: clamp(26px, 7vw, 38px); }
   .section-sub { font-size: 14px; }
-  .res-item { padding: 16px 16px; }
-  .res-item-text { font-size: 13px; }
+  
+  
 }
 </style>
 </head>
@@ -809,8 +845,14 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 
 <!-- NAV -->
 <nav id="main-nav">
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <a href="#" class="nav-logo">
     <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771805567/stryv_cvfufm.png" alt="STRYV" class="nav-logo-img">
+  </a>
+  <a href="https://wa.me/17373683464" class="nav-cta nav-cta-desktop" target="_blank">
+    <svg><use href="#wa-icon"/></svg>Agenda diagnóstico
   </a>
   <ul class="nav-links" id="nav-links">
     <li><a href="#soluciones">Soluciones</a></li>
@@ -819,16 +861,10 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
     <li><a href="#contacto">Contacto</a></li>
     <li class="nav-cta-mobile">
       <a href="https://wa.me/17373683464" class="nav-cta" target="_blank">
-        <svg><use href="#wa-icon"/></svg>Contacto
+        <svg><use href="#wa-icon"/></svg>Agenda diagnóstico
       </a>
     </li>
   </ul>
-  <a href="https://wa.me/17373683464" class="nav-cta nav-cta-desktop" target="_blank">
-    <svg><use href="#wa-icon"/></svg>Agenda diagnóstico
-  </a>
-  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
 <!-- HERO -->
@@ -888,46 +924,17 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
         </div>
         <h2 class="section-title">Resultados de una operación digital bien implementada.</h2>
       </div>
-      <div class="res-list">
-        <div class="res-item reveal d1">
-          <span class="res-item-num">01</span>
-          <span class="res-item-text">Una operación digital bien implementada te permite vender más sin depender tanto de tu tiempo.</span>
-        </div>
-        <div class="res-item reveal d2">
-          <span class="res-item-num">02</span>
-          <span class="res-item-text">Puedes atender mejor y más rápido, sin aumentar el caos interno.</span>
-        </div>
-        <div class="res-item reveal d3">
-          <span class="res-item-num">03</span>
-          <span class="res-item-text">Reduces tareas manuales, errores y retrabajo.</span>
-        </div>
-        <div class="res-item reveal d4">
-          <span class="res-item-num">04</span>
-          <span class="res-item-text">Tienes más control sobre lo que pasa en ventas, atención y operación.</span>
-        </div>
-        <div class="res-item reveal d4">
-          <span class="res-item-num">05</span>
-          <span class="res-item-text">Empiezas a medir con claridad qué funciona y qué no, y dónde se está perdiendo valor.</span>
-        </div>
-        <div class="res-item reveal d4">
-          <span class="res-item-num">06</span>
-          <span class="res-item-text">Puedes escalar sin que cada cliente extra te complique la vida.</span>
-        </div>
-        <div class="res-item reveal d4">
-          <span class="res-item-num">07</span>
-          <span class="res-item-text">Se vuelve más fácil entrar a nuevos mercados y operar a distancia.</span>
-        </div>
-        <div class="res-item reveal d4">
-          <span class="res-item-num">08</span>
-          <span class="res-item-text">Bajas costos operativos al conectar herramientas y automatizar procesos.</span>
-        </div>
-        <div class="res-item reveal d4">
-          <span class="res-item-num">09</span>
-          <span class="res-item-text">Tomas decisiones con datos, no solo con intuición.</span>
-        </div>
-        <div class="res-item reveal d4">
-          <span class="res-item-num">10</span>
-          <span class="res-item-text">El negocio depende menos del dueño y más de procesos y sistemas que sí se pueden repetir.</span>
+      <div class="res-checks">
+          <div class="res-check">Vendes más sin depender de tu tiempo</div>
+          <div class="res-check">Atiendes mejor y más rápido</div>
+          <div class="res-check">Menos tareas manuales y retrabajo</div>
+          <div class="res-check">Control total sobre ventas y operación</div>
+          <div class="res-check">Mides qué funciona y dónde se pierde valor</div>
+          <div class="res-check">Escalas sin complicar cada cliente nuevo</div>
+          <div class="res-check">Más fácil entrar a nuevos mercados</div>
+          <div class="res-check">Bajas costos operativos</div>
+          <div class="res-check">Tomas decisiones con datos, no intuición</div>
+          <div class="res-check">El negocio no depende solo del dueño</div>
         </div>
       </div>
     </div>
@@ -1059,7 +1066,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       Sin costo · Sin compromiso
     </div>
     <h2 class="section-title">¿Por dónde empezamos?</h2>
-    <p class="section-sub">En 20 minutos te decimos exactamente qué sistema necesita tu negocio, cuánto tardaría y qué impacto podés esperar.</p>
+    <p class="section-sub">En 20 minutos te decimos exactamente qué sistema necesita tu negocio, cuánto tardaría y qué impacto puedes esperar.</p>
     <div class="cta-obtiene">
       <div class="cta-obtiene-item">Independencia operativa y geográfica</div>
       <div class="cta-obtiene-item">Escalabilidad sin aumentar caos</div>
@@ -1101,7 +1108,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
         <div class="fg"><label>Apellido</label><input type="text" placeholder="Apellido"></div>
       </div>
       <div class="fg"><label>Correo electrónico</label><input type="email" placeholder="email@empresa.com"></div>
-      <div class="fg"><label>¿Qué necesita tu negocio?</label><textarea placeholder="Contanos brevemente qué hace tu negocio y qué querés mejorar."></textarea></div>
+      <div class="fg"><label>¿Qué necesita tu negocio?</label><textarea placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar."></textarea></div>
       <div class="form-check">
         <input type="checkbox" id="priv">
         <label for="priv">Acepto la política de privacidad</label>
@@ -1128,7 +1135,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       </div>
       <div class="faq-card reveal d2">
         <h4>¿Qué tipo de negocios atienden?</h4>
-        <p>Restaurantes, fábricas, infoproductores, coaches, e-commerce, negocios de servicios. Si ya tenés ventas y operación, podemos mejorarlo.</p>
+        <p>Restaurantes, fábricas, infoproductores, coaches, e-commerce, negocios de servicios. Si ya tienes ventas y operación, podemos mejorarlo.</p>
       </div>
       <div class="faq-card reveal d3">
         <h4>¿Cuánto cuesta una implementación?</h4>
@@ -1254,7 +1261,7 @@ const solData = {
   sol3: {
     num: '03 — Conversión y Retención Local',
     title: 'Sistema comercial para negocio local',
-    when: 'Cuando tenés un negocio físico — restaurante, clínica, barber, gym — y querés convertir mejor, dar seguimiento y aumentar recurrencia.',
+    when: 'Cuando tienes un negocio físico — restaurante, clínica, barber, gym — y quieres convertir mejor, dar seguimiento y aumentar recurrencia.',
     desc: 'Tráfico local que se convierte en ventas. Clientes que regresan y operación que se mide.',
     lista: [
       'Captura (QR, links, formularios, campañas)',
