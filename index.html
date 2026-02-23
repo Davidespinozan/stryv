@@ -285,7 +285,7 @@ nav {
 .sol-tile-label { font-family: 'Geist Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #86AAA5; margin-bottom: 10px; }
 .sol-tile-title { font-size: clamp(20px, 2vw, 26px); font-weight: 800; color: #EAF0EE; letter-spacing: -.03em; line-height: 1.12; margin-bottom: 14px; }
 .sol-tile-sub { font-size: 13.5px; color: var(--sub); line-height: 1.72; margin-bottom: 36px; }
-.sol-tile-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; color: #86AAA5; font-family: 'Geist Mono', monospace; letter-spacing: .04em; text-transform: uppercase; border-bottom: 1.5px solid rgba(108,143,138,.35); padding-bottom: 2px; transition: gap .2s, color .2s, border-color .2s; }
+.sol-tile-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; color: #4ECDC4; font-family: 'Geist Mono', monospace; letter-spacing: .04em; text-transform: uppercase; border-bottom: 1.5px solid rgba(108,143,138,.35); padding-bottom: 2px; transition: gap .2s, color .2s, border-color .2s; }
 .sol-tile:hover .sol-tile-cta { gap: 12px; color: #EAF0EE; border-color: rgba(234,240,238,.4); }
 
 /* Modal */
@@ -706,8 +706,8 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       </div>
       <h2 class="section-title">Sin filtros.<br>Sin formularios.</h2>
       <p class="section-sub">Escríbenos directo. Respondemos en menos de 24h y te decimos si somos o no la opción correcta para tu negocio.</p>
-      <a href="https://wa.me/17373683464" class="btn-text-lima" target="_blank">
-        <svg><use href="#wa-icon"/></svg>+1 (737) 368-3464
+      <a href="https://wa.me/17373683464" class="nav-cta" target="_blank" style="margin-bottom:32px;padding:9px 18px;">
+        <svg><use href="#wa-icon"/></svg>Agenda diagnóstico
       </a>
       </div>
       <div class="contacto-img reveal d3">
@@ -870,7 +870,7 @@ const solData = {
 
 function openModal(id) {
   const d = solData[id];
-  const li = d.lista.map(l => `<li>${l}</li>`).join('');
+  const li = d.lista.map(l => { const parts = l.split('('); return parts.length > 1 ? `<li><strong>${parts[0].trim()}</strong>(${parts.slice(1).join('(')}</li>` : `<li><strong>${l}</strong></li>`; }).join('');
   document.getElementById('sol-modal-content').innerHTML = `
     <div class="sol-modal-num">${d.num}</div>
     <h2 class="sol-modal-title">${d.title}</h2>
