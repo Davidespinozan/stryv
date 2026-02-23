@@ -10,24 +10,24 @@
 <style>
 /* ─── TOKENS ─── */
 :root {
-  --bg:        #0D1117;
-  --bg2:       #171C24;
-  --bg3:       #1d2229;
-  --bg4:       #222730;
-  --card:      #171C24;
-  --card2:     #1d2229;
-  --card-h:    #202631;
-  --text:      #EAF0EE;
-  --sub:       rgba(234,240,238,.62);
-  --muted:     rgba(234,240,238,.35);
-  --border:    rgba(108,143,138,.18);
-  --border2:   rgba(108,143,138,.28);
-  --teal:      #6C8F8A;
-  --teal-l:    #86AAA5;
-  --teal-bg:   rgba(108,143,138,.12);
-  --lima:      #6C8F8A;
-  --lima-d:    #86AAA5;
-  --lima-text: #091110;
+  --bg:        #1A1A1A;
+  --bg2:       #212121;
+  --bg3:       #262626;
+  --bg4:       #2e2e2e;
+  --card:      #2d2d2d;
+  --card2:     #353535;
+  --card-h:    #3c3c3c;
+  --text:      #F5EDD6;
+  --sub:       rgba(197,192,171,.62);
+  --muted:     rgba(197,192,171,.35);
+  --border:    rgba(200,192,171,.10);
+  --border2:   rgba(200,192,171,.18);
+  --teal:      #4A5E5B;
+  --teal-l:    #5a7470;
+  --teal-bg:   rgba(74,94,91,.14);
+  --lima:      #c8f560;
+  --lima-d:    #aadf30;
+  --lima-text: #1a2a00;
   --radius:    10px;
   --radius-sm: 6px;
 }
@@ -59,7 +59,7 @@ nav {
   height: 64px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 40px;
-  background: rgba(13,17,23,.97);
+  background: rgba(26,26,26,.95);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border);
 }
@@ -90,13 +90,13 @@ nav {
 .nav-links a:hover { color: var(--text); background: var(--bg3); }
 .nav-cta {
   display: inline-flex; align-items: center; gap: 7px;
-  background: #4ECDC4; color: #0D1117;
+  background: var(--lima); color: var(--lima-text);
   padding: 9px 18px; border-radius: var(--radius-sm);
   font-size: 13px; font-weight: 700; letter-spacing: -.01em;
   text-decoration: none; transition: background .15s, transform .15s;
 }
-.nav-cta:hover { background: #ffffff; transform: translateY(-1px); }
-.nav-cta svg { width: 13px; height: 13px; fill: #0D1117; flex-shrink: 0; }
+.nav-cta:hover { background: var(--lima-d); transform: translateY(-1px); }
+.nav-cta svg { width: 13px; height: 13px; fill: var(--lima-text); flex-shrink: 0; }
 .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; width: 38px; height: 38px; }
 .hamburger span { display: block; width: 20px; height: 1.5px; background: var(--sub); border-radius: 2px; transition: transform .3s, opacity .3s; transform-origin: center; }
 .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -108,13 +108,12 @@ nav {
 .hero-wrap {
   position: relative; overflow: hidden;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 60px;
 }
 
 /* Subtle dot grid */
 .hero-wrap::before {
   content: ''; position: absolute; inset: 0; z-index: 0;
-  background-image: radial-gradient(circle, rgba(108,143,138,.18) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(200,192,171,.15) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 30%, transparent 80%);
@@ -125,13 +124,13 @@ nav {
   content: ''; position: absolute;
   top: -120px; left: 50%; transform: translateX(-50%);
   width: 600px; height: 400px;
-  background: radial-gradient(ellipse, rgba(108,143,138,.24) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(74,94,91,.22) 0%, transparent 70%);
   z-index: 0; pointer-events: none;
 }
 
 .hero {
   max-width: 1080px; margin: 0 auto;
-  padding: 0 40px 0;
+  padding: 0 40px 100px;
   position: relative; z-index: 1;
   text-align: center;
 }
@@ -165,14 +164,14 @@ nav {
 /* eyebrow pill */
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(108,143,138,.1); border: 1px solid rgba(108,143,138,.22);
+  background: var(--teal-bg); border: 1px solid rgba(74,94,91,.3);
   border-radius: 100px; padding: 5px 14px 5px 8px;
   margin-bottom: 28px;
   animation: fadeUp .65s cubic-bezier(.16,1,.3,1) .2s both;
 }
-.hero-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #86AAA5; animation: breathe 2.5s ease-in-out infinite; }
+.hero-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal-l); animation: breathe 2.5s ease-in-out infinite; }
 @keyframes breathe { 0%,100% { opacity:1;transform:scale(1) } 50% { opacity:.5;transform:scale(.8) } }
-.hero-eyebrow-text { font-size: 11px; font-weight: 600; color: #86AAA5; letter-spacing: .06em; font-family: 'Geist Mono', monospace; }
+.hero-eyebrow-text { font-size: 11px; font-weight: 600; color: var(--teal-l); letter-spacing: .06em; font-family: 'Geist Mono', monospace; }
 
 /* headline */
 .hero h1 {
@@ -187,7 +186,7 @@ nav {
 .hero h1 .hl::after {
   content: '';
   position: absolute; bottom: 3px; left: 0; right: 0; height: 5px;
-  background: #6C8F8A; border-radius: 3px; z-index: -1; opacity: .5;
+  background: var(--lima); border-radius: 3px; z-index: -1; opacity: .7;
 }
 
 /* sub / puntos */
@@ -218,24 +217,23 @@ nav {
 }
 .btn-lima {
   display: inline-flex; align-items: center; gap: 8px;
-  background: #4ECDC4; color: #0D1117;
+  background: var(--lima); color: var(--lima-text);
   padding: 14px 26px; border-radius: var(--radius-sm);
   font-size: 14px; font-weight: 700; letter-spacing: -.01em;
-  text-decoration: none; transition: background .15s, transform .15s, box-shadow .15s;
-  box-shadow: 0 0 0 1px rgba(108,143,138,.3);
+  text-decoration: none; transition: background .15s, transform .15s;
 }
-.btn-lima:hover { background: #6ededa; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(78,205,196,.3); }
-.btn-lima svg { width: 15px; height: 15px; fill: #0D1117; flex-shrink: 0; }
+.btn-lima:hover { background: var(--lima-d); transform: translateY(-1px); }
+.btn-lima svg { width: 15px; height: 15px; fill: var(--lima-text); flex-shrink: 0; }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
-  background: transparent; color: rgba(234,240,238,.7);
+  background: transparent; color: var(--sub);
   padding: 14px 26px; border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(108,143,138,.35);
+  border: 1.5px solid var(--border2);
   font-size: 14px; font-weight: 500;
   text-decoration: none; transition: border-color .15s, color .15s, transform .15s;
 }
-.btn-ghost:hover { border-color: #86AAA5; color: #EAF0EE; transform: translateY(-1px); }
-
+.btn-ghost:hover { border-color: var(--teal); color: var(--text); transform: translateY(-1px); }
+.hero-note { margin-top: 16px; font-size: 11.5px; color: var(--muted); animation: fadeUp .7s cubic-bezier(.16,1,.3,1) .54s both; font-family: 'Geist Mono', monospace; letter-spacing: .04em; }
 
 /* Hero flow visual */
 .hero-visual {
@@ -269,9 +267,9 @@ nav {
 .flow-node-box::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
 }
-.fn1 .flow-node-box::before { background: #6C8F8A; }
-.fn2 .flow-node-box::before { background: #86AAA5; }
-.fn3 .flow-node-box::before { background: #4f6e6a; }
+.fn1 .flow-node-box::before { background: #60a5fa; }
+.fn2 .flow-node-box::before { background: var(--lima-d); }
+.fn3 .flow-node-box::before { background: var(--teal-l); }
 .fn4 .flow-node-box::before { background: #f472b6; }
 .fn5 .flow-node-box::before { background: #fb923c; }
 .flow-icon { font-size: 18px; }
@@ -308,53 +306,16 @@ nav {
   font-family: 'Geist Mono', monospace; font-size: 9.5px; color: var(--muted);
   display: flex; align-items: center; gap: 6px;
 }
-.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #6C8F8A; animation: breathe 2s ease-in-out infinite; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: breathe 2s ease-in-out infinite; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-
-
-
-@media(max-width:900px){
-
-  .res-img-divider { display: none; }
-}
-
-
-
-/* ─── WHITE SECTIONS ─── */
-.section-white {
-  background: #ffffff;
-  color: #111111;
-}
-.section-white .section-title { color: #111111; }
-.section-white .section-sub { color: #555555; }
-.section-white .tag { color: #999999; }
-.section-white .res-item { background: #f7f7f7; border-bottom: 1px solid #ebebeb; }
-.section-white .res-item:hover { background: #f0f0f0; }
-.section-white .res-list { border-color: #e4e4e4; }
-.section-white .res-item-num { color: #19c37d; }
-.section-white .res-item-text { color: #555; }
-.section-white .res-item-text strong { color: #111; }
-.section-white .banda-text { color: #555; }
-.section-white .banda-text strong { color: #111; }
-.section-white .banda-label { color: #aaa; }
-.section-white .banda-sep { background: #e4e4e4; }
-.section-white .faq-grid { background: #e4e4e4; border-color: #e4e4e4; }
-.section-white .faq-card { background: #ffffff; }
-.section-white .faq-card:hover { background: #f7f7f7; }
-.section-white .faq-card h4 { color: #111; }
-.section-white .faq-card p { color: #666; }
-.section-white .faq-footer p { color: #aaa; }
-.section-white .sol-head-note { color: #aaa; }
-
 
 /* ─── HERO COLLAGE ─── */
 .hero-collage {
   position: relative;
-  margin: 48px auto 0;
-  max-width: 900px;
-  height: 380px;
-  overflow: hidden;
+  margin: 72px auto 0;
+  max-width: 860px;
+  height: 340px;
   animation: fadeUp .85s cubic-bezier(.16,1,.3,1) .58s both;
 }
 .col-card {
@@ -367,17 +328,61 @@ nav {
 .col-card img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
+  filter: brightness(.78) saturate(.7);
+  transition: filter .4s;
 }
-.col-c { width: 46%; height: 88%; top: 6%; left: 50%; transform: translateX(-50%); z-index: 1; }
-.col-l { width: 28%; height: 58%; bottom: 4%; left: 4%; z-index: 2; transform: rotate(-2.5deg); }
-.col-r { width: 32%; height: 62%; top: 4%; right: 4%; z-index: 2; transform: rotate(1.8deg); }
-@media(max-width:900px){ .hero-collage { display: none; } }
+.col-card:hover img { filter: brightness(.92) saturate(.85); }
+.col-c { width: 50%; height: 90%; top: 5%; left: 50%; transform: translateX(-50%); z-index: 1; }
+.col-l { width: 31%; height: 62%; bottom: 0; left: 2%; z-index: 2; transform: rotate(-2.5deg); }
+.col-r { width: 36%; height: 68%; top: 0; right: 0; z-index: 2; transform: rotate(1.8deg); }
+
+/* ─── RESULTADOS IMAGE BREAK ─── */
+.res-img-break {
+  position: relative;
+  margin-top: 52px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 240px;
+  border: 1px solid var(--border2);
+}
+.res-img-break img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: brightness(.45) saturate(.55);
+}
+.res-img-break-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(74,94,91,.3) 0%, rgba(26,26,26,.55) 100%);
+  display: flex; align-items: center; justify-content: center;
+  gap: 48px; padding: 40px; flex-wrap: wrap;
+}
+.res-img-stat { text-align: center; }
+.res-img-stat-n {
+  font-family: 'Geist Mono', monospace;
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 800; color: var(--text);
+  letter-spacing: -.04em; line-height: 1; margin-bottom: 6px;
+}
+.res-img-stat-n span { color: var(--lima); }
+.res-img-stat-l {
+  font-size: 11px; color: rgba(245,237,214,.5);
+  letter-spacing: .08em; text-transform: uppercase;
+  font-family: 'Geist Mono', monospace;
+}
+.res-img-divider { width: 1px; height: 50px; background: rgba(245,237,214,.12); flex-shrink: 0; }
+
+@media(max-width:900px){
+  .hero-collage { display: none; }
+  .res-img-break-overlay { gap: 24px; }
+  .res-img-divider { display: none; }
+}
+
 
 /* ─── BANDA ─── */
 .banda {
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border);
   padding: 22px 40px;
-  background: #ffffff;
+  background: var(--bg2);
 }
 .banda-inner {
   max-width: 1100px; margin: 0 auto;
@@ -406,8 +411,8 @@ nav {
 /* ─── RESULTADOS ─── */
 .resultados {
   padding: 100px 40px;
-  border-bottom: 1px solid #e8e8e8;
-  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
 }
 .resultados-inner { max-width: 1100px; margin: 0 auto; }
 .resultados-top {
@@ -441,13 +446,12 @@ nav {
 .soluciones {
   border-bottom: 1px solid var(--border);
   background: var(--bg);
-  padding-top: 48px;
 }
 .sol-head {
   padding: 100px 40px 72px;
   text-align: center;
   border-bottom: 1px solid var(--border);
-  background: #111111;
+  background: var(--bg2);
 }
 .sol-head .tag { display: flex; justify-content: center; }
 .sol-head .section-sub { max-width: 500px; margin: 0 auto 0; }
@@ -459,26 +463,21 @@ nav {
 
 .sol-grid {
   display: grid; grid-template-columns: repeat(2,1fr);
-  gap: 16px;
-  max-width: 1100px; margin: 0 auto;
-  padding: 0 40px 80px;
-  background: transparent;
+  gap: 1px; background: var(--border2);
 }
 .sol-tile {
   background: var(--card);
-  padding: 36px 36px 32px;
+  padding: 56px 52px;
   cursor: pointer;
-  transition: background .2s, transform .2s, box-shadow .2s;
+  transition: background .2s;
   position: relative; overflow: hidden;
-  border-radius: 12px;
-  border: 1px solid var(--border2);
 }
 .sol-tile::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: var(--teal); opacity: 0;
   transition: opacity .25s;
 }
-.sol-tile:hover { background: var(--card2); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(108,143,138,.15); }
+.sol-tile:hover { background: var(--card2); }
 .sol-tile:hover::before { opacity: 1; }
 .sol-tile-num {
   font-family: 'Geist Mono', monospace;
@@ -488,11 +487,11 @@ nav {
 .sol-tile-label {
   font-family: 'Geist Mono', monospace;
   font-size: 9.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
-  color: #86AAA5; margin-bottom: 10px;
+  color: var(--teal-l); margin-bottom: 10px;
 }
 .sol-tile-title {
   font-size: clamp(20px, 2vw, 26px); font-weight: 800;
-  color: #EAF0EE; letter-spacing: -.03em; line-height: 1.12;
+  color: var(--text); letter-spacing: -.03em; line-height: 1.12;
   margin-bottom: 14px;
 }
 .sol-tile-sub {
@@ -501,14 +500,14 @@ nav {
 }
 .sol-tile-cta {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 11.5px; font-weight: 700; color: #86AAA5;
+  font-size: 11.5px; font-weight: 700; color: var(--teal-l);
   font-family: 'Geist Mono', monospace; letter-spacing: .04em;
   text-transform: uppercase;
-  border-bottom: 1.5px solid rgba(108,143,138,.35);
+  border-bottom: 1.5px solid rgba(74,94,91,.4);
   padding-bottom: 2px;
   transition: gap .2s, color .2s, border-color .2s;
 }
-.sol-tile:hover .sol-tile-cta { gap: 12px; color: #EAF0EE; border-color: rgba(234,240,238,.4); }
+.sol-tile:hover .sol-tile-cta { gap: 12px; color: var(--lima-d); border-color: var(--lima-d); }
 
 /* Modal */
 .sol-modal-overlay {
@@ -568,8 +567,8 @@ nav {
 .proyectos {
   padding: 100px 0;
   overflow: hidden;
-  border-bottom: 1px solid #e8e8e8;
-  background: #F7F8F7;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
 }
 .proyectos-header {
   max-width: 1100px; margin: 0 auto; padding: 0 40px;
@@ -623,7 +622,7 @@ nav {
   content: ''; position: absolute;
   top: 50%; left: 50%; transform: translate(-50%,-50%);
   width: 500px; height: 300px;
-  background: radial-gradient(ellipse, rgba(108,143,138,.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(74,94,91,.18) 0%, transparent 70%);
   pointer-events: none;
 }
 .cta-inner { max-width: 540px; margin: 0 auto; position: relative; z-index: 1; }
@@ -635,25 +634,25 @@ nav {
 .cta-obtiene-item::before { content: '→'; color: var(--lima-d); font-weight: 700; flex-shrink: 0; }
 
 /* ─── CONTACTO ─── */
-.contacto { padding: 100px 40px; border-bottom: 1px solid var(--border); background: var(--bg2); }
+.contacto { padding: 100px 40px; border-bottom: 1px solid var(--border); background: var(--bg); }
 .contacto-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 .contacto-left .tag, .contacto-left .section-title, .contacto-left .section-sub { text-align: left; }
 .contacto-left .section-title { margin-bottom: 14px; }
 .contacto-left .section-sub { margin-bottom: 28px; }
 .btn-text-lima {
   display: inline-flex; align-items: center; gap: 8px;
-  background: transparent; color: #EAF0EE;
+  background: transparent; color: var(--lima-d);
   padding: 14px 0; font-size: 14px; font-weight: 700;
-  text-decoration: none; border-bottom: 1.5px solid rgba(108,143,138,.4);
-  margin-bottom: 32px; transition: border-color .15s, color .15s;
+  text-decoration: none; border-bottom: 1.5px solid rgba(170,220,48,.35);
+  margin-bottom: 32px; transition: border-color .15s;
 }
-.btn-text-lima:hover { border-color: #86AAA5; color: #ffffff; }
-.btn-text-lima svg { width: 15px; height: 15px; fill: #EAF0EE; flex-shrink: 0; }
+.btn-text-lima:hover { border-color: var(--lima-d); }
+.btn-text-lima svg { width: 15px; height: 15px; fill: var(--lima-d); flex-shrink: 0; }
 .contacto-taglines { display: flex; flex-direction: column; margin-bottom: 32px; }
 .contacto-tag { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--sub); font-weight: 500; }
 .contacto-tag:first-child { border-top: 1px solid var(--border); }
 .contacto-tag-icon { color: var(--lima-d); flex-shrink: 0; font-weight: 700; }
-.contacto-img img { width: 100%; border-radius: var(--radius); object-fit: cover; height: 240px; display: block; border: 1px solid var(--border2); filter: none; }
+.contacto-img img { width: 100%; border-radius: var(--radius); object-fit: cover; height: 240px; display: block; border: 1px solid var(--border2); filter: brightness(.85) saturate(.78); }
 .contacto-form { background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius); padding: 40px; }
 .contacto-form h3 { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 24px; letter-spacing: -.025em; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -673,14 +672,14 @@ nav {
 .form-check input { accent-color: var(--teal); width: 14px; height: 14px; flex-shrink: 0; }
 .btn-submit {
   width: 100%; padding: 12px;
-  background: #4ECDC4; border: none; border-radius: var(--radius-sm);
+  background: var(--lima); border: none; border-radius: var(--radius-sm);
   font-family: 'Geist', sans-serif; font-size: 13.5px; font-weight: 700;
-  color: #0D1117; cursor: pointer; transition: background .15s, transform .15s;
+  color: var(--lima-text); cursor: pointer; transition: background .15s, transform .15s;
 }
-.btn-submit:hover { background: #6ededa; transform: translateY(-1px); }
+.btn-submit:hover { background: var(--lima-d); transform: translateY(-1px); }
 
 /* ─── FAQ ─── */
-.faq { padding: 100px 40px; border-bottom: 1px solid #e8e8e8; background: #ffffff; }
+.faq { padding: 100px 40px; border-bottom: 1px solid var(--border); background: var(--bg2); }
 .faq-inner { max-width: 1100px; margin: 0 auto; }
 .faq-head { text-align: center; margin-bottom: 52px; }
 .faq-head .tag { display: flex; justify-content: center; }
@@ -713,27 +712,6 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 .social a { font-size: 11.5px; color: var(--muted); text-decoration: none; transition: color .15s; font-weight: 500; }
 .social a:hover { color: var(--text); }
 
-
-/* ─── PROYECTOS WHITE SECTION ─── */
-.proyectos .section-title { color: #111111; }
-.proyectos .tag { color: #999999; }
-.proyectos .proyectos-hint { color: #aaaaaa; }
-.proyectos .proyectos-hint svg { stroke: #aaaaaa; }
-.proyectos .proyecto-card { background: #ffffff; border-color: #e4e4e4; }
-.proyectos .proyecto-card:hover { border-color: #cccccc; box-shadow: 0 16px 40px rgba(0,0,0,.08); }
-.proyectos .proj-empty-icon { background: #f4f4f4; border-color: #e4e4e4; }
-.proyectos .proj-empty-icon svg { stroke: #aaaaaa; }
-.proyectos .proj-empty-tag { color: #6C8F8A; }
-.proyectos .proj-empty-name { color: #111111; }
-.proyectos .proj-empty-desc { color: #888888; }
-.proyectos .proyecto-card.coming { border-color: #dddddd; }
-.proyectos .coming-icon { background: #f4f4f4; border-color: #e4e4e4; }
-.proyectos .coming-icon svg { stroke: #aaaaaa; }
-.proyectos .coming-label { color: #aaaaaa; }
-.proyectos .proj-arrow { background: #ffffff; border-color: #e4e4e4; }
-.proyectos .proj-arrow:hover { background: #f4f4f4; border-color: #cccccc; }
-.proyectos .proj-arrow svg { stroke: #555555; }
-
 /* ─── WA FLOAT ─── */
 .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 800; width: 48px; height: 48px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.28); text-decoration: none; transition: transform .2s, box-shadow .2s; }
 .wa-float:hover { transform: scale(1.07); box-shadow: 0 8px 28px rgba(37,211,102,.42); }
@@ -760,8 +738,8 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
   .banda-sep { width: 40px; height: 1px; }
   .resultados-top { grid-template-columns: 1fr; gap: 24px; }
   .sol-head { padding: 72px 20px 48px; }
-  .sol-grid { grid-template-columns: 1fr; padding: 0 20px 60px; gap: 12px; }
-  .sol-tile { padding: 28px 24px; }
+  .sol-grid { grid-template-columns: 1fr; }
+  .sol-tile { padding: 40px 24px; }
   .sol-modal { padding: 36px 24px; }
   .proyectos-header { padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 28px; }
   .proyectos-hint { display: none; }
@@ -828,10 +806,20 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 
     <div class="hero-eyebrow">
       <span class="hero-eyebrow-dot"></span>
-      <span class="hero-eyebrow-text">Diseñamos, conectamos y automatizamos tu operación digital</span>
+      <span class="hero-eyebrow-text">Estudio B2B · Mercado hispanohablante global</span>
     </div>
 
     <h1>Construimos el futuro<br>operativo de tu <span class="hl">empresa.</span></h1>
+
+    <p class="hero-sub">
+      Diseñamos, conectamos y automatizamos tu operación digital, para:
+    </p>
+
+    <div class="hero-puntos">
+      <span class="hero-punto"><span class="hero-punto-dot"></span>Vender.</span>
+      <span class="hero-punto"><span class="hero-punto-dot"></span>Atender.</span>
+      <span class="hero-punto"><span class="hero-punto-dot"></span>Operar.</span>
+    </div>
 
     <div class="hero-actions">
       <a href="https://wa.me/17373683464" class="btn-lima" target="_blank">
@@ -839,19 +827,18 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       </a>
       <a href="#soluciones" class="btn-ghost">Ver soluciones →</a>
     </div>
-</div>
-
+    <p class="hero-note">Sin costo · Sin compromiso · Respuesta en &lt;24h</p>
 
     <!-- Hero collage -->
     <div class="hero-collage">
       <div class="col-card col-c">
-        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771780213/6996270bf2fcc307a0a650d7_5a7e2a0f-33db-4ad3-8555-9434a46ae68d_yizlng.avif" alt="STRYV">
+        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771780213/6996270bf2fcc307a0a650dd_ef7786f6-62cc-47c3-927d-b63e3a56d4a5_eo8b0j.avif" alt="Equipo STRYV">
       </div>
       <div class="col-card col-l">
-        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771780213/6996270bf2fcc307a0a650f1_8785e8e9-f90e-48a2-aa7a-c615bfa26568_jjbzsn.avif" alt="STRYV">
+        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771780213/6996270bf2fcc307a0a650d7_5a7e2a0f-33db-4ad3-8555-9434a46ae68d_yizlng.avif" alt="Sistema de ventas">
       </div>
       <div class="col-card col-r">
-        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771780213/6996270bf2fcc307a0a650d1_23125a36-d482-46bd-aaef-f4dda2373017_hhkzxd.avif" alt="STRYV">
+        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771780213/6996270bf2fcc307a0a650d1_23125a36-d482-46bd-aaef-f4dda2373017_hhkzxd.avif" alt="Operación local">
       </div>
     </div>
 
@@ -859,7 +846,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 </div>
 
 <!-- BANDA -->
-<div class="banda section-white">
+<div class="banda">
   <div class="banda-inner reveal">
     <div class="banda-label">Para quién</div>
     <div class="banda-sep"></div>
@@ -868,7 +855,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 </div>
 
 <!-- RESULTADOS -->
-<section class="resultados section-white" id="resultados">
+<section class="resultados" id="resultados">
   <div class="resultados-inner">
     <div class="resultados-top reveal">
       <div>
@@ -881,43 +868,65 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       <div class="res-list">
         <div class="res-item reveal d1">
           <span class="res-item-num">01</span>
-          <span class="res-item-text">Una operación digital bien implementada te permite vender más sin depender tanto de tu tiempo.</span>
+          <span class="res-item-text"><strong>Vendés más sin depender tanto de tu tiempo.</strong> El proceso comercial corre solo.</span>
         </div>
         <div class="res-item reveal d2">
           <span class="res-item-num">02</span>
-          <span class="res-item-text">Puedes atender mejor y más rápido, sin aumentar el caos interno.</span>
+          <span class="res-item-text"><strong>Atendés mejor y más rápido,</strong> sin aumentar el caos interno.</span>
         </div>
         <div class="res-item reveal d3">
           <span class="res-item-num">03</span>
-          <span class="res-item-text">Reduces tareas manuales, errores y retrabajo.</span>
+          <span class="res-item-text"><strong>Reducís tareas manuales,</strong> errores y retrabajo al conectar herramientas y automatizar.</span>
         </div>
-        <div class="res-item reveal d4">
+        <div class="res-item reveal d1">
           <span class="res-item-num">04</span>
-          <span class="res-item-text">Tienes más control sobre lo que pasa en ventas, atención y operación.</span>
+          <span class="res-item-text"><strong>Tenés control total</strong> sobre ventas, atención y operación. Sabés dónde se pierde valor.</span>
         </div>
-        <div class="res-item reveal d4">
+        <div class="res-item reveal d2">
           <span class="res-item-num">05</span>
-          <span class="res-item-text">Empiezas a medir con claridad qué funciona y qué no, y dónde se está perdiendo valor.</span>
+          <span class="res-item-text"><strong>Escalás sin que cada cliente extra te complique la vida.</strong></span>
         </div>
-        <div class="res-item reveal d4">
+        <div class="res-item reveal d3">
           <span class="res-item-num">06</span>
-          <span class="res-item-text">Puedes escalar sin que cada cliente extra te complique la vida.</span>
+          <span class="res-item-text"><strong>Entrás a nuevos mercados y operás a distancia</strong> con más facilidad.</span>
         </div>
-        <div class="res-item reveal d4">
+        <div class="res-item reveal d1">
           <span class="res-item-num">07</span>
-          <span class="res-item-text">Se vuelve más fácil entrar a nuevos mercados y operar a distancia.</span>
+          <span class="res-item-text"><strong>Bajás costos operativos</strong> al conectar herramientas y automatizar procesos.</span>
         </div>
-        <div class="res-item reveal d4">
+        <div class="res-item reveal d2">
           <span class="res-item-num">08</span>
-          <span class="res-item-text">Bajas costos operativos al conectar herramientas y automatizar procesos.</span>
+          <span class="res-item-text"><strong>Tomás decisiones con datos,</strong> no solo con intuición.</span>
         </div>
-        <div class="res-item reveal d4">
+        <div class="res-item reveal d3">
           <span class="res-item-num">09</span>
-          <span class="res-item-text">Tomas decisiones con datos, no solo con intuición.</span>
+          <span class="res-item-text"><strong>El negocio depende menos del dueño</strong> y más de procesos que sí se pueden repetir.</span>
         </div>
-        <div class="res-item reveal d4">
-          <span class="res-item-num">10</span>
-          <span class="res-item-text">El negocio depende menos del dueño y más de procesos y sistemas que sí se pueden repetir.</span>
+      </div>
+    </div>
+
+    <!-- Image break with stats -->
+    <div class="res-img-break reveal">
+      <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771780213/6996270bf2fcc307a0a650f1_8785e8e9-f90e-48a2-aa7a-c615bfa26568_jjbzsn.avif" alt="Operación digital">
+      <div class="res-img-break-overlay">
+        <div class="res-img-stat">
+          <div class="res-img-stat-n">4<span>–</span>6<span>w</span></div>
+          <div class="res-img-stat-l">Implementación</div>
+        </div>
+        <div class="res-img-divider"></div>
+        <div class="res-img-stat">
+          <div class="res-img-stat-n">48<span>h</span></div>
+          <div class="res-img-stat-l">Primeros resultados</div>
+        </div>
+        <div class="res-img-divider"></div>
+        <div class="res-img-stat">
+          <div class="res-img-stat-n">0<span>$</span></div>
+          <div class="res-img-stat-l">Costo del diagnóstico</div>
+        </div>
+        <div class="res-img-divider"></div>
+        <div class="res-img-stat">
+          <div class="res-img-stat-n">4</div>
+          <div class="res-img-stat-l">Sistemas disponibles</div>
         </div>
       </div>
     </div>
@@ -941,28 +950,28 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       <div class="sol-tile-num">01 / 04</div>
       <div class="sol-tile-label">Ventas Digitales</div>
       <h3 class="sol-tile-title">Sistema de ventas<br>y entrega</h3>
-      <p class="sol-tile-sub">La estructura digital para que el proceso comercial funcione de forma ordenada desde la captación hasta la entrega.</p>
+      <p class="sol-tile-sub">Del primer clic a la entrega. Captación, cobro, onboarding y seguimiento en un solo flujo.</p>
       <div class="sol-tile-cta">Ver sistema completo →</div>
     </div>
     <div class="sol-tile reveal d2" onclick="openModal('sol2')">
       <div class="sol-tile-num">02 / 04</div>
       <div class="sol-tile-label">Atención Automatizada con IA</div>
       <h3 class="sol-tile-title">Sistema de atención<br>y soporte</h3>
-      <p class="sol-tile-sub">Sistemas de atención para organizar entradas, acelerar respuestas y mantener trazabilidad de los casos.</p>
+      <p class="sol-tile-sub">Menos WhatsApps sin respuesta, más trazabilidad. IA que clasifica, prioriza y acelera cada caso.</p>
       <div class="sol-tile-cta">Ver sistema completo →</div>
     </div>
     <div class="sol-tile reveal d3" onclick="openModal('sol3')">
       <div class="sol-tile-num">03 / 04</div>
       <div class="sol-tile-label">Conversión y Retención Local</div>
       <h3 class="sol-tile-title">Sistema comercial<br>para negocio local</h3>
-      <p class="sol-tile-sub">Sistemas para convertir tráfico local en ventas y mejorar la recurrencia de clientes.</p>
+      <p class="sol-tile-sub">Más clientes que regresan. Captura, conversión, reputación y retención para negocios físicos.</p>
       <div class="sol-tile-cta">Ver sistema completo →</div>
     </div>
     <div class="sol-tile reveal d4" onclick="openModal('sol4')">
       <div class="sol-tile-num">04 / 04</div>
       <div class="sol-tile-label">Operación Interna (OPS / Mini-ERP)</div>
       <h3 class="sol-tile-title">Sistema de operación<br>interna</h3>
-      <p class="sol-tile-sub">Sistemas internos para estructurar procesos, reducir errores y mejorar control operativo.</p>
+      <p class="sol-tile-sub">Menos errores, más control. Flujos, inventario, producción y alertas en un solo sistema.</p>
       <div class="sol-tile-cta">Ver sistema completo →</div>
     </div>
   </div>
@@ -1102,7 +1111,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 </section>
 
 <!-- FAQ -->
-<section class="faq section-white" id="faq">
+<section class="faq" id="faq">
   <div class="faq-inner">
     <div class="faq-head reveal">
       <div class="tag">
