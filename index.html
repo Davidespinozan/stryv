@@ -314,6 +314,7 @@ nav {
 .proyectos-track:active { cursor: grabbing; }
 .proyectos-track::-webkit-scrollbar { display: none; }
 .proyecto-card { flex: 0 0 320px; height: 420px; border-radius: var(--radius); overflow: hidden; scroll-snap-align: start; position: relative; background: var(--card); border: 1px solid var(--border2); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s; }
+.proyecto-card:hover .play-overlay { opacity: 1 !important; }
 .proyecto-card:hover { transform: translateY(-5px); border-color: var(--card-h); box-shadow: 0 20px 48px rgba(0,0,0,.5); }
 .proj-empty { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 32px; text-align: center; }
 .proj-empty-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--card2); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; }
@@ -647,36 +648,44 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
     </div>
   </div>
   <div class="proyectos-track" id="proyectos-track">
-    <div class="proyecto-card reveal d1">
-      <div class="proj-empty">
-        <div class="proj-empty-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="proj-empty-tag">Próximamente</div>
-        <div class="proj-empty-name">Proyecto 01</div>
-        <div class="proj-empty-desc">Caso real en construcción. Disponible pronto.</div>
+    <div class="proyecto-card reveal d1" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal()">
+      <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="https://res.cloudinary.com/dona0k7rk/video/upload/v1771863860/Screen_Recording_2026-02-23_at_5.21.26_PM_syqlgm.mov" type="video/mp4">
+      </video>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
       </div>
     </div>
-    <div class="proyecto-card reveal d2">
-      <div class="proj-empty">
-        <div class="proj-empty-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="proj-empty-tag">Próximamente</div>
-        <div class="proj-empty-name">Proyecto 02</div>
-        <div class="proj-empty-desc">Caso real en construcción. Disponible pronto.</div>
+    <div class="proyecto-card reveal d2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal2()">
+      <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="https://res.cloudinary.com/dona0k7rk/video/upload/v1771864509/video_kr5b9l.mov" type="video/mp4">
+      </video>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
       </div>
     </div>
-    <div class="proyecto-card reveal d3">
-      <div class="proj-empty">
-        <div class="proj-empty-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="proj-empty-tag">Próximamente</div>
-        <div class="proj-empty-name">Proyecto 03</div>
-        <div class="proj-empty-desc">Caso real en construcción. Disponible pronto.</div>
+    <div class="proyecto-card reveal d3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal3()">
+      <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="https://res.cloudinary.com/dona0k7rk/video/upload/v1771864871/2C8700DB-4DD6-4723-90F5-852ABCCD0554_n6zx77.mov" type="video/mp4">
+      </video>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
       </div>
     </div>
-    <div class="proyecto-card reveal d4">
-      <div class="proj-empty">
-        <div class="proj-empty-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <div class="proj-empty-tag">Próximamente</div>
-        <div class="proj-empty-name">Proyecto 04</div>
-        <div class="proj-empty-desc">Caso real en construcción. Disponible pronto.</div>
+    <div class="proyecto-card reveal d4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal4()">
+      <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="https://res.cloudinary.com/dona0k7rk/video/upload/v1771865336/ScreenRecording_02-23-2026_17-45-53_1_ydeaic.mov" type="video/mp4">
+      </video>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
       </div>
     </div>
     <div class="proyecto-card coming">
@@ -907,6 +916,89 @@ track.addEventListener('mousemove', e => { if(!drag) return; e.preventDefault();
 track.addEventListener('touchstart', e => { sx=e.touches[0].pageX; sl=track.scrollLeft; track.style.scrollSnapType='none'; }, {passive:true});
 track.addEventListener('touchend', () => { track.style.scrollSnapType='x mandatory'; });
 track.addEventListener('touchmove', e => { track.scrollLeft = sl-(e.touches[0].pageX-sx)*1.2; }, {passive:true});
+
+function openVideoModal() {
+  const m = document.getElementById('video-modal');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-video').play();
+}
+function closeVideoModal() {
+  const m = document.getElementById('video-modal');
+  m.style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('modal-video').pause();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal(); });
+
+function openVideoModal2() {
+  const m = document.getElementById('video-modal-2');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-video-2').play();
+}
+function closeVideoModal2() {
+  const m = document.getElementById('video-modal-2');
+  m.style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('modal-video-2').pause();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeVideoModal(); closeVideoModal2(); } });
+
+function openVideoModal3() {
+  const m = document.getElementById('video-modal-3');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-video-3').play();
+}
+function closeVideoModal3() {
+  const m = document.getElementById('video-modal-3');
+  m.style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('modal-video-3').pause();
+}
+
+function openVideoModal4() {
+  const m = document.getElementById('video-modal-4');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-video-4').play();
+}
+function closeVideoModal4() {
+  const m = document.getElementById('video-modal-4');
+  m.style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('modal-video-4').pause();
+}
 </script>
+
+<!-- VIDEO MODAL -->
+<div id="video-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal()">
+  <button onclick="closeVideoModal()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
+  <video id="modal-video" controls playsinline style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
+    <source src="https://res.cloudinary.com/dona0k7rk/video/upload/v1771863860/Screen_Recording_2026-02-23_at_5.21.26_PM_syqlgm.mov" type="video/mp4">
+  </video>
+</div>
+
+<div id="video-modal-2" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal2()">
+  <button onclick="closeVideoModal2()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
+  <video id="modal-video-2" controls playsinline style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
+    <source src="https://res.cloudinary.com/dona0k7rk/video/upload/v1771864509/video_kr5b9l.mov" type="video/mp4">
+  </video>
+</div>
+
+<div id="video-modal-3" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal3()">
+  <button onclick="closeVideoModal3()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
+  <video id="modal-video-3" controls playsinline style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
+    <source src="https://res.cloudinary.com/dona0k7rk/video/upload/v1771864871/2C8700DB-4DD6-4723-90F5-852ABCCD0554_n6zx77.mov" type="video/mp4">
+  </video>
+</div>
+
+<div id="video-modal-4" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal4()">
+  <button onclick="closeVideoModal4()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
+  <video id="modal-video-4" controls playsinline style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
+    <source src="https://res.cloudinary.com/dona0k7rk/video/upload/v1771865336/ScreenRecording_02-23-2026_17-45-53_1_ydeaic.mov" type="video/mp4">
+  </video>
+</div>
 </body>
 </html>
