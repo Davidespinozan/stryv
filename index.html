@@ -509,6 +509,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
   .section-sub { font-size: 14px; }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -808,7 +809,10 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
           <div class="fg"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" required></div>
           <div class="fg"><label>Apellido</label><input type="text" name="apellido" placeholder="Apellido"></div>
         </div>
-        <div class="fg"><label>Correo electrónico</label><input type="email" name="email" placeholder="email@empresa.com" required></div>
+        <div class="form-row">
+          <div class="fg"><label>Correo electrónico</label><input type="email" name="email" placeholder="email@empresa.com" required></div>
+          <div class="fg"><label>WhatsApp</label><input type="tel" name="phone" placeholder="+52 55 1234 5678"></div>
+        </div>
         <div class="fg"><label>¿Qué necesita tu negocio?</label><textarea name="mensaje" placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar."></textarea></div>
         <div class="form-check">
           <input type="checkbox" id="priv" required>
@@ -1083,6 +1087,12 @@ function closeVideoModal4() {
   document.getElementById('modal-video-4').pause();
 }
 
+// ─── SUPABASE LEADS ───
+const _sb = window.supabase.createClient(
+  "https://ltveorvqvvlyivjwxjlc.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0dmVvcnZxdnZseWl2and4amxjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzODEzNTAsImV4cCI6MjA4Nzk1NzM1MH0.BpBc3lM6VpDyL5299H1MwQK0VBOBjKWQQconfpcCsfU"
+);
+
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
@@ -1090,12 +1100,38 @@ if (contactForm) {
     const btn = document.getElementById('submit-btn');
     btn.textContent = 'Enviando...';
     btn.disabled = true;
+    
+    const fd = new FormData(contactForm);
+    const nombre = (fd.get('nombre') || '') + ' ' + (fd.get('apellido') || '');
+    const email = fd.get('email') || '';
+    const phone = fd.get('phone') || '';
+    const message = fd.get('mensaje') || '';
+    
+    // Get UTM params
+    const params = new URLSearchParams(window.location.search);
+    
     try {
+      // 1. Send to Formspree (backup email)
       const res = await fetch('https://formspree.io/f/maqdldab', {
         method: 'POST',
-        body: new FormData(contactForm),
+        body: fd,
         headers: { Accept: 'application/json' }
       });
+      
+      // 2. Send to Supabase (dashboard)
+      await _sb.from('leads').insert({
+        name: nombre.trim(),
+        email: email,
+        phone: phone,
+        message: message,
+        source: 'Web',
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_content: params.get('utm_content') || '',
+        page_url: window.location.href
+      });
+      
       if (res.ok) {
         contactForm.style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
