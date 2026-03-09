@@ -765,6 +765,16 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
+    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal10()">
+      <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="https://res.cloudinary.com/dp9l5i19b/video/upload/v1773093697/1234_jaefyv.mov" type="video/mp4">
+      </video>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+      </div>
+    </div>
     <div class="proyecto-card coming">
       <div class="coming-inner">
         <div class="coming-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
@@ -1314,6 +1324,32 @@ function closeVideoModal9() {
   document.getElementById('modal-video-9').pause();
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal9(); });
+</script>
+
+<div id="video-modal-10" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal10()">
+  <button onclick="closeVideoModal10()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
+  <video id="modal-video-10" controls playsinline style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
+    <source src="https://res.cloudinary.com/dp9l5i19b/video/upload/v1773093697/1234_jaefyv.mov" type="video/mp4">
+  </video>
+</div>
+
+<script>
+function openVideoModal10() {
+  const m = document.getElementById('video-modal-10');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  const v = document.getElementById('modal-video-10');
+  v.load();
+  const p = v.play();
+  if (p !== undefined) { p.catch(() => {}); }
+}
+function closeVideoModal10() {
+  const m = document.getElementById('video-modal-10');
+  m.style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('modal-video-10').pause();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal10(); });
 </script>
 
 <div id="image-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeImageModal()">
