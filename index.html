@@ -455,7 +455,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 .chat-fab:hover { transform: scale(1.05); box-shadow: 0 6px 32px rgba(78,205,196,.45); animation: none; }
 .chat-fab svg { width: 20px; height: 20px; fill: #fff; pointer-events: none; flex-shrink: 0; }
 .chat-fab-label { color: #fff; font-family: inherit; font-size: .82rem; font-weight: 600; letter-spacing: .02em; pointer-events: none; white-space: nowrap; }
-.chat-modal { display: none; position: fixed; bottom: 90px; right: 24px; z-index: 820; width: 370px; max-height: 500px; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; flex-direction: column; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,.5); }
+.chat-modal { display: none; position: fixed; bottom: 138px; right: 24px; z-index: 820; width: 370px; max-height: 500px; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; flex-direction: column; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,.5); }
 .chat-modal.open { display: flex; }
 .chat-header { padding: 14px 16px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
 .chat-header span { font-weight: 600; font-size: .95rem; color: var(--text); }
@@ -475,12 +475,12 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 .chat-send:disabled { opacity: .4; cursor: default; }
 .chat-send svg { width: 18px; height: 18px; fill: #fff; }
 @media(max-width:600px){
-  .float-stack { bottom: 16px; right: 16px; gap: 10px; }
+  .float-stack { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); right: 16px; gap: 10px; }
   .chat-fab { height: 42px; padding: 0 14px 0 12px; }
   .chat-fab svg { width: 18px; height: 18px; }
   .chat-fab-label { font-size: .78rem; }
-  .chat-modal { right: 10px; left: 10px; width: auto; bottom: 80px; max-height: 60vh; }
-  .chat-modal .chat-body { min-height: 180px; max-height: 250px; }
+  .chat-modal { right: 10px; left: 10px; width: auto; bottom: calc(132px + env(safe-area-inset-bottom, 0px)); max-height: 58vh; }
+  .chat-modal .chat-body { min-height: 160px; max-height: calc(58vh - 120px); }
 }
 
 /* ─── RESPONSIVE ─── */
