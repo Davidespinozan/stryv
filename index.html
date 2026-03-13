@@ -473,7 +473,15 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 .chat-send:hover { opacity: .85; }
 .chat-send:disabled { opacity: .4; cursor: default; }
 .chat-send svg { width: 18px; height: 18px; fill: #fff; }
-@media(max-width:480px){ .chat-modal { right: 8px; left: 8px; width: auto; bottom: 130px; max-height: 70vh; } .chat-fab { bottom: 76px; right: 16px; height: 42px; padding: 0 14px 0 12px; } .chat-fab svg { width: 18px; height: 18px; } .chat-fab-label { font-size: .78rem; } .wa-float { right: 16px; bottom: 16px; } }
+@media(max-width:600px){
+  .chat-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; max-height: 100%; border-radius: 0; border: none; z-index: 9999; }
+  .chat-modal .chat-body { min-height: 0; max-height: none; flex: 1; }
+  .chat-modal .chat-input-wrap input { font-size: 16px; }
+  .chat-fab { bottom: 76px; right: 16px; height: 42px; padding: 0 14px 0 12px; }
+  .chat-fab svg { width: 18px; height: 18px; }
+  .chat-fab-label { font-size: .78rem; }
+  .wa-float { right: 16px; bottom: 16px; }
+}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px){
@@ -1429,11 +1437,21 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeImageMo
   const sendBtn = document.getElementById('chat-send');
   const history = [];
 
+  const isMobile = () => window.innerWidth <= 600;
+
   fab.addEventListener('click', () => {
     modal.classList.toggle('open');
-    if (modal.classList.contains('open')) input.focus();
+    if (modal.classList.contains('open')) {
+      if (isMobile()) document.body.style.overflow = 'hidden';
+      input.focus();
+    } else {
+      document.body.style.overflow = '';
+    }
   });
-  closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  });
 
   function addMsg(text, role) {
     const div = document.createElement('div');
