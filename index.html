@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>STRYV — Construimos el futuro operativo de tu empresa</title>
 
 <!-- Meta Pixel Code -->
@@ -443,18 +443,19 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 .proyectos .proj-arrow:hover { background: #f4f4f4; border-color: #cccccc; }
 .proyectos .proj-arrow svg { stroke: #555555; }
 
-/* ─── WA FLOAT ─── */
-.wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 800; width: 48px; height: 48px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.28); text-decoration: none; transition: transform .2s, box-shadow .2s; }
+/* ─── FLOAT BUTTONS STACK ─── */
+.float-stack { position: fixed; bottom: 24px; right: 24px; z-index: 800; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.wa-float { width: 48px; height: 48px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.28); text-decoration: none; transition: transform .2s, box-shadow .2s; }
 .wa-float:hover { transform: scale(1.07); box-shadow: 0 8px 28px rgba(37,211,102,.42); }
 .wa-float svg { width: 22px; height: 22px; fill: #fff; }
 
 /* ─── CHAT WIDGET ─── */
 @keyframes chat-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(78,205,196,.45), 0 4px 24px rgba(78,205,196,.3); } 50% { box-shadow: 0 0 0 10px rgba(78,205,196,0), 0 4px 24px rgba(78,205,196,.3); } }
-.chat-fab { position: fixed; bottom: 88px; right: 24px; z-index: 810; height: 46px; padding: 0 18px 0 14px; background: linear-gradient(135deg, #4ECDC4 0%, #3AB5AD 100%); border-radius: 23px; border: 1px solid rgba(78,205,196,.35); cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 24px rgba(78,205,196,.3); transition: transform .2s, box-shadow .2s; animation: chat-pulse 2.5s ease-in-out infinite; }
+.chat-fab { height: 46px; padding: 0 18px 0 14px; background: linear-gradient(135deg, #4ECDC4 0%, #3AB5AD 100%); border-radius: 23px; border: 1px solid rgba(78,205,196,.35); cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 24px rgba(78,205,196,.3); transition: transform .2s, box-shadow .2s; animation: chat-pulse 2.5s ease-in-out infinite; }
 .chat-fab:hover { transform: scale(1.05); box-shadow: 0 6px 32px rgba(78,205,196,.45); animation: none; }
 .chat-fab svg { width: 20px; height: 20px; fill: #fff; pointer-events: none; flex-shrink: 0; }
 .chat-fab-label { color: #fff; font-family: inherit; font-size: .82rem; font-weight: 600; letter-spacing: .02em; pointer-events: none; white-space: nowrap; }
-.chat-modal { display: none; position: fixed; bottom: 148px; right: 24px; z-index: 820; width: 370px; max-height: 500px; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; flex-direction: column; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,.5); }
+.chat-modal { display: none; position: fixed; bottom: 90px; right: 24px; z-index: 820; width: 370px; max-height: 500px; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; flex-direction: column; overflow: hidden; box-shadow: 0 12px 48px rgba(0,0,0,.5); }
 .chat-modal.open { display: flex; }
 .chat-header { padding: 14px 16px; background: var(--bg3); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
 .chat-header span { font-weight: 600; font-size: .95rem; color: var(--text); }
@@ -466,7 +467,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 .chat-msg.user { background: var(--teal); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
 .chat-msg.typing { color: var(--muted); font-style: italic; }
 .chat-input-wrap { padding: 12px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
-.chat-input-wrap input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; color: var(--text); font-family: inherit; font-size: .88rem; outline: none; }
+.chat-input-wrap input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; color: var(--text); font-family: inherit; font-size: 16px; outline: none; }
 .chat-input-wrap input::placeholder { color: var(--muted); }
 .chat-input-wrap input:focus { border-color: var(--teal); }
 .chat-send { background: var(--teal); border: none; border-radius: 8px; padding: 0 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: opacity .2s; }
@@ -474,13 +475,12 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 .chat-send:disabled { opacity: .4; cursor: default; }
 .chat-send svg { width: 18px; height: 18px; fill: #fff; }
 @media(max-width:600px){
-  .chat-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; max-height: 100%; border-radius: 0; border: none; z-index: 9999; }
-  .chat-modal .chat-body { min-height: 0; max-height: none; flex: 1; }
-  .chat-modal .chat-input-wrap input { font-size: 16px; }
-  .chat-fab { bottom: 76px; right: 16px; height: 42px; padding: 0 14px 0 12px; }
+  .float-stack { bottom: 16px; right: 16px; gap: 10px; }
+  .chat-fab { height: 42px; padding: 0 14px 0 12px; }
   .chat-fab svg { width: 18px; height: 18px; }
   .chat-fab-label { font-size: .78rem; }
-  .wa-float { right: 16px; bottom: 16px; }
+  .chat-modal { right: 10px; left: 10px; width: auto; bottom: 80px; max-height: 60vh; }
+  .chat-modal .chat-body { min-height: 180px; max-height: 250px; }
 }
 
 /* ─── RESPONSIVE ─── */
@@ -953,11 +953,18 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
   </div>
 </footer>
 
-<!-- CHAT WIDGET -->
-<button class="chat-fab" id="chat-fab" aria-label="Chat IA">
-  <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.17A7 7 0 0 1 14 23h-4a7 7 0 0 1-6.83-4H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 12 2zM9.5 13a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
-  <span class="chat-fab-label">AI Chat</span>
-</button>
+<!-- FLOAT BUTTONS -->
+<div class="float-stack">
+  <button class="chat-fab" id="chat-fab" aria-label="Chat IA">
+    <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.17A7 7 0 0 1 14 23h-4a7 7 0 0 1-6.83-4H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 12 2zM9.5 13a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+    <span class="chat-fab-label">AI Chat</span>
+  </button>
+  <a href="https://wa.me/17373683464" class="wa-float" target="_blank" aria-label="WhatsApp">
+    <svg><use href="#wa-icon"/></svg>
+  </a>
+</div>
+
+<!-- CHAT MODAL -->
 <div class="chat-modal" id="chat-modal">
   <div class="chat-header">
     <span>STRYV Asistente</span>
@@ -971,11 +978,6 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
     <button class="chat-send" id="chat-send"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
   </div>
 </div>
-
-<!-- WA FLOAT -->
-<a href="https://wa.me/17373683464" class="wa-float" target="_blank" aria-label="WhatsApp">
-  <svg><use href="#wa-icon"/></svg>
-</a>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const nav = document.getElementById('main-nav');
@@ -1437,21 +1439,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeImageMo
   const sendBtn = document.getElementById('chat-send');
   const history = [];
 
-  const isMobile = () => window.innerWidth <= 600;
-
   fab.addEventListener('click', () => {
     modal.classList.toggle('open');
-    if (modal.classList.contains('open')) {
-      if (isMobile()) document.body.style.overflow = 'hidden';
-      input.focus();
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (modal.classList.contains('open')) input.focus();
   });
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+  closeBtn.addEventListener('click', () => modal.classList.remove('open'));
 
   function addMsg(text, role) {
     const div = document.createElement('div');
