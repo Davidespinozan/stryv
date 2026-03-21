@@ -391,16 +391,28 @@ nav {
 
 /* ─── FAQ ─── */
 .faq { padding: 100px 40px; border-bottom: 1px solid #e8e8e8; background: #ffffff; }
-.faq-inner { max-width: 1100px; margin: 0 auto; }
+.faq-inner { max-width: 720px; margin: 0 auto; }
 .faq-head { text-align: center; margin-bottom: 52px; }
 .faq-head .tag { display: flex; justify-content: center; }
-.faq-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border2); border: 1px solid var(--border2); border-radius: var(--radius); overflow: hidden; }
-.faq-card { background: var(--card); padding: 28px 24px; transition: background .2s; }
-.faq-card:hover { background: var(--card2); }
-.faq-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; line-height: 1.35; color: var(--text); letter-spacing: -.01em; }
-.faq-card p { font-size: 12.5px; color: var(--sub); line-height: 1.7; }
+.faq-list { border: 1px solid #e4e4e4; border-radius: var(--radius); overflow: hidden; }
+.faq-item { border-bottom: 1px solid #e4e4e4; }
+.faq-item:last-child { border-bottom: none; }
+.faq-question { width: 100%; background: #ffffff; border: none; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; gap: 16px; transition: background .15s; }
+.faq-question:hover { background: #f7f7f7; }
+.faq-question h4 { font-size: 14px; font-weight: 700; color: #111; letter-spacing: -.01em; line-height: 1.35; margin: 0; }
+.faq-icon { flex-shrink: 0; width: 18px; height: 18px; position: relative; }
+.faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: #999; border-radius: 2px; transition: transform .25s, opacity .25s; }
+.faq-icon::before { width: 2px; height: 10px; top: 4px; left: 8px; }
+.faq-icon::after { width: 10px; height: 2px; top: 8px; left: 4px; }
+.faq-item.open .faq-icon::before { transform: rotate(90deg); opacity: 0; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+.faq-answer p { font-size: 13px; color: #666; line-height: 1.7; padding: 0 24px 20px; margin: 0; }
 .faq-footer { text-align: center; margin-top: 40px; }
 .faq-footer p { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+.section-white .faq-list { border-color: #e4e4e4; }
+.section-white .faq-item { border-color: #e4e4e4; }
+.section-white .faq-question { background: #ffffff; }
+.section-white .faq-question:hover { background: #f7f7f7; }
 
 /* ─── FOOTER ─── */
 footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid var(--border); }
@@ -540,8 +552,8 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
   .contacto-img img { height: 200px; }
 
   .faq { padding: 64px 20px; }
-  .faq-grid { grid-template-columns: 1fr; }
-  .faq-card { padding: 22px 18px; }
+  .faq-question { padding: 18px 18px; }
+  .faq-answer p { padding: 0 18px 18px; }
 
   footer { padding: 40px 20px 24px; }
   .footer-top { grid-template-columns: 1fr; gap: 20px; }
@@ -947,30 +959,30 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       </div>
       <h2 class="section-title">Lo que suelen preguntar.</h2>
     </div>
-    <div class="faq-grid">
-      <div class="faq-card reveal d1">
-        <h4>¿Para quién SÍ es STRYV?</h4>
-        <p>Para negocios que ya venden y quieren escalar sin contratar más gente ni depender del dueño. Si recién estás empezando desde cero, todavía no somos para vos.</p>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question"><h4>¿Para quién SÍ es STRYV?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p>Para negocios que ya venden y quieren escalar sin contratar más gente ni depender del dueño. Si recién estás empezando desde cero, todavía no somos para vos.</p></div>
       </div>
-      <div class="faq-card reveal d2">
-        <h4>¿Qué tipo de negocios atienden?</h4>
-        <p>Restaurantes, fábricas, infoproductores, coaches, e-commerce, negocios de servicios. Si ya tienes ventas y operación, podemos mejorarlo.</p>
+      <div class="faq-item">
+        <button class="faq-question"><h4>¿Qué tipo de negocios atienden?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p>Restaurantes, fábricas, infoproductores, coaches, e-commerce, negocios de servicios. Si ya tienes ventas y operación, podemos mejorarlo.</p></div>
       </div>
-      <div class="faq-card reveal d3">
-        <h4>¿Cuánto cuesta una implementación?</h4>
-        <p>Depende del sistema y la complejidad. Se define en la primera conversación. Trabajamos con tickets de implementación, no mensualidades.</p>
+      <div class="faq-item">
+        <button class="faq-question"><h4>¿Cuánto cuesta una implementación?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p>Depende del sistema y la complejidad. Se define en la primera conversación. Trabajamos con tickets de implementación, no mensualidades.</p></div>
       </div>
-      <div class="faq-card reveal d1">
-        <h4>¿Cuánto tarda?</h4>
-        <p>Entre 4 y 6 semanas para una implementación base. Los primeros resultados suelen verse en las primeras 48 a 72 horas de activación.</p>
+      <div class="faq-item">
+        <button class="faq-question"><h4>¿Cuánto tarda?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p>Entre 4 y 6 semanas para una implementación base. Los primeros resultados suelen verse en las primeras 48 a 72 horas de activación.</p></div>
       </div>
-      <div class="faq-card reveal d2">
-        <h4>¿Hacen branding, redes o publicidad?</h4>
-        <p>No. Somos un estudio técnico. Sin logos, sin contenido, sin pauta. Solo construimos sistemas que operan.</p>
+      <div class="faq-item">
+        <button class="faq-question"><h4>¿Hacen branding, redes o publicidad?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p>No. Somos un estudio técnico. Sin logos, sin contenido, sin pauta. Solo construimos sistemas que operan.</p></div>
       </div>
-      <div class="faq-card reveal d3">
-        <h4>¿Cómo empieza el proceso?</h4>
-        <p>Con una conversación. Nos escribes, nos cuentas qué hace tu negocio y vemos juntos si tiene sentido trabajar. Sin costo, sin compromiso. Si decidimos avanzar, ese tiempo ya forma parte del proyecto.</p>
+      <div class="faq-item">
+        <button class="faq-question"><h4>¿Cómo empieza el proceso?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p>Con una conversación. Nos escribes, nos cuentas qué hace tu negocio y vemos juntos si tiene sentido trabajar. Sin costo, sin compromiso. Si decidimos avanzar, ese tiempo ya forma parte del proyecto.</p></div>
       </div>
     </div>
     <div class="faq-footer reveal">
@@ -1488,6 +1500,24 @@ function closeImageModal() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeImageModal(); });
+</script>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o => {
+      o.classList.remove('open');
+      o.querySelector('.faq-answer').style.maxHeight = null;
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
 </script>
 
 <script>
