@@ -553,10 +553,6 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
   .section-title { font-size: clamp(26px, 7vw, 38px); }
   .section-sub { font-size: 14px; }
 
-  .proceso { padding: 64px 20px; }
-  .proceso-grid { grid-template-columns: 1fr; gap: 12px; }
-  .proceso-arrow { display: none; }
-  .proceso-step { padding: 28px 20px; }
 }
 
 /* ─── PROCESO ─── */
@@ -571,6 +567,12 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 .proceso-step-num { font-family: 'Geist Mono', monospace; font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: .1em; margin-bottom: 20px; }
 .proceso-step-title { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -.03em; margin-bottom: 10px; }
 .proceso-step-desc { font-size: 13.5px; color: var(--sub); line-height: 1.72; }
+@media(max-width:900px){
+  .proceso { padding: 64px 20px; }
+  .proceso-grid { grid-template-columns: 1fr; gap: 12px; }
+  .proceso-arrow { display: none; }
+  .proceso-step { padding: 28px 20px; }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
