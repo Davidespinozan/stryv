@@ -552,7 +552,25 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
   .tag { font-size: 9px; }
   .section-title { font-size: clamp(26px, 7vw, 38px); }
   .section-sub { font-size: 14px; }
+
+  .proceso { padding: 64px 20px; }
+  .proceso-grid { grid-template-columns: 1fr; gap: 12px; }
+  .proceso-arrow { display: none; }
+  .proceso-step { padding: 28px 20px; }
 }
+
+/* ─── PROCESO ─── */
+.proceso { padding: 100px 40px; border-bottom: 1px solid var(--border); background: var(--bg); }
+.proceso-inner { max-width: 1100px; margin: 0 auto; }
+.proceso-head { text-align: center; margin-bottom: 64px; }
+.proceso-head .tag { display: flex; justify-content: center; }
+.proceso-head .section-sub { max-width: 460px; margin: 0 auto; }
+.proceso-grid { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr; align-items: start; }
+.proceso-step { background: var(--card); border: 1px solid var(--border2); border-radius: 12px; padding: 36px 32px; }
+.proceso-arrow { display: flex; align-items: flex-start; justify-content: center; padding-top: 48px; color: var(--muted); font-size: 20px; line-height: 1; }
+.proceso-step-num { font-family: 'Geist Mono', monospace; font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: .1em; margin-bottom: 20px; }
+.proceso-step-title { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -.03em; margin-bottom: 10px; }
+.proceso-step-desc { font-size: 13.5px; color: var(--sub); line-height: 1.72; }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -596,7 +614,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       <span class="hero-eyebrow-text">Diseñamos, conectamos y automatizamos tu operación digital</span>
     </div>
     <h1>Construimos el futuro<br>operativo de tu <span class="hl">empresa.</span></h1>
-    <p class="hero-tagline">Estudio de implementación de sistemas operativos digitales.</p>
+    <p class="hero-tagline">Para negocios que ya operan y quieren escalar sin depender del dueño.</p>
     <div class="hero-actions">
       <a href="https://wa.me/17373683464" class="btn-lima" target="_blank">
         <svg><use href="#wa-icon"/></svg>Hablemos
@@ -839,6 +857,39 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
 
 
 
+<!-- PROCESO -->
+<section class="proceso">
+  <div class="proceso-inner">
+    <div class="proceso-head reveal">
+      <div class="tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Cómo trabajamos
+      </div>
+      <h2 class="section-title">Simple. Sin complicar.</h2>
+      <p class="section-sub">Tres pasos desde que nos escribes hasta que tu operación está funcionando.</p>
+    </div>
+    <div class="proceso-grid">
+      <div class="proceso-step reveal d1">
+        <div class="proceso-step-num">01 / 03</div>
+        <div class="proceso-step-title">Nos escribes</div>
+        <p class="proceso-step-desc">Una conversación sin compromiso. Nos cuentas qué hace tu negocio y qué quieres mejorar o resolver.</p>
+      </div>
+      <div class="proceso-arrow">→</div>
+      <div class="proceso-step reveal d2">
+        <div class="proceso-step-num">02 / 03</div>
+        <div class="proceso-step-title">Entendemos tu operación</div>
+        <p class="proceso-step-desc">Revisamos qué sistemas tienen sentido para tu etapa. Sin vender de más ni de menos. Solo lo que realmente necesitas.</p>
+      </div>
+      <div class="proceso-arrow">→</div>
+      <div class="proceso-step reveal d3">
+        <div class="proceso-step-num">03 / 03</div>
+        <div class="proceso-step-title">Diseñamos e implementamos</div>
+        <p class="proceso-step-desc">Construimos el sistema, lo activamos y te lo entregamos operando. Sin que tengas que aprenderlo todo solo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACTO -->
 <section class="contacto" id="contacto">
   <div class="contacto-inner">
@@ -905,7 +956,7 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
       </div>
       <div class="faq-card reveal d3">
         <h4>¿Cuánto cuesta una implementación?</h4>
-        <p>Depende del sistema y la complejidad. Se define en el diagnóstico. Trabajamos con tickets de implementación, no mensualidades.</p>
+        <p>Depende del sistema y la complejidad. Se define en la primera conversación. Trabajamos con tickets de implementación, no mensualidades.</p>
       </div>
       <div class="faq-card reveal d1">
         <h4>¿Cuánto tarda?</h4>
@@ -916,8 +967,8 @@ footer { background: var(--bg); padding: 52px 40px 28px; border-top: 1px solid v
         <p>No. Somos un estudio técnico. Sin logos, sin contenido, sin pauta. Solo construimos sistemas que operan.</p>
       </div>
       <div class="faq-card reveal d3">
-        <h4>¿El diagnóstico tiene costo?</h4>
-        <p>No. La primera sesión es gratuita. Si decidimos avanzar juntos, ese tiempo ya forma parte del proyecto.</p>
+        <h4>¿Cómo empieza el proceso?</h4>
+        <p>Con una conversación. Nos escribes, nos cuentas qué hace tu negocio y vemos juntos si tiene sentido trabajar. Sin costo, sin compromiso. Si decidimos avanzar, ese tiempo ya forma parte del proyecto.</p>
       </div>
     </div>
     <div class="faq-footer reveal">
