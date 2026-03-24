@@ -178,7 +178,9 @@ nav {
 .sol-head .tag { display: flex; justify-content: center; }
 .sol-head .section-sub { max-width: 500px; margin: 0 auto; }
 .sol-head-note { margin-top: 14px; font-size: 11px; color: var(--ink-faint); font-family: 'IBM Plex Sans', monospace; letter-spacing: .04em; }
-.sol-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; max-width: 1100px; margin: 0 auto; padding: 48px 48px 80px; background: transparent; position: relative; z-index: 1; }
+.sol-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1100px; margin: 0 auto; padding: 48px 48px 80px; background: transparent; position: relative; z-index: 1; }
+.sol-tile { grid-column: span 2; }
+.sol-tile:nth-child(5) { grid-column: 2 / span 2; }
 .sol-tile { background: rgba(255,255,255,0.03); padding: 36px; cursor: pointer; transition: border-color .25s, box-shadow .25s, transform .2s; position: relative; overflow: hidden; border-radius: 20px; border: 1px solid var(--border); }
 .sol-tile:hover { border-color: var(--border-hover); box-shadow: 0 0 40px rgba(11,119,152,0.08); transform: translateY(-2px); }
 /* Giant background number */
@@ -422,6 +424,8 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
 
   .sol-head { padding: 56px 20px 40px; }
   .sol-grid { grid-template-columns: 1fr; padding: 0 20px 48px; gap: 14px; }
+  .sol-tile { grid-column: span 1; }
+  .sol-tile:nth-child(5) { grid-column: span 1; }
   .sol-tile { padding: 28px 20px; }
   .sol-modal { padding: 28px 20px; max-height: 92vh; }
 
@@ -567,7 +571,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   <div class="sol-grid">
     <div class="sol-tile reveal d1" onclick="openModal('sol1')">
       <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-      <div class="sol-tile-num">01 / 04</div>
+      <div class="sol-tile-num">01 / 05</div>
       <div class="sol-tile-label">Ventas Digitales</div>
       <div class="sol-tile-sep"></div>
       <h3 class="sol-tile-title">Sistema de ventas<br>y entrega</h3>
@@ -576,7 +580,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     </div>
     <div class="sol-tile reveal d2" onclick="openModal('sol2')">
       <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <div class="sol-tile-num">02 / 04</div>
+      <div class="sol-tile-num">02 / 05</div>
       <div class="sol-tile-label">Atención Automatizada con IA</div>
       <div class="sol-tile-sep"></div>
       <h3 class="sol-tile-title">Sistema de atención<br>y soporte</h3>
@@ -585,7 +589,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     </div>
     <div class="sol-tile reveal d3" onclick="openModal('sol3')">
       <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-      <div class="sol-tile-num">03 / 04</div>
+      <div class="sol-tile-num">03 / 05</div>
       <div class="sol-tile-label">Conversión y Retención Local</div>
       <div class="sol-tile-sep"></div>
       <h3 class="sol-tile-title">Sistema comercial<br>para negocio local</h3>
@@ -594,12 +598,21 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     </div>
     <div class="sol-tile reveal d4" onclick="openModal('sol4')">
       <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
-      <div class="sol-tile-num">04 / 04</div>
+      <div class="sol-tile-num">04 / 05</div>
       <div class="sol-tile-label">Operación Interna (OPS / Mini-ERP)</div>
       <div class="sol-tile-sep"></div>
       <h3 class="sol-tile-title">Sistema de operación<br>interna</h3>
       <div class="sol-tile-cta">Ver sistema completo</div>
       <div class="sol-tile-bg-num">04</div>
+    </div>
+    <div class="sol-tile reveal" onclick="openModal('sol5')">
+      <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+      <div class="sol-tile-num">05 / 05</div>
+      <div class="sol-tile-label">Contenido con IA</div>
+      <div class="sol-tile-sep"></div>
+      <h3 class="sol-tile-title">Sistema de contenido<br>y presencia</h3>
+      <div class="sol-tile-cta">Ver sistema completo</div>
+      <div class="sol-tile-bg-num">05</div>
     </div>
   </div>
 </section>
@@ -979,6 +992,13 @@ const solData = {
     when: 'Cuando hay inventario, producción o varias personas operando, y empiezan los errores, pérdidas, retrasos o falta de control.',
     desc: 'Procesos estructurados, menos errores, operación que no depende de una sola persona.',
     lista: ['Entrada de órdenes, pedidos o solicitudes','Flujo operativo (estados, responsables, checklists)','Inventario y recursos','Producción / ejecución (prioridades, tiempos, colas)','Entrega / cierre (confirmación, evidencia, seguimiento)','Reportes y alertas (KPIs, incidencias, pendientes)']
+  },
+  sol5: {
+    num: '05 — Contenido con IA',
+    title: 'Sistema de contenido y presencia',
+    when: 'Cuando necesitas presencia digital constante pero no tienes tiempo ni equipo para producir contenido de forma consistente.',
+    desc: 'Contenido generado y distribuido de forma sistemática, con tu voz y para tu audiencia.',
+    lista: ['Estrategia y calendario editorial','Generación de contenido con IA','Publicación y distribución automatizada','Gestión de redes sociales','Métricas y optimización']
   }
 };
 
