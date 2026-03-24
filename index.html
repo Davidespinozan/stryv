@@ -956,7 +956,8 @@ const solData = {
     title: 'Sistema de ventas y entrega',
     when: 'Cuando vendes online — cursos, membresías, servicios, consultoría o productos digitales.',
     desc: 'Del primer clic a la entrega: un flujo ordenado, sin pasos manuales y con continuidad operativa.',
-    lista: ['Captación y conversión (landing, página de oferta, checkout o solicitud)','Cobro (pagos, suscripciones, confirmaciones)','Onboarding (accesos, correos, pasos de activación)','Entrega (portal, recursos, comunidad o flujo de servicio)','Seguimiento y continuidad (renovación, reactivación, upsell)']
+    structLabel: 'Puede incluir:',
+    lista: ['Landing page o página de ventas','Link de pago o checkout','Correos automáticos de confirmación','Portal o acceso a membresía','Seguimiento y reactivación automática']
   },
   sol2: {
     num: '02 — Atención Automatizada con IA',
@@ -990,7 +991,7 @@ function openModal(id) {
     <h2 class="sol-modal-title">${d.title}</h2>
     <div class="sol-when"><span>⚡</span><span><strong>Cuándo aplica:</strong> ${d.when}</span></div>
     <p class="sol-desc">${d.desc}</p>
-    <div class="sol-struct-label">Estructura del sistema</div>
+    <div class="sol-struct-label">${d.structLabel || 'Estructura del sistema'}</div>
     <ul class="sol-lista">${li}</ul>
     <a href="https://wa.me/17373683464" class="btn-lima" target="_blank" style="display:inline-flex;text-decoration:none;margin-top:4px">
       <svg style="width:14px;height:14px;fill:var(--lima-text);flex-shrink:0"><use href="#wa-icon"/></svg>Agenda tu diagnóstico
