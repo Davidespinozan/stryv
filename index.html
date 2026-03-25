@@ -224,7 +224,7 @@ nav {
 .proyectos-header .section-title { margin-bottom: 0; }
 .proyectos-hint { display: flex; align-items: center; gap: 6px; font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; color: var(--ink-muted); letter-spacing: .1em; text-transform: uppercase; flex-shrink: 0; }
 .proyectos-hint svg { width: 13px; height: 13px; stroke: var(--ink-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.proyectos-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 4px 48px 20px; scrollbar-width: none; cursor: grab; }
+.proyectos-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; padding: 4px 48px 20px; scrollbar-width: none; cursor: grab; }
 .proyectos-track:active { cursor: grabbing; }
 .proyectos-track::-webkit-scrollbar { display: none; }
 .proyecto-card { flex: 0 0 320px; height: 420px; border-radius: 16px; overflow: hidden; scroll-snap-align: start; position: relative; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: border-color .3s, transform .3s, box-shadow .3s; }
@@ -1051,12 +1051,11 @@ btnNext.addEventListener('click', () => track.scrollBy({left: cw(), behavior: 's
 btnPrev.addEventListener('click', () => track.scrollBy({left: -cw(), behavior: 'smooth'}));
 let drag = false, sx, sl;
 track.addEventListener('mousedown', e => { drag=true; sx=e.pageX-track.offsetLeft; sl=track.scrollLeft; track.style.scrollSnapType='none'; });
-track.addEventListener('mouseleave', () => { drag=false; track.style.scrollSnapType='x mandatory'; });
-track.addEventListener('mouseup', () => { drag=false; track.style.scrollSnapType='x mandatory'; });
+track.addEventListener('mouseleave', () => { drag=false; track.style.scrollSnapType='x proximity'; });
+track.addEventListener('mouseup', () => { drag=false; track.style.scrollSnapType='x proximity'; });
 track.addEventListener('mousemove', e => { if(!drag) return; e.preventDefault(); track.scrollLeft = sl - (e.pageX - track.offsetLeft - sx)*1.2; });
-track.addEventListener('touchstart', e => { sx=e.touches[0].pageX; sl=track.scrollLeft; track.style.scrollSnapType='none'; }, {passive:true});
-track.addEventListener('touchend', () => { track.style.scrollSnapType='x mandatory'; });
-track.addEventListener('touchmove', e => { track.scrollLeft = sl-(e.touches[0].pageX-sx)*1.2; }, {passive:true});
+track.addEventListener('touchstart', () => { track.style.scrollSnapType='none'; }, {passive:true});
+track.addEventListener('touchend', () => { track.style.scrollSnapType='x proximity'; });
 
 function openVideoModal() {
   const m = document.getElementById('video-modal');
