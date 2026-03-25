@@ -349,7 +349,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
 .footer-bottom p { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; color: rgba(255,255,255,0.25); }
 .social { display: flex; gap: 20px; }
-.social a { font-family: 'IBM Plex Sans', sans-serif; font-size: 11.5px; color: var(--ink-faint); text-decoration: none; font-weight: 400; opacity: 0.3; pointer-events: none; }
+.social a { font-family: 'IBM Plex Sans', sans-serif; font-size: 11.5px; color: var(--ink-faint); text-decoration: none; font-weight: 400; transition: color .15s; }
 .social a:hover { color: var(--ink); }
 
 /* ─── FLOAT BUTTONS STACK ─── */
@@ -913,9 +913,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   <div class="footer-bottom">
     <p>© 2026 STRYV. Todos los derechos reservados.</p>
     <div class="social">
-      <a href="#">Instagram</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">YouTube</a>
+      <a href="https://www.instagram.com/stryv.studio/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
 </footer>
