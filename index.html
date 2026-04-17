@@ -245,6 +245,10 @@ nav {
 .proj-arrow { width: 38px; height: 38px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .15s, border-color .15s; }
 .proj-arrow:hover { background: var(--surface); border-color: var(--border-hover); }
 .proj-arrow svg { width: 15px; height: 15px; stroke: var(--ink-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.proyectos-filters { max-width: 1100px; margin: 0 auto 24px; padding: 0 48px; display: flex; gap: 8px; flex-wrap: wrap; }
+.proy-chip { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .04em; color: var(--ink-muted); background: transparent; border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: background .15s, border-color .15s, color .15s; white-space: nowrap; }
+.proy-chip:hover { border-color: var(--border-hover); color: var(--ink); }
+.proy-chip.active { background: rgba(11,119,152,0.15); color: var(--ink); border-color: rgba(11,119,152,0.5); }
 
 /* ─── PROCESO ─── */
 .proceso { padding: 100px 48px; border-bottom: 1px solid var(--border); background: #050e14; color: #ffffff; position: relative; overflow: hidden; }
@@ -440,6 +444,8 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   .proyectos-track { padding: 4px 20px 16px; }
   .proyecto-card { flex: 0 0 82vw; height: 340px; }
   .proyectos-nav { padding: 0 20px; }
+  .proyectos-filters { padding: 0 20px; margin-bottom: 16px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .proyectos-filters::-webkit-scrollbar { display: none; }
 
   .proceso { padding: 64px 20px; }
   .proceso-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -645,8 +651,16 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
       Desliza para ver más
     </div>
   </div>
+  <div class="proyectos-filters reveal" id="proy-filters">
+    <button class="proy-chip active" data-filter="all">Todos</button>
+    <button class="proy-chip" data-filter="1">Ventas</button>
+    <button class="proy-chip" data-filter="2">Atención IA</button>
+    <button class="proy-chip" data-filter="3">Local</button>
+    <button class="proy-chip" data-filter="4">Operación</button>
+    <button class="proy-chip" data-filter="5">Contenido</button>
+  </div>
   <div class="proyectos-track" id="proyectos-track">
-    <div class="proyecto-card reveal d1" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal()">
+    <div class="proyecto-card reveal d1" data-categories="4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/Screen%20Recording%202026-03-21%20at%201.59.28%20AM.mov" type="video/mp4">
       </video>
@@ -656,7 +670,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal d2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal2()">
+    <div class="proyecto-card reveal d2" data-categories="1,3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal2()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/ScreenRecording_02-28-2026_21-29-30_1_uux8jq.mov" type="video/mp4">
       </video>
@@ -666,7 +680,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal d3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal3()">
+    <div class="proyecto-card reveal d3" data-categories="1,3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal3()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/9A6F7C4A-3C05-4B34-B5B8-57CC9B193243.MP4" type="video/mp4">
       </video>
@@ -676,7 +690,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal d4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal4()">
+    <div class="proyecto-card reveal d4" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal4()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/8E2ECE09-CD1B-4B79-BBB6-04A48D8755A9.mov" type="video/mp4">
       </video>
@@ -686,7 +700,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal5()">
+    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal5()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/videohealthy_hfhbn8.mov" type="video/mp4">
       </video>
@@ -696,7 +710,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal7()">
+    <div class="proyecto-card reveal" data-categories="5" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal7()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/anastaciovideo_ojolaf.mov" type="video/mp4">
       </video>
@@ -706,7 +720,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal12()">
+    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal12()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/artframe.mov" type="video/mp4">
       </video>
@@ -716,7 +730,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal8()">
+    <div class="proyecto-card reveal" data-categories="4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal8()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/ScreenRecording_02-28-2026_21-39-31_1_lorciv.mov" type="video/mp4">
       </video>
@@ -726,7 +740,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal9()">
+    <div class="proyecto-card reveal" data-categories="5" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal9()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/videopulpp_w9rzhq.mov" type="video/mp4">
       </video>
@@ -736,7 +750,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal11()">
+    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal11()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/Screen%20Recording%202026-03-25%20at%209.03.13%20PM.mov" type="video/mp4">
       </video>
@@ -746,7 +760,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal10()">
+    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal10()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/1234_jaefyv.mov" type="video/mp4">
       </video>
@@ -756,7 +770,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         </div>
       </div>
     </div>
-    <div class="proyecto-card reveal" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal6()">
+    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal6()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
         <source src="https://ltveorvqvvlyivjwxjlc.supabase.co/storage/v1/object/public/stryv/ScreenRecording_02-26-2026_01-37-13_1_dh3t6f.mov" type="video/mp4">
       </video>
@@ -1058,6 +1072,24 @@ track.addEventListener('mouseup', () => { drag=false; track.style.scrollSnapType
 track.addEventListener('mousemove', e => { if(!drag) return; e.preventDefault(); track.scrollLeft = sl - (e.pageX - track.offsetLeft - sx)*1.2; });
 track.addEventListener('touchstart', () => { track.style.scrollSnapType='none'; }, {passive:true});
 track.addEventListener('touchend', () => { track.style.scrollSnapType='x proximity'; });
+
+const filterBtns = document.querySelectorAll('#proy-filters .proy-chip');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.getAttribute('data-filter');
+    track.querySelectorAll('.proyecto-card').forEach(c => {
+      if (f === 'all' || c.classList.contains('coming')) {
+        c.style.display = '';
+      } else {
+        const cats = (c.getAttribute('data-categories') || '').split(',');
+        c.style.display = cats.includes(f) ? '' : 'none';
+      }
+    });
+    track.scrollTo({left: 0, behavior: 'smooth'});
+  });
+});
 
 function openVideoModal() {
   const m = document.getElementById('video-modal');
