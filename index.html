@@ -1096,6 +1096,38 @@ filterBtns.forEach(btn => {
   });
 });
 
+(function() {
+  const cards = track.querySelectorAll('.proyecto-card:not(.coming)');
+  cards.forEach(card => {
+    const video = card.querySelector('video');
+    if (!video) return;
+    const source = video.querySelector('source');
+    if (!source || !source.src) return;
+    source.dataset.src = source.src;
+    source.removeAttribute('src');
+    video.removeAttribute('autoplay');
+    video.preload = 'none';
+  });
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector('video');
+      if (!video) return;
+      const source = video.querySelector('source');
+      if (!source) return;
+      if (entry.isIntersecting) {
+        if (source.dataset.src && !source.getAttribute('src')) {
+          source.src = source.dataset.src;
+          video.load();
+        }
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { rootMargin: '200px 100px', threshold: 0.01 });
+  cards.forEach(card => vio.observe(card));
+})();
+
 function openVideoModal() {
   const m = document.getElementById('video-modal');
   m.style.display = 'flex';
