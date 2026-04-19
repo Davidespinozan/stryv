@@ -226,12 +226,8 @@ nav {
 .proyectos > * { position: relative; z-index: 1; }
 .proyectos-header { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; gap: 24px; }
 .proyectos-header .section-title { margin-bottom: 0; }
-.proyectos-hint { display: flex; align-items: center; gap: 6px; font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; color: var(--ink-muted); letter-spacing: .1em; text-transform: uppercase; flex-shrink: 0; }
-.proyectos-hint svg { width: 13px; height: 13px; stroke: var(--ink-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.proyectos-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; padding: 4px 48px 20px; scrollbar-width: none; cursor: grab; }
-.proyectos-track:active { cursor: grabbing; }
-.proyectos-track::-webkit-scrollbar { display: none; }
-.proyecto-card { flex: 0 0 320px; height: 420px; border-radius: 16px; overflow: hidden; scroll-snap-align: start; position: relative; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: border-color .3s, transform .3s, box-shadow .3s; }
+.proyectos-track { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; max-width: 1200px; margin: 0 auto; padding: 4px 48px 20px; }
+.proyecto-card { width: 100%; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; position: relative; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: border-color .3s, transform .3s, box-shadow .3s; }
 .proyecto-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.5); }
 .proyecto-card:hover .play-overlay { opacity: 1 !important; }
 .proyecto-card.coming { border: 1px dashed rgba(11,119,152,0.3); background: transparent; }
@@ -245,16 +241,8 @@ nav {
 .coming-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(11,119,152,0.08); border: 1px solid rgba(11,119,152,0.2); display: flex; align-items: center; justify-content: center; }
 .coming-icon svg { width: 18px; height: 18px; stroke: rgba(11,119,152,0.8); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .coming-label { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600; color: rgba(11,119,152,0.6); letter-spacing: .06em; }
-.proyectos-nav { display: flex; gap: 8px; padding: 0 48px; margin-top: 16px; }
-.proj-arrow { width: 38px; height: 38px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .15s, border-color .15s; }
-.proj-arrow:hover { background: var(--surface); border-color: var(--border-hover); }
-.proj-arrow svg { width: 15px; height: 15px; stroke: var(--ink-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.proyectos-filters { max-width: 1100px; margin: 0 auto 24px; padding: 0 48px; display: flex; gap: 8px; flex-wrap: wrap; }
-.proy-chip { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .04em; color: var(--ink-muted); background: transparent; border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: background .15s, border-color .15s, color .15s; white-space: nowrap; }
-.proy-chip:hover { border-color: var(--border-hover); color: var(--ink); }
 .proy-badges { position: absolute; top: 10px; left: 10px; z-index: 3; display: flex; gap: 4px; pointer-events: none; flex-wrap: wrap; max-width: calc(100% - 20px); }
 .proy-badge { font-family: 'IBM Plex Sans', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 4px 9px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-.proy-chip.active { background: rgba(11,119,152,0.15); color: var(--ink); border-color: rgba(11,119,152,0.5); }
 
 /* ─── PROCESO ─── */
 .proceso { padding: 100px 48px; border-bottom: 1px solid var(--border); background: #050e14; color: #ffffff; position: relative; overflow: hidden; }
@@ -447,12 +435,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
 
   .proyectos { padding: 64px 0; }
   .proyectos-header { padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 24px; }
-  .proyectos-hint { display: none; }
-  .proyectos-track { padding: 4px 20px 16px; }
-  .proyecto-card { flex: 0 0 82vw; height: 340px; }
-  .proyectos-nav { padding: 0 20px; }
-  .proyectos-filters { padding: 0 20px; margin-bottom: 16px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-  .proyectos-filters::-webkit-scrollbar { display: none; }
+  .proyectos-track { grid-template-columns: repeat(2, 1fr); padding: 4px 20px 16px; gap: 10px; }
 
   .proceso { padding: 64px 20px; }
   .proceso-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -653,18 +636,6 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
       </div>
       <h2 class="section-title">Lo que hemos<br>construido.</h2>
     </div>
-    <div class="proyectos-hint">
-      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      Desliza para ver más
-    </div>
-  </div>
-  <div class="proyectos-filters reveal" id="proy-filters">
-    <button class="proy-chip active" data-filter="all">Todos</button>
-    <button class="proy-chip" data-filter="1">Ventas Digitales</button>
-    <button class="proy-chip" data-filter="2">Atención con IA</button>
-    <button class="proy-chip" data-filter="3">Negocio Local</button>
-    <button class="proy-chip" data-filter="4">Operación Interna</button>
-    <button class="proy-chip" data-filter="5">Contenido con IA</button>
   </div>
   <div class="proyectos-track" id="proyectos-track">
     <div class="proyecto-card reveal d1" data-categories="4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal()">
@@ -853,14 +824,6 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         <div class="coming-label">Tu proyecto aquí</div>
       </div>
     </div>
-  </div>
-  <div class="proyectos-nav">
-    <button class="proj-arrow" id="proj-prev" aria-label="Anterior">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button class="proj-arrow" id="proj-next" aria-label="Siguiente">
-      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
   </div>
 </section>
 
@@ -1127,36 +1090,6 @@ function closeModal() {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 const track = document.getElementById('proyectos-track');
-const btnPrev = document.getElementById('proj-prev');
-const btnNext = document.getElementById('proj-next');
-const cw = () => track.querySelector('.proyecto-card').offsetWidth + 12;
-btnNext.addEventListener('click', () => track.scrollBy({left: cw(), behavior: 'smooth'}));
-btnPrev.addEventListener('click', () => track.scrollBy({left: -cw(), behavior: 'smooth'}));
-let drag = false, sx, sl;
-track.addEventListener('mousedown', e => { drag=true; sx=e.pageX-track.offsetLeft; sl=track.scrollLeft; track.style.scrollSnapType='none'; });
-track.addEventListener('mouseleave', () => { drag=false; track.style.scrollSnapType='x proximity'; });
-track.addEventListener('mouseup', () => { drag=false; track.style.scrollSnapType='x proximity'; });
-track.addEventListener('mousemove', e => { if(!drag) return; e.preventDefault(); track.scrollLeft = sl - (e.pageX - track.offsetLeft - sx)*1.2; });
-track.addEventListener('touchstart', () => { track.style.scrollSnapType='none'; }, {passive:true});
-track.addEventListener('touchend', () => { track.style.scrollSnapType='x proximity'; });
-
-const filterBtns = document.querySelectorAll('#proy-filters .proy-chip');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const f = btn.getAttribute('data-filter');
-    track.querySelectorAll('.proyecto-card').forEach(c => {
-      if (f === 'all' || c.classList.contains('coming')) {
-        c.style.display = '';
-      } else {
-        const cats = (c.getAttribute('data-categories') || '').split(',');
-        c.style.display = cats.includes(f) ? '' : 'none';
-      }
-    });
-    track.scrollTo({left: 0, behavior: 'smooth'});
-  });
-});
 
 (function() {
   const catLabels = { '1': 'Ventas', '2': 'IA', '3': 'Local', '4': 'OPS', '5': 'Contenido' };
