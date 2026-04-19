@@ -252,6 +252,8 @@ nav {
 .proyectos-filters { max-width: 1100px; margin: 0 auto 24px; padding: 0 48px; display: flex; gap: 8px; flex-wrap: wrap; }
 .proy-chip { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .04em; color: var(--ink-muted); background: transparent; border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: background .15s, border-color .15s, color .15s; white-space: nowrap; }
 .proy-chip:hover { border-color: var(--border-hover); color: var(--ink); }
+.proy-badges { position: absolute; top: 10px; left: 10px; z-index: 3; display: flex; gap: 4px; pointer-events: none; flex-wrap: wrap; max-width: calc(100% - 20px); }
+.proy-badge { font-family: 'IBM Plex Sans', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 4px 9px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .proy-chip.active { background: rgba(11,119,152,0.15); color: var(--ink); border-color: rgba(11,119,152,0.5); }
 
 /* ─── PROCESO ─── */
@@ -1157,6 +1159,22 @@ filterBtns.forEach(btn => {
 });
 
 (function() {
+  const catLabels = { '1': 'Ventas', '2': 'IA', '3': 'Local', '4': 'OPS', '5': 'Contenido' };
+  track.querySelectorAll('.proyecto-card[data-categories]').forEach(card => {
+    const cats = (card.getAttribute('data-categories') || '').split(',').map(c => c.trim()).filter(Boolean);
+    if (!cats.length) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'proy-badges';
+    cats.forEach(c => {
+      if (!catLabels[c]) return;
+      const b = document.createElement('span');
+      b.className = 'proy-badge';
+      b.textContent = catLabels[c];
+      wrap.appendChild(b);
+    });
+    card.appendChild(wrap);
+  });
+
   const cards = track.querySelectorAll('.proyecto-card:not(.coming)');
   cards.forEach(card => {
     const video = card.querySelector('video');
