@@ -267,28 +267,6 @@ nav {
 .proy-badges { position: absolute; top: 10px; left: 10px; z-index: 3; display: flex; gap: 4px; pointer-events: none; flex-wrap: wrap; max-width: calc(100% - 20px); }
 .proy-badge { font-family: 'IBM Plex Sans', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 4px 9px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 
-/* ─── PROCESO ─── */
-.proceso { padding: 100px 48px; border-bottom: 1px solid var(--border); background: #050e14; color: #ffffff; position: relative; overflow: hidden; }
-.proceso::before { content: ''; position: absolute; width: 760px; height: 760px; bottom: -260px; left: 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(11,119,152,0.10) 0%, transparent 65%); pointer-events: none; }
-.proceso::after { content: ''; position: absolute; width: 480px; height: 480px; top: -180px; right: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(11,119,152,0.07) 0%, transparent 65%); pointer-events: none; }
-.proceso-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-.proceso-head { text-align: center; margin-bottom: 64px; }
-.proceso-head .tag { display: flex; justify-content: center; color: rgba(255,255,255,0.45); }
-.proceso-head .section-title { color: #ffffff; }
-.proceso-head .section-sub { max-width: 460px; margin: 0 auto; color: rgba(255,255,255,0.45); }
-.proceso-grid { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr; align-items: start; }
-.proceso-step { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; }
-.proceso-step::before { content: attr(data-num); position: absolute; bottom: -10px; right: 12px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(60px,10vw,100px); font-weight: 700; color: rgba(255,255,255,0.025); line-height: 1; pointer-events: none; user-select: none; }
-.proceso-arrow { display: flex; align-items: center; justify-content: center; padding-top: 36px; color: rgba(255,255,255,0.12); font-size: 18px; line-height: 1; }
-.proceso-step-num { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 16px; }
-.proceso-step-title { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 600; color: #ffffff; letter-spacing: -.025em; margin-bottom: 10px; }
-.proceso-step-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 400; color: rgba(255,255,255,0.55); line-height: 1.72; }
-@media(max-width:900px){
-  .proceso { padding: 64px 20px; }
-  .proceso-grid { grid-template-columns: 1fr; gap: 12px; }
-  .proceso-arrow { display: none; }
-  .proceso-step { padding: 28px 20px; }
-}
 
 /* ─── CTA ─── */
 .cta-section { padding: 100px 48px; border-bottom: 1px solid var(--border); background: var(--bg); text-align: center; position: relative; overflow: hidden; }
@@ -456,11 +434,6 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   .proyectos { padding: 64px 0; }
   .proyectos-header { padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 24px; }
   .proyectos-track { grid-template-columns: repeat(2, 1fr); padding: 4px 20px 16px; gap: 10px; }
-
-  .proceso { padding: 64px 20px; }
-  .proceso-grid { grid-template-columns: 1fr; gap: 12px; }
-  .proceso-arrow { display: none; }
-  .proceso-step { padding: 28px 20px; }
 
   .cta-section { padding: 64px 20px; }
   .cta-obtiene { max-width: 100%; }
@@ -876,38 +849,6 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
 
 
 
-<!-- PROCESO -->
-<section class="proceso">
-  <div class="proceso-inner">
-    <div class="proceso-head reveal">
-      <div class="tag">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        Cómo construimos
-      </div>
-      <h2 class="section-title">Lo que no se ve<br>desde afuera.</h2>
-      <p class="section-sub">Tres decisiones de ingeniería que van en cada sistema que construimos.</p>
-    </div>
-    <div class="proceso-grid">
-      <div class="proceso-step reveal d1" data-num="01">
-        <div class="proceso-step-num">01 / 03</div>
-        <div class="proceso-step-title">La arquitectura se decide<br>antes de escribir código</div>
-        <p class="proceso-step-desc">Cada sistema arranca con un documento de arquitectura y decisiones registradas por escrito: qué se eligió, por qué, y qué se descartó. Cuando algo cambia, la decisión anterior se revoca a la vista, no se borra.</p>
-      </div>
-      <div class="proceso-arrow">→</div>
-      <div class="proceso-step reveal d2" data-num="02">
-        <div class="proceso-step-num">02 / 03</div>
-        <div class="proceso-step-title">Las reglas viven en<br>la base de datos</div>
-        <p class="proceso-step-desc">Quién puede ver qué, qué cobros son válidos, qué stock existe: se aplica en el motor de datos, no en la pantalla. La regla es la misma sin importar por dónde entres.</p>
-      </div>
-      <div class="proceso-arrow">→</div>
-      <div class="proceso-step reveal d3" data-num="03">
-        <div class="proceso-step-num">03 / 03</div>
-        <div class="proceso-step-title">Cada cambio pasa<br>por revisión automática</div>
-        <p class="proceso-step-desc">Tipos, linter y pruebas corren en cada modificación antes de llegar a producción. Lo que no pasa la revisión se queda fuera.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CONTACTO -->
 <section class="contacto" id="contacto">
