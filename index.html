@@ -219,6 +219,47 @@ nav {
 .sol-lista li { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.55; padding-left: 20px; position: relative; }
 .sol-lista li::before { content: '—'; position: absolute; left: 0; color: #0b7798; font-size: 10px; top: 3px; }
 
+/* ─── SALA STUDIO ─── */
+/* Verde de marca de SALA (#3D6B52), aclarado para que lea sobre el fondo
+   oscuro de STRYV. El logo va sobre un chip claro para respetar el color
+   original de la marca. */
+.sala { --sala: #6ba888; --sala-deep: #3D6B52; background: var(--bg-deep); border-bottom: 1px solid var(--border); padding: 80px 48px; position: relative; overflow: hidden; }
+.sala::before { content: ''; position: absolute; width: 760px; height: 760px; top: -280px; right: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(107,168,136,0.10) 0%, transparent 65%); pointer-events: none; }
+.sala-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+.sala .tag { color: var(--sala); display: flex; }
+.sala-logo-chip { display: inline-flex; align-items: center; background: rgba(255,255,255,0.94); border-radius: 10px; padding: 11px 18px; margin-bottom: 22px; }
+.sala-logo-chip img { height: 26px; width: auto; display: block; }
+.sala-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(26px, 3vw, 40px); font-weight: 700; letter-spacing: -.04em; line-height: 1.08; color: var(--ink); margin-bottom: 14px; }
+.sala-title .hl-sala { color: var(--sala); }
+.sala-desc { font-size: 15px; color: var(--ink-muted); line-height: 1.78; max-width: 500px; margin-bottom: 26px; }
+.sala-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-bottom: 30px; }
+.sala-feat { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: rgba(255,255,255,0.72); line-height: 1.5; }
+.sala-feat svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; }
+.sala-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn-sala { display: inline-flex; align-items: center; gap: 9px; background: var(--sala-deep); color: #ffffff; padding: 13px 26px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; text-decoration: none; transition: background .15s, transform .15s, box-shadow .15s; }
+.btn-sala:hover { background: #4a8264; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(61,107,82,0.4); }
+.btn-sala:active { transform: scale(0.98); }
+.btn-sala svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sala-note { margin-top: 18px; font-size: 12px; color: var(--ink-faint); letter-spacing: .03em; }
+/* Mockups */
+.sala-shots { position: relative; padding-bottom: 28px; }
+.sala-browser { border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #0d1f2a; box-shadow: 0 30px 70px rgba(0,0,0,.55); }
+.sala-browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.sala-browser-bar span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.18); }
+.sala-browser img { display: block; width: 100%; height: auto; }
+.sala-phone { position: absolute; bottom: 0; left: -52px; width: 132px; border-radius: 20px; overflow: hidden; border: 5px solid #0a1720; background: #0a1720; box-shadow: 0 24px 60px rgba(0,0,0,.65); }
+.sala-phone img { display: block; width: 100%; height: auto; }
+@media(max-width:900px){
+  .sala { padding: 64px 24px; }
+  .sala-inner { grid-template-columns: 1fr; gap: 44px; }
+  .sala-shots { order: 2; }
+  .sala-phone { left: auto; right: -12px; width: 112px; }
+}
+@media(max-width:600px){
+  .sala-feats { grid-template-columns: 1fr; }
+  .btn-sala { width: 100%; justify-content: center; }
+}
+
 /* ─── PROYECTOS ─── */
 .proyectos { padding: 64px 0; overflow: hidden; border-bottom: 1px solid var(--border); background: var(--bg); position: relative; }
 .proyectos::before { content: ''; position: absolute; width: 700px; height: 700px; top: -260px; right: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(11,119,152,0.10) 0%, transparent 65%); pointer-events: none; z-index: 0; }
@@ -482,6 +523,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   </a>
   <ul class="nav-links" id="nav-links">
     <li><a href="#soluciones">Soluciones</a></li>
+    <li><a href="#sala-studio">SALA Studio</a></li>
     <li><a href="#proyectos">Proyectos</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -625,6 +667,48 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <div id="sol-modal-content"></div>
   </div>
 </div>
+
+<!-- SALA STUDIO -->
+<section class="sala" id="sala-studio">
+  <div class="sala-inner">
+    <div class="sala-left reveal">
+      <div class="tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 2l3 6 6 .9-4.5 4.3 1.1 6.1L12 16.5 6.4 19.3l1.1-6.1L3 8.9 9 8z"/></svg>
+        Producto propio
+      </div>
+      <div class="sala-logo-chip">
+        <img src="assets/images/sala/logo-sala.png" alt="SALA Studio">
+      </div>
+      <h2 class="sala-title">El software que corre <span class="hl-sala">gimnasios y estudios.</span></h2>
+      <p class="sala-desc">Todo lo que aprendimos implementando operaciones a medida, ahora como producto. Reservas, membresías y check-in en una plataforma con tu marca y tu dominio — no la nuestra.</p>
+      <div class="sala-feats">
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6ba888" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#6ba888" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reservas y agenda de clases</div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6ba888" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#6ba888" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Socios y membresías</div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6ba888" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#6ba888" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Check-in con QR</div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6ba888" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#6ba888" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tu marca, tu app instalable</div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6ba888" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#6ba888" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reportes de retención y churn</div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6ba888" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#6ba888" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Multi-sucursal</div>
+      </div>
+      <div class="sala-actions">
+        <a href="https://salastudio.app" class="btn-sala" target="_blank" rel="noopener">
+          Conocer SALA Studio
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#contacto" class="btn-ghost">Hablar con el equipo</a>
+      </div>
+      <p class="sala-note">7 días gratis · desde $1,900 MXN/mes · cancela cuando quieras</p>
+    </div>
+    <div class="sala-shots reveal d2">
+      <div class="sala-browser">
+        <div class="sala-browser-bar"><span></span><span></span><span></span></div>
+        <img src="assets/images/sala/sala-dashboard.png" alt="Panel de administración de SALA Studio" loading="lazy">
+      </div>
+      <div class="sala-phone">
+        <img src="assets/images/sala/sala-estudio.png" alt="App del socio con la marca del estudio" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PROYECTOS -->
 <section class="proyectos" id="proyectos">
