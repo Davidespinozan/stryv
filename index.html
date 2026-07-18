@@ -278,6 +278,9 @@ nav {
 .proyecto-card { width: 100%; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; position: relative; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: border-color .3s, transform .3s, box-shadow .3s; }
 .proyecto-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.5); }
 .proyecto-card:hover .play-overlay { opacity: 1 !important; }
+.proyecto-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 34px 14px 13px; text-align: left; pointer-events: none; background: linear-gradient(to top, rgba(5,14,20,.94) 30%, rgba(5,14,20,.6) 65%, transparent); }
+.proyecto-cap strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: -.01em; color: #ffffff; margin-bottom: 3px; }
+.proyecto-cap span { display: block; font-size: 11.5px; line-height: 1.42; color: rgba(255,255,255,0.62); }
 .proyecto-card.coming { border: 1px dashed rgba(11,119,152,0.3); background: transparent; }
 .proj-empty { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 32px; text-align: center; }
 .proj-empty-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
@@ -732,6 +735,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Cubopolar</strong><span>ERP de fábrica de hielo: pedidos, facturación CFDI y cobros</span></div>
     </div>
     <div class="proyecto-card reveal d2" data-categories="1,3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal2()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -742,6 +746,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Anastacio</strong><span>Menú digital bilingüe con pedido a domicilio, para recoger y desde la mesa</span></div>
     </div>
     <div class="proyecto-card reveal d3" data-categories="1,3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal3()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -772,6 +777,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Healthy Space Club</strong><span>Club digital: plan de alimentación, recetas en video y rutinas semanales</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="5" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal7()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -782,6 +788,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Anastacio</strong><span>Personaje de marca generado con IA, idéntico en cada pieza</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal12()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -792,6 +799,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>ArtFrame Studio</strong><span>Configurador de cuadros con precio instantáneo y pago con Stripe</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal8()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -802,6 +810,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Anastacio</strong><span>Panel de pedidos con conversión, ticket promedio y exportación a CSV</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="5" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal9()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -812,6 +821,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Anastacio</strong><span>Campaña de contenido con IA para redes</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal11()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -832,6 +842,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>HOGAR</strong><span>Venta del programa con pago único y alta de cuenta automática</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal6()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -842,6 +853,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Luz Espinoza</strong><span>Guía digital con checkout propio y acceso inmediato tras el pago</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal13()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -852,6 +864,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Cravia</strong><span>Panel de administración de la operación</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal14()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -862,6 +875,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Cravia</strong><span>Tienda en línea conectada al inventario</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="3,4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal15()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -872,6 +886,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Cravia</strong><span>Punto de venta en mostrador</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal16()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -882,6 +897,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Cravia</strong><span>Kiosco de auto-pedido</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal17()">
       <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -902,6 +918,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>MetalMad</strong><span>Catálogo de acero CNC con carrito y pedido por WhatsApp</span></div>
     </div>
     <div class="proyecto-card reveal" data-categories="2,4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openImageModal1()">
       <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/Screenshot_2026-02-26_at_11.26.28_PM_qahrts.png" alt="Workflow de automatización" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -910,6 +927,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D1117" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
       </div>
+      <div class="proyecto-cap"><strong>Automatización</strong><span>Workflow que conecta los sistemas y corre sin intervención</span></div>
     </div>
     <div class="proyecto-card coming">
       <div class="coming-inner">
@@ -1120,41 +1138,41 @@ const solData = {
     num: '01 — Ventas Digitales',
     title: 'Sistema de ventas y entrega',
     when: 'Cuando vendes online — cursos, membresías, servicios, consultoría o productos digitales.',
-    desc: 'Del primer clic a la entrega: un flujo ordenado, sin pasos manuales y con continuidad operativa.',
-    structLabel: 'Puede incluir:',
-    lista: ['Landing page o página de ventas','Link de pago o checkout','Correos automáticos de confirmación','Portal o acceso a membresía','Seguimiento y reactivación automática','Agente de prospección con IA (Google Maps / LinkedIn)']
+    desc: 'Del primer clic a la entrega, sin que nadie mueva nada a mano. El cobro, el alta de la cuenta y el acceso ocurren solos y quedan conciliados.',
+    structLabel: 'Lo que construimos:',
+    lista: ['Página de venta con checkout dentro de tu sitio, sin mandar al cliente a otro lado','Cobro único, suscripción o paquetes, con reintento automático cuando la tarjeta falla','Alta de cuenta y acceso al contenido en cuanto se acredita el pago','Portal donde tu cliente cambia su tarjeta o cancela sin escribirte','Cada pago trazable y conciliado, sin dobles cargos ni cobros perdidos','Seguimiento automático a quien no terminó de comprar']
   },
   sol2: {
     num: '02 — Atención Automatizada con IA',
     title: 'Sistema de atención y soporte',
     when: 'Cuando te llegan demasiados WhatsApps, DMs, emails o tickets, y eso te hace perder tiempo, seguimiento y clientes.',
-    desc: 'Entradas organizadas, respuestas rápidas, cada caso trazable. Sin improvisar.',
-    structLabel: 'Puede incluir:',
-    lista: ['Agente de IA que responde y atiende por ti','Respuestas automáticas a preguntas frecuentes','Flujos de seguimiento automático post-venta']
+    desc: 'Un agente que contesta con la información real de tu operación, no con respuestas genéricas. Y que sabe cuándo dejar de contestar.',
+    structLabel: 'Lo que construimos:',
+    lista: ['Agente que responde en WhatsApp y en tu sitio conectado a tus datos reales','Reglas explícitas de lo que puede y no puede decir: precios, promesas, consejo profesional','Escala a una persona cuando el caso lo amerita, con el historial completo','Seguimiento automático después de la venta','Cada conversación registrada y medible']
   },
   sol3: {
     num: '03 — Conversión y Retención Local',
     title: 'Sistema comercial para negocio local',
     when: 'Cuando tienes un negocio físico — restaurante, clínica, barber, gym — y quieres convertir mejor, dar seguimiento y aumentar recurrencia.',
-    desc: 'Tráfico local que se convierte en ventas. Clientes que regresan y operación que se mide.',
-    structLabel: 'Puede incluir:',
-    lista: ['Menú digital o catálogo','Link de reserva o cita online','QR para punto de venta','Sistema POS para punto de venta','Kiosko de auto-pedido','Flujo de reseñas en Google','Programa de referidos','Agente de reactivación y reseñas por WhatsApp']
+    desc: 'El mostrador, la mesa y el celular del cliente corriendo sobre la misma base. Un solo inventario, un solo historial, una sola verdad.',
+    structLabel: 'Lo que construimos:',
+    lista: ['Menú o catálogo digital con pedido a domicilio, para recoger y desde la mesa','Punto de venta conectado al mismo inventario que tu tienda en línea','Kiosco de auto-pedido para bajar la fila y los errores de captura','Reservas o citas con recordatorio automático y control de asistencia','Panel con conversión, ticket promedio y qué se vende cada día','Flujo de reseñas en Google y reactivación por WhatsApp']
   },
   sol4: {
     num: '04 — Operación Interna (OPS / Mini-ERP)',
     title: 'Sistema de operación interna',
     when: 'Cuando hay inventario, producción o varias personas operando, y empiezan los errores, pérdidas, retrasos o falta de control.',
-    desc: 'Procesos estructurados, menos errores, operación que no depende de una sola persona.',
-    structLabel: 'Puede incluir:',
-    lista: ['ERP o sistema de gestión a medida','Panel de control de pedidos u órdenes','Sistema POS conectado al ERP','Checklists y flujos por área','Control de inventario','Dashboard de métricas operativas','App web o móvil a medida','Agente de reportes y alertas operativas']
+    desc: 'Las reglas de tu negocio viven en la base de datos, no en la cabeza de quien lleva más tiempo. Nadie puede saltárselas desde la pantalla.',
+    structLabel: 'Lo que construimos:',
+    lista: ['Roles con permisos reales: cada persona ve solo lo suyo, aplicado en la base de datos','Inventario por lote con caducidad y trazabilidad de cada movimiento','Pedidos de punta a punta: surtido, empaque, guía, cobro y factura','Bitácora inmutable de quién hizo qué, cuándo y por qué','Control de acceso y asistencia con QR firmado o huella','Tablero de dirección con las métricas que sí obligan a tomar una decisión']
   },
   sol5: {
     num: '05 — Contenido con IA',
     title: 'Sistema de contenido y presencia',
     when: 'Cuando necesitas presencia digital constante pero no tienes tiempo ni equipo para producir contenido de forma consistente.',
-    desc: 'Contenido generado y distribuido de forma sistemática, con tu voz y para tu audiencia.',
-    structLabel: 'Puede incluir:',
-    lista: ['Videos con IA a tu imagen y voz','Fotos y creativos generados con IA','Guiones y copies para campañas','Contenido para redes sociales','Campañas de Meta Ads con creativos IA','Agente generador de contenido autónomo']
+    desc: 'Un personaje y una voz que se sostienen pieza tras pieza, con un calendario que no depende de que te acuerdes.',
+    structLabel: 'Lo que construimos:',
+    lista: ['Personaje o mascota de marca que se mantiene idéntica en cada pieza','Video y foto generados con IA, listos para pautar','Guiones y copies con tu voz, no con la del modelo','Calendario de publicación sostenido, no una ráfaga y luego silencio','Campañas de Meta Ads con creativos hechos para probar variantes']
   }
 };
 
