@@ -303,6 +303,9 @@ nav {
 .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.25); }
 .fg input:focus, .fg textarea:focus { border-color: #0b7798; box-shadow: 0 0 0 3px rgba(11,119,152,0.12); }
 .fg textarea { min-height: 96px; resize: vertical; }
+.hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.form-error { font-size: 13px; color: #ff8a80; margin: -6px 0 12px; }
+.fg input.invalid, .fg textarea.invalid { border-color: #ff8a80; }
 .form-check { display: flex; align-items: center; gap: 8px; font-family: 'IBM Plex Sans', sans-serif; font-size: 11.5px; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
 .form-check input { accent-color: #0b7798; width: 14px; height: 14px; flex-shrink: 0; }
 .form-check label { color: rgba(255,255,255,0.4); font-size: 11.5px; letter-spacing: normal; text-transform: none; }
@@ -458,7 +461,6 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   .section-sub { font-size: 14px; }
 }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -868,20 +870,22 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     </div>
     <div class="contacto-form reveal d2">
       <h3>O déjanos tu mensaje</h3>
-      <form action="https://formspree.io/f/maqdldab" method="POST" id="contact-form">
+      <form id="contact-form" novalidate>
+        <div class="hp-field" aria-hidden="true"><label for="website">Sitio web</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="form-row">
-          <div class="fg"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" required></div>
-          <div class="fg"><label>Apellido</label><input type="text" name="apellido" placeholder="Apellido"></div>
+          <div class="fg"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" maxlength="80" required></div>
+          <div class="fg"><label>Apellido</label><input type="text" name="apellido" placeholder="Apellido" maxlength="80"></div>
         </div>
         <div class="form-row">
-          <div class="fg"><label>Correo electrónico</label><input type="email" name="email" placeholder="email@empresa.com" required></div>
-          <div class="fg"><label>WhatsApp</label><input type="tel" name="phone" placeholder="+52 55 1234 5678"></div>
+          <div class="fg"><label>Correo electrónico</label><input type="email" name="email" placeholder="email@empresa.com" maxlength="200" required></div>
+          <div class="fg"><label>WhatsApp</label><input type="tel" name="phone" placeholder="+52 55 1234 5678" maxlength="30"></div>
         </div>
-        <div class="fg"><label>¿Qué necesita tu negocio?</label><textarea name="mensaje" placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar."></textarea></div>
+        <div class="fg"><label>¿Qué necesita tu negocio?</label><textarea name="mensaje" placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar." maxlength="2000"></textarea></div>
         <div class="form-check">
           <input type="checkbox" id="priv" required>
           <label for="priv">Acepto la política de privacidad</label>
         </div>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
         <button type="submit" class="btn-submit" id="submit-btn">Enviar mensaje</button>
       </form>
       <div id="form-success" style="display:none;text-align:center;padding:32px 0;">
@@ -1205,62 +1209,97 @@ function closeVideoModal4() {
   document.getElementById('modal-video-4').pause();
 }
 
-// ─── SUPABASE LEADS ───
-const _sb = window.supabase.createClient(
-  "https://lxpgqhghxfqsahwrdmzo.supabase.co",
-  "sb_publishable_1hb4cP4BLU6m5QqsrNX-Fw_CTBud1I7"
-);
+// ─── LEADS: envío directo a la Edge Function capture-lead ───
+const LEAD_ENDPOINT = 'https://lxpgqhghxfqsahwrdmzo.supabase.co/functions/v1/capture-lead';
+const LEAD_ANON_KEY = 'sb_publishable_1hb4cP4BLU6m5QqsrNX-Fw_CTBud1I7';
 
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
+  const btn = document.getElementById('submit-btn');
+  const errorBox = document.getElementById('form-error');
+  const successBox = document.getElementById('form-success');
+  const IDLE_LABEL = btn.textContent;
+  let sending = false; // una sola petición en vuelo por formulario
+
+  const setState = (state, message = '') => {
+    sending = state === 'sending';
+    btn.disabled = sending;
+    btn.textContent = sending ? 'Enviando...' : IDLE_LABEL;
+    errorBox.hidden = state !== 'error';
+    errorBox.textContent = state === 'error' ? message : '';
+  };
+
+  const markInvalid = (fields) => {
+    contactForm.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+    Object.keys(fields || {}).forEach(name => {
+      const el = contactForm.querySelector(`[name="${name}"]`);
+      if (el) el.classList.add('invalid');
+    });
+  };
+
+  const fieldOrEmpty = (fd, name) => (fd.get(name) || '').toString().trim();
+
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-    
+    if (sending) return;
+
+    // Validación mínima en el navegador; la definitiva ocurre en el servidor.
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
+
     const fd = new FormData(contactForm);
-    const nombre = (fd.get('nombre') || '') + ' ' + (fd.get('apellido') || '');
-    const email = fd.get('email') || '';
-    const phone = fd.get('phone') || '';
-    const message = fd.get('mensaje') || '';
-    
-    // Get UTM params
     const params = new URLSearchParams(window.location.search);
-    
+    const payload = {
+      nombre: fieldOrEmpty(fd, 'nombre'),
+      apellido: fieldOrEmpty(fd, 'apellido'),
+      email: fieldOrEmpty(fd, 'email'),
+      whatsapp: fieldOrEmpty(fd, 'phone'),
+      mensaje: fieldOrEmpty(fd, 'mensaje'),
+      website: fieldOrEmpty(fd, 'website'), // honeypot: debe ir vacío
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_content: params.get('utm_content') || '',
+      utm_term: params.get('utm_term') || '',
+      page_url: window.location.href
+    };
+
+    setState('sending');
+    markInvalid({});
+
     try {
-      // 1. Send to Formspree (backup email)
-      const res = await fetch('https://formspree.io/f/maqdldab', {
+      const res = await fetch(LEAD_ENDPOINT, {
         method: 'POST',
-        body: fd,
-        headers: { Accept: 'application/json' }
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + LEAD_ANON_KEY },
+        body: JSON.stringify(payload)
       });
-      
-      // 2. Send to Supabase (dashboard)
-      await _sb.from('leads').insert({
-        name: nombre.trim(),
-        email: email,
-        phone: phone,
-        message: message,
-        source: 'Web',
-        utm_source: params.get('utm_source') || '',
-        utm_medium: params.get('utm_medium') || '',
-        utm_campaign: params.get('utm_campaign') || '',
-        utm_content: params.get('utm_content') || '',
-        page_url: window.location.href
-      });
-      
-      if (res.ok) {
-        contactForm.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-        if(typeof fbq==='function') fbq('track','Lead',{content_name:'Formulario contacto'});
-      } else {
-        btn.textContent = 'Error, intenta de nuevo';
-        btn.disabled = false;
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
+        setState('idle');
+        contactForm.hidden = true;
+        successBox.style.display = 'block';
+        // El Pixel sólo cuenta leads realmente guardados (201). El 200 del honeypot no cuenta.
+        if (res.status === 201 && typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Formulario contacto' });
+        return;
       }
+
+      if (res.status === 422 && data.fields) {
+        markInvalid(data.fields);
+        setState('error', Object.values(data.fields)[0] || data.error);
+        return;
+      }
+
+      if (res.status === 429) {
+        setState('error', data.error || 'Ya recibimos tu mensaje. Te respondemos pronto.');
+        return;
+      }
+
+      setState('error', data.error || 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos por WhatsApp.');
     } catch {
-      btn.textContent = 'Error, intenta de nuevo';
-      btn.disabled = false;
+      setState('error', 'Sin conexión. Intenta de nuevo o escríbenos por WhatsApp.');
     }
   });
 }
