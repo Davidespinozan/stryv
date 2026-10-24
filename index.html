@@ -2,8 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>STRYV — Construimos el futuro operativo de tu empresa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STRYV Studio | Sistemas Operativos Empresariales AI-Native</title>
+<script>
+/* i18n: idioma inicial antes del primer pintado. Preferencia manual > navegador inglés > español. */
+(function(){var l=null;try{l=localStorage.getItem('stryv_lang');}catch(e){}
+if(l!=='es'&&l!=='en'){var n=(navigator.languages&&navigator.languages[0])||navigator.language||'';l=/^en\b/i.test(n)?'en':'es';}
+document.documentElement.lang=l;window.__STRYV_LANG=l;})();
+</script>
 
 <!-- Meta Pixel Code -->
 <script>
@@ -108,18 +114,31 @@ nav {
 .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 .nav-cta-mobile { display: none; }
 
+/* ─── LANG SWITCH ─── */
+nav { grid-template-columns: auto 1fr auto auto; }
+.nav-cta.nav-cta-desktop { grid-column: 4; }
+.lang-switch { grid-column: 3; grid-row: 1; display: inline-flex; align-items: center; gap: 2px; margin-right: 12px; padding: 2px; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; }
+.lang-btn { min-width: 34px; min-height: 28px; padding: 0 9px; border: 0; border-radius: 999px; background: transparent; color: rgba(255,255,255,0.55); font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .08em; cursor: pointer; transition: color .15s, background .15s; }
+.lang-btn:hover { color: #ffffff; }
+.lang-btn[aria-pressed="true"] { background: var(--accent); color: #ffffff; }
+.lang-btn:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
+@media(max-width:900px){ .lang-switch { grid-column: 2; margin-right: 6px; } .lang-btn { min-width: 40px; min-height: 36px; } }
+/* Seis enlaces: entre 901 y 1180 px se compactan para no partir la barra en dos filas. */
+@media(min-width:901px) and (max-width:1180px){ nav { padding: 0 28px; } .nav-links a { padding: 6px 9px; } .lang-switch { margin-right: 8px; } }
+
 /* ─── HERO ─── */
 .hero-wrap { position: relative; overflow: hidden; background: var(--bg-deep); min-height: calc(100vh - 64px); display: flex; align-items: center; }
 .hero-wrap::before { content: ''; position: absolute; width: 780px; height: 780px; top: -200px; left: -200px; border-radius: 50%; background: radial-gradient(circle, rgba(11,119,152,0.13) 0%, transparent 65%); pointer-events: none; z-index: 0; }
 .hero-wrap::after { content: ''; position: absolute; width: 520px; height: 520px; bottom: -140px; right: 80px; border-radius: 50%; background: radial-gradient(circle, rgba(11,119,152,0.07) 0%, transparent 65%); pointer-events: none; z-index: 0; }
-.hero { max-width: 1200px; margin: 0 auto; padding: 48px 48px 40px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+.hero { max-width: 1200px; margin: 0 auto; padding: 48px 48px 40px; width: 100%; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
 .hero-left { display: flex; flex-direction: column; align-items: flex-start; }
 .hero-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; animation: fadeUp .65s cubic-bezier(.16,1,.3,1) .1s both; }
 .hero-kicker::before { content: ''; display: block; width: 24px; height: 1px; background: rgba(11,119,152,0.8); flex-shrink: 0; }
-.hero-kicker-text { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(11,119,152,0.8); }
-.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: #ffffff; margin-bottom: 20px; max-width: 600px; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .2s both; }
+.hero-kicker-text { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #5fb6cf; }
+.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 3.4vw, 3.2rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #ffffff; margin-bottom: 22px; max-width: 660px; text-wrap: balance; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .2s both; }
 .hero h1 .hl { position: relative; display: inline-block; }
 .hero h1 .hl::after { content: ''; position: absolute; bottom: 3px; left: 0; right: 0; height: 3px; background: var(--accent); border-radius: 2px; z-index: -1; opacity: .6; }
+.hero-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255,255,255,0.62); max-width: 580px; margin-bottom: 32px; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s both; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; animation: fadeUp .75s cubic-bezier(.16,1,.3,1) .4s both; }
 .btn-lima { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #ffffff; padding: 13px 26px; border-radius: var(--radius-sm); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .15s, transform .15s, box-shadow .15s; }
 .btn-lima:hover { background: #0d8aaf; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(11,119,152,0.35); }
@@ -129,7 +148,7 @@ nav {
 .btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: #ffffff; transform: translateY(-1px); }
 .btn-ghost:active { transform: scale(0.98); }
 /* Hero image stack — right column */
-.hero-right { position: relative; height: 480px; animation: fadeUp .85s cubic-bezier(.16,1,.3,1) .35s both; }
+.hero-right { position: relative; height: 460px; animation: fadeUp .85s cubic-bezier(.16,1,.3,1) .35s both; }
 .hero-collage { position: relative; width: 100%; height: 100%; }
 .col-card { position: absolute; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 24px 64px rgba(0,0,0,0.55); }
 .col-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -153,48 +172,60 @@ nav {
 .soluciones { border-bottom: 1px solid var(--border); background: var(--bg-deep); padding-top: 0; position: relative; overflow: hidden; }
 .soluciones::before { content: ''; position: absolute; width: 820px; height: 820px; top: -300px; left: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(11,119,152,0.11) 0%, transparent 65%); pointer-events: none; }
 .soluciones::after { content: ''; position: absolute; width: 620px; height: 620px; bottom: -240px; right: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(11,119,152,0.09) 0%, transparent 65%); pointer-events: none; }
-.sol-head { padding: 80px 48px 56px; text-align: center; border-bottom: 1px solid var(--border); background: transparent; position: relative; z-index: 1; }
-.sol-head .tag { display: flex; justify-content: center; }
-.sol-head .section-sub { max-width: 500px; margin: 0 auto; }
-.sol-head-note { margin-top: 14px; font-size: 11px; color: var(--ink-faint); font-family: 'IBM Plex Sans', monospace; letter-spacing: .04em; }
-.sol-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1100px; margin: 0 auto; padding: 48px 48px 80px; background: transparent; position: relative; z-index: 1; }
-.sol-tile { grid-column: span 2; }
-.sol-tile:nth-child(5) { grid-column: 2 / span 2; }
-.sol-tile { background: rgba(255,255,255,0.03); padding: 36px; cursor: pointer; transition: border-color .25s, box-shadow .25s, transform .2s; position: relative; overflow: hidden; border-radius: 20px; border: 1px solid var(--border); }
-.sol-tile:hover { border-color: var(--border-hover); box-shadow: 0 0 40px rgba(11,119,152,0.08); transform: translateY(-2px); }
-/* Giant background number */
-.sol-tile-bg-num { position: absolute; bottom: -10px; right: 16px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(80px,12vw,140px); font-weight: 700; color: rgba(255,255,255,0.06); line-height: 1; pointer-events: none; user-select: none; }
-/* Icon */
-.sol-tile-icon { width: 28px; height: 28px; margin-bottom: 20px; color: rgba(11,119,152,0.8); }
-.sol-tile-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.sol-tile-num { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); margin-bottom: 6px; letter-spacing: 0.2em; text-transform: uppercase; }
-.sol-tile-label { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(11,119,152,0.8); margin-bottom: 12px; }
-/* Separator line */
-.sol-tile-sep { width: 24px; height: 1px; background: rgba(11,119,152,0.5); margin-bottom: 12px; }
-.sol-tile-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; color: #ffffff; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
-.sol-tile-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; font-weight: 400; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 32px; }
-.sol-tile-cta { display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(11,119,152,0.8); transition: gap .25s; }
-.sol-tile-cta::before { content: ''; display: block; width: 32px; height: 1px; background: rgba(11,119,152,0.6); transition: width .25s; flex-shrink: 0; }
-.sol-tile:hover .sol-tile-cta { gap: 14px; }
-.sol-tile:hover .sol-tile-cta::before { width: 52px; }
-/* Remove old ::before accent line */
-.sol-tile::before { display: none; }
+/* ─── CORE BUSINESS ─── */
+.core-inner { max-width: 1100px; margin: 0 auto; padding: 88px 48px 80px; position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px 64px; align-items: start; }
+.core-title { font-size: clamp(30px, 3.4vw, 46px); margin-bottom: 20px; text-wrap: balance; }
+.core-lead { font-family: 'Space Grotesk', sans-serif; font-size: clamp(18px, 1.6vw, 21px); font-weight: 600; line-height: 1.4; letter-spacing: -.01em; color: #ffffff; margin-bottom: 14px; }
+.core-body { margin-bottom: 22px; }
+.core-for { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.62); padding-left: 14px; border-left: 2px solid var(--accent); }
+.core-for strong { color: #ffffff; font-weight: 600; }
+.core-compare { display: grid; gap: 14px; }
+.core-col { border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; background: rgba(255,255,255,0.02); }
+.core-col--is { border-color: rgba(11,119,152,0.45); background: rgba(11,119,152,0.07); }
+.core-col-title { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px; }
+.core-col--is .core-col-title { color: #5fb6cf; }
+.core-col ul { list-style: none; display: grid; gap: 9px; }
+.core-col--is ul { grid-template-columns: 1fr 1fr; gap: 11px 20px; }
+.core-col li { position: relative; padding-left: 20px; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.82); }
+.core-col--not li { color: rgba(255,255,255,0.45); }
+.core-col--not li::before { content: '×'; position: absolute; left: 1px; top: -1px; color: rgba(255,255,255,0.3); }
+.core-col--is li::before { content: ''; position: absolute; left: 1px; top: 7px; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+.core-method { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 28px; font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.72); max-width: 780px; }
 
-/* Modal */
-.sol-modal-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,.75); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .25s; }
-.sol-modal-overlay.open { opacity: 1; pointer-events: all; }
-.sol-modal { background: #0d1f2a; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; max-width: 640px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 52px 48px; position: relative; transform: translateY(16px); transition: transform .32s cubic-bezier(.16,1,.3,1); box-shadow: 0 40px 100px rgba(0,0,0,.7); }
-.sol-modal-overlay.open .sol-modal { transform: translateY(0); }
-.sol-modal-close { position: absolute; top: 18px; right: 20px; background: transparent; border: none; border-radius: 6px; cursor: pointer; font-size: 22px; color: rgba(255,255,255,0.4); line-height: 1; padding: 4px 9px; transition: color .15s; }
-.sol-modal-close:hover { color: #ffffff; }
-.sol-modal-num { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px; }
-.sol-modal-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; color: #ffffff; letter-spacing: -.035em; line-height: 1.1; margin-bottom: 20px; }
-.sol-when { display: flex; align-items: flex-start; gap: 10px; background: rgba(11,119,152,0.12); border: 1px solid rgba(11,119,152,0.25); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 13px; color: rgba(11,119,152,0.9); line-height: 1.6; margin-bottom: 20px; }
-.sol-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.78; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 20px; }
-.sol-struct-label { font-family: 'IBM Plex Sans', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 12px; }
-.sol-lista { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-.sol-lista li { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.55; padding-left: 20px; position: relative; }
-.sol-lista li::before { content: '—'; position: absolute; left: 0; color: #0b7798; font-size: 10px; top: 3px; }
+/* ─── METODOLOGÍA ─── */
+.metodo { background: var(--bg); border-bottom: 1px solid var(--border); }
+.metodo-inner { max-width: 1100px; margin: 0 auto; padding: 72px 48px; }
+.metodo-head { margin-bottom: 32px; }
+.metodo-head .section-title { margin-bottom: 0; }
+.metodo-steps { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.metodo-step { padding: 22px 18px 20px; border: 1px solid var(--border); border-radius: 14px; background: rgba(255,255,255,0.025); }
+.metodo-num { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; color: #5fb6cf; margin-bottom: 14px; }
+.metodo-name { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; color: #ffffff; margin-bottom: 10px; }
+.metodo-desc { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.58); }
+@media(max-width:1100px){
+  .metodo-steps { grid-template-columns: 1fr; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .metodo-step { display: grid; grid-template-columns: 56px 1fr; column-gap: 16px; border: 0; border-radius: 0; border-bottom: 1px solid var(--border); padding: 18px 22px; }
+  .metodo-step:last-child { border-bottom: 0; }
+  .metodo-num { grid-row: span 2; margin: 0; padding-top: 2px; }
+  .metodo-name { margin-bottom: 4px; }
+}
+
+/* ─── PRODUCTOS PROPIOS (jerarquía secundaria, alrededor del anuncio de SALA) ─── */
+.prod-head { max-width: 1100px; margin: 0 auto 28px; }
+.prod-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(20px, 2vw, 26px); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; color: #ffffff; margin-bottom: 8px; }
+.prod-sub { font-size: 14px; line-height: 1.7; color: var(--ink-muted); max-width: 640px; }
+.prod-more { max-width: 1100px; margin: 18px auto 0; display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+.prod-group { border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; }
+.prod-group-title { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px; }
+.prod-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.prod-item { padding: 14px 16px; border-radius: 12px; background: rgba(255,255,255,0.025); }
+.prod-item-head { display: flex; align-items: center; justify-content: space-between; gap: 8px 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.prod-name { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #ffffff; }
+.prod-status { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.6); white-space: nowrap; }
+.prod-status--app { border-color: rgba(11,119,152,0.55); color: #7cc3d8; }
+.prod-desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.58); }
+.prod-link { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 600; color: #7cc3d8; text-decoration: none; }
+.prod-link:hover { text-decoration: underline; }
 
 /* ─── SALA STUDIO (anuncio) ─── */
 /* Pieza publicitaria acotada: vive dentro del fondo normal de STRYV pero con
@@ -220,7 +251,7 @@ nav {
 .btn-sala svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .btn-sala-ghost { display: inline-flex; align-items: center; background: transparent; color: rgba(255,255,255,0.75); padding: 12px 24px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.22); font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .15s, color .15s; }
 .btn-sala-ghost:hover { border-color: rgba(255,255,255,0.5); color: #ffffff; }
-.sala-note { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.38); letter-spacing: .03em; }
+.sala-note { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.66); letter-spacing: .03em; }
 /* Mockups — mismos marcos que usa la landing de SALA (DeviceFrame.tsx):
    sin barra de ventana falsa, ring claro de 1px y sombra ancha y difusa para
    que la captura flote y la imagen mande. La sangría de 2px en las imágenes
@@ -421,18 +452,19 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   .nav-cta-mobile .nav-cta { display: inline-flex !important; width: 100%; justify-content: center; padding: 13px 20px; font-size: 14px; min-height: 44px; }
 
   .hero { grid-template-columns: 1fr; padding: 48px 20px; gap: 48px; }
-  .hero-right { height: 320px; }
-  .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .hero-right { height: auto; aspect-ratio: 4 / 3; width: 100%; max-width: 560px; justify-self: center; }
+  .hero h1 { font-size: clamp(1.9rem, 5.6vw, 2.6rem); max-width: 100%; }
+  .hero-sub { font-size: 15px; max-width: 100%; }
   .hero-actions { flex-direction: column; width: 100%; }
   .btn-lima, .btn-ghost { width: 100%; justify-content: center; }
   .res-checks { grid-template-columns: 1fr; }
 
-  .sol-head { padding: 56px 20px 40px; }
-  .sol-grid { grid-template-columns: 1fr; padding: 0 20px 48px; gap: 14px; }
-  .sol-tile { grid-column: span 1; }
-  .sol-tile:nth-child(5) { grid-column: span 1; }
-  .sol-tile { padding: 28px 20px; }
-  .sol-modal { padding: 28px 20px; max-height: 92vh; }
+  .core-inner { grid-template-columns: 1fr; padding: 56px 20px 48px; gap: 32px; }
+  .core-col { padding: 20px; }
+  .core-col--is ul { grid-template-columns: 1fr; }
+  .core-method { padding-top: 24px; font-size: 14px; }
+  .metodo-inner { padding: 56px 20px; }
+  .prod-more { grid-template-columns: 1fr; }
 
   .proyectos { padding: 64px 0; }
   .proyectos-header { padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 24px; }
@@ -460,6 +492,35 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   .section-title { font-size: clamp(24px, 7vw, 36px); }
   .section-sub { font-size: 14px; }
 }
+/* ─── MÉTODO ≤600 ─── */
+@media(max-width:600px){
+  .metodo-step { grid-template-columns: 40px 1fr; column-gap: 12px; padding: 16px; }
+}
+
+/* ─── V3-D2 · pulido ─── */
+.nw { white-space: nowrap; }
+/* Textos secundarios de las secciones V3: más contraste sin tocar el token global (el portafolio no cambia). */
+.core-body, .prod-sub, #soluciones .tag, #metodologia .tag, #sala-studio .prod-head .tag, .prod-group-title, .core-col--not .core-col-title, .core-col--not li { color: rgba(255,255,255,0.6); }
+.footer-logo-sub, .footer-nav-wrap a, .footer-contact p, .footer-contact p a, .footer-bottom p, .social a, .fc-wa { color: rgba(255,255,255,0.6); }
+.footer-nav-wrap a:hover, .social a:hover, .fc-wa:hover { color: var(--ink); }
+/* ≤360 px: Stryvi sólo icono y los CTAs del hero dejan libre la franja de los flotantes. */
+@media(max-width:360px){
+  .float-stack { right: 10px; gap: 8px; }
+  .chat-fab { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 50%; }
+  .chat-fab-label { display: none; }
+  .wa-float { width: 40px; height: 40px; }
+  .wa-float svg { width: 19px; height: 19px; }
+  .hero-actions { padding-right: 52px; }
+}
+
+/* ─── HERO ≤600: textos completos, collage reducido ─── */
+@media(max-width:600px){
+  .hero { padding: 32px 20px 40px; gap: 32px; }
+  .hero-kicker { margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(1.7rem, 7vw, 2.4rem); line-height: 1.1; margin-bottom: 16px; }
+  .hero-sub { font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+  .hero-right { max-width: 420px; }
+}
 </style>
 </head>
 <body>
@@ -476,21 +537,26 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/stryv_cvfufm.png" alt="STRYV" class="nav-logo-img">
   </a>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#soluciones">Soluciones</a></li>
-    <li><a href="#sala-studio">SALA Studio</a></li>
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#soluciones" data-i18n="nav.soluciones">Core Business</a></li>
+    <li><a href="#metodologia" data-i18n="nav.metodo">Metodología</a></li>
+    <li><a href="#sala-studio" data-i18n="nav.sala">Productos</a></li>
+    <li><a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+    <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
     <li class="nav-cta-mobile">
       <a href="https://wa.me/17373683464" class="nav-cta" target="_blank">
-        <svg><use href="#wa-icon"/></svg>Hablemos
+        <svg><use href="#wa-icon"/></svg><span data-i18n="common.talk">Hablemos</span>
       </a>
     </li>
   </ul>
   <a href="https://wa.me/17373683464" class="nav-cta nav-cta-desktop" target="_blank">
-    <svg><use href="#wa-icon"/></svg>Hablemos
+    <svg><use href="#wa-icon"/></svg><span data-i18n="common.talk">Hablemos</span>
   </a>
-  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+  <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:nav.lang">
+    <button type="button" class="lang-btn" data-lang="es" lang="es" aria-label="Español" aria-pressed="true">ES</button>
+    <button type="button" class="lang-btn" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" data-i18n-attr="aria-label:nav.menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -500,14 +566,13 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   <section class="hero">
     <div class="hero-left">
       <div class="hero-kicker">
-        <span class="hero-kicker-text">Sistemas Operativos Digitales</span>
+        <span class="hero-kicker-text" data-i18n-html="hero.kicker" lang="en"><span class="nw">AI-Native</span> Engineering Studio</span>
       </div>
-      <h1>Construimos el futuro<br>operativo de tu <span class="hl">empresa.</span></h1>
+      <h1 data-i18n="hero.v3.h1">No integramos tecnología a tu empresa. Reprogramamos cómo opera y genera ingresos.</h1>
+      <p class="hero-sub" data-i18n-html="hero.v3.sub">Auditamos fugas de conversión, fricción operativa y arquitecturas de datos fragmentadas. Diseñamos pipelines end-to-end e infraestructura <span class="nw">AI-Native</span>, y desplegamos ingeniería directamente en la operación para conectar adquisición, ejecución, transacciones y crecimiento.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/17373683464" class="btn-lima" target="_blank">
-          <svg><use href="#wa-icon"/></svg>Hablemos
-        </a>
-        <a href="#soluciones" class="btn-ghost">Ver soluciones →</a>
+        <a href="#contacto" class="btn-lima" data-i18n="hero.v3.cta1">Iniciar diagnóstico de arquitectura</a>
+        <a href="#proyectos" class="btn-ghost" data-i18n="hero.v3.cta2">Explorar despliegues</a>
       </div>
     </div>
     <div class="hero-right">
@@ -527,104 +592,122 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
 </div>
 
 
-<!-- SOLUCIONES -->
-<section class="soluciones" id="soluciones">
-  <div class="sol-head reveal">
-    <div class="tag">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      Soluciones
+<!-- CORE BUSINESS (ancla histórica #soluciones) -->
+<section class="soluciones" id="soluciones" aria-labelledby="core-title">
+  <div class="core-inner">
+    <div class="core-intro reveal">
+      <div class="tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span data-i18n="core.tag">Negocio principal</span>
+      </div>
+      <h2 class="section-title core-title" id="core-title" lang="en"><span class="nw">AI-Native</span> Business Operating Systems</h2>
+      <p class="core-lead" data-i18n-html="core.lead">STRYV diseña, construye y evoluciona sistemas operativos empresariales <span class="nw">AI-Native</span>.</p>
+      <p class="section-sub core-body" data-i18n="core.body">Comenzamos entendiendo profundamente cómo funciona cada empresa, desarrollamos una arquitectura tecnológica propia desde sus cimientos e integramos progresivamente inteligencia artificial en sus procesos para mejorar continuamente su operación.</p>
+      <p class="core-for"><strong data-i18n="core.forLabel">Para quién:</strong> <span data-i18n="core.for">empresas con ventas y operación en marcha cuyos procesos, áreas y datos ya no caben en herramientas sueltas.</span></p>
     </div>
-    <h2 class="section-title">Lo que construimos.</h2>
-    <p class="section-sub">Cada solución es un sistema completo. Implementamos uno o los cinco, según la etapa real de tu operación.</p>
-  </div>
-  <div class="sol-grid">
-    <div class="sol-tile reveal d1" onclick="openModal('sol1')">
-      <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-      <div class="sol-tile-num">01 / 05</div>
-      <div class="sol-tile-label">Ventas Digitales</div>
-      <div class="sol-tile-sep"></div>
-      <h3 class="sol-tile-title">Sistema de ventas<br>y entrega</h3>
-      <div class="sol-tile-cta">Ver sistema completo</div>
-      <div class="sol-tile-bg-num">01</div>
+    <div class="core-compare reveal d1">
+      <div class="core-col core-col--not">
+        <h3 class="core-col-title" data-i18n="core.notTitle">Lo que no vendemos</h3>
+        <ul>
+          <li data-i18n="core.not.n1">Aplicaciones independientes</li>
+          <li data-i18n="core.not.n2">Páginas web</li>
+          <li data-i18n="core.not.n3">CRMs y ERPs genéricos</li>
+        </ul>
+      </div>
+      <div class="core-col core-col--is">
+        <h3 class="core-col-title" data-i18n="core.isTitle">Lo que construimos</h3>
+        <ul>
+          <li data-i18n="core.is.d1">Arquitectura construida alrededor del negocio</li>
+          <li data-i18n="core.is.d2">Procesos, departamentos y roles conectados</li>
+          <li data-i18n="core.is.d3">Una fuente de verdad compartida</li>
+          <li data-i18n="core.is.d4">Sistemas propios adaptados a cada operación</li>
+          <li data-i18n="core.is.d5">Inteligencia artificial incorporada donde aporte valor</li>
+          <li data-i18n="core.is.d6">Evolución continua de capacidades</li>
+        </ul>
+      </div>
     </div>
-    <div class="sol-tile reveal d2" onclick="openModal('sol2')">
-      <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <div class="sol-tile-num">02 / 05</div>
-      <div class="sol-tile-label">Atención Automatizada con IA</div>
-      <div class="sol-tile-sep"></div>
-      <h3 class="sol-tile-title">Sistema de atención<br>y soporte</h3>
-      <div class="sol-tile-cta">Ver sistema completo</div>
-      <div class="sol-tile-bg-num">02</div>
-    </div>
-    <div class="sol-tile reveal d3" onclick="openModal('sol3')">
-      <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-      <div class="sol-tile-num">03 / 05</div>
-      <div class="sol-tile-label">Conversión y Retención Local</div>
-      <div class="sol-tile-sep"></div>
-      <h3 class="sol-tile-title">Sistema comercial<br>para negocio local</h3>
-      <div class="sol-tile-cta">Ver sistema completo</div>
-      <div class="sol-tile-bg-num">03</div>
-    </div>
-    <div class="sol-tile reveal d4" onclick="openModal('sol4')">
-      <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
-      <div class="sol-tile-num">04 / 05</div>
-      <div class="sol-tile-label">Operación Interna (OPS / Mini-ERP)</div>
-      <div class="sol-tile-sep"></div>
-      <h3 class="sol-tile-title">Sistema de operación<br>interna</h3>
-      <div class="sol-tile-cta">Ver sistema completo</div>
-      <div class="sol-tile-bg-num">04</div>
-    </div>
-    <div class="sol-tile reveal" onclick="openModal('sol5')">
-      <div class="sol-tile-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
-      <div class="sol-tile-num">05 / 05</div>
-      <div class="sol-tile-label">Contenido con IA</div>
-      <div class="sol-tile-sep"></div>
-      <h3 class="sol-tile-title">Sistema de contenido<br>y presencia</h3>
-      <div class="sol-tile-cta">Ver sistema completo</div>
-      <div class="sol-tile-bg-num">05</div>
-    </div>
+    <p class="core-method reveal" data-i18n="core.method">Vendemos una metodología consistente de transformación tecnológica, aplicada de forma personalizada a la operación de cada empresa. Cada implementación puede ser distinta, pero comparte una misma filosofía de ingeniería.</p>
   </div>
 </section>
 
-<!-- MODALES -->
-<div class="sol-modal-overlay" id="sol-modal-overlay" onclick="closeModal()">
-  <div class="sol-modal" onclick="event.stopPropagation()">
-    <button class="sol-modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
-    <div id="sol-modal-content"></div>
+<!-- METODOLOGÍA -->
+<section class="metodo" id="metodologia" aria-labelledby="metodo-title">
+  <div class="metodo-inner">
+    <div class="metodo-head reveal">
+      <div class="tag"><span data-i18n="metodo.tag">Metodología</span></div>
+      <h2 class="section-title" id="metodo-title" data-i18n="metodo.title">Una metodología, cinco etapas.</h2>
+    </div>
+    <ol class="metodo-steps">
+      <li class="metodo-step reveal d1"><span class="metodo-num" aria-hidden="true">01</span><h3 class="metodo-name" lang="en">Forward Deployed Discovery</h3><p class="metodo-desc" data-i18n="metodo.s1">Entender profundamente la operación, departamentos, procesos, problemas y objetivos del negocio.</p></li>
+      <li class="metodo-step reveal d2"><span class="metodo-num" aria-hidden="true">02</span><h3 class="metodo-name" lang="en"><span class="nw">AI-Native</span> Architecture</h3><p class="metodo-desc" data-i18n="metodo.s2">Diseñar desde los cimientos datos, roles, permisos, módulos y capacidades de IA para evolucionar a largo plazo.</p></li>
+      <li class="metodo-step reveal d3"><span class="metodo-num" aria-hidden="true">03</span><h3 class="metodo-name" lang="en">Custom Operating System</h3><p class="metodo-desc" data-i18n="metodo.s3">Construir un sistema operativo propio, adaptado a la empresa, con una fuente de verdad compartida.</p></li>
+      <li class="metodo-step reveal d4"><span class="metodo-num" aria-hidden="true">04</span><h3 class="metodo-name" lang="en">Intelligent Operations</h3><p class="metodo-desc" data-i18n="metodo.s4">Incorporar progresivamente agentes, automatizaciones y flujos inteligentes en las áreas donde aporten valor.</p></li>
+      <li class="metodo-step reveal"><span class="metodo-num" aria-hidden="true">05</span><h3 class="metodo-name" lang="en">Continuous Evolution</h3><p class="metodo-desc" data-i18n="metodo.s5">Ampliar capacidades, integrar nuevos procesos y optimizar continuamente la operación.</p></li>
+    </ol>
   </div>
-</div>
+</section>
 
 <!-- SALA STUDIO -->
-<section class="sala" id="sala-studio">
+<section class="sala" id="sala-studio" aria-labelledby="prod-title">
+  <div class="prod-head reveal">
+    <div class="tag"><span data-i18n="prod.tag">Productos propios</span></div>
+    <h2 class="prod-title" id="prod-title" data-i18n="prod.title">También desarrollamos productos propios.</h2>
+    <p class="prod-sub" data-i18n="prod.sub">La misma ingeniería, aplicada a sistemas empaquetados por industria y a aplicaciones propias. Es una línea complementaria a nuestro negocio principal.</p>
+  </div>
   <div class="sala-ad reveal">
     <div class="sala-left">
-      <div class="sala-eyebrow">Producto propio de STRYV</div>
+      <div class="sala-eyebrow" data-i18n="sala.eyebrow">Plataforma por industria · Disponible</div>
       <div class="sala-logo-chip">
         <img src="assets/images/sala/logo-sala.png" alt="SALA Studio">
       </div>
-      <h2 class="sala-title">El software que corre gimnasios y estudios.</h2>
-      <p class="sala-desc">La misma operación digital que implementamos a medida, ya empaquetada como producto. Reservas, membresías y check-in en una plataforma con tu marca y tu dominio — no la nuestra.</p>
+      <h3 class="sala-title" data-i18n="sala.title">El software que corre gimnasios y estudios.</h3>
+      <p class="sala-desc" data-i18n="sala.desc">La misma operación digital que implementamos a medida, ya empaquetada como producto. Reservas, membresías y check-in en una plataforma con tu marca y tu dominio — no la nuestra.</p>
       <div class="sala-feats">
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reservas y agenda de clases</div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Socios y membresías</div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Check-in con QR</div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tu marca, tu app instalable</div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reportes de retención y churn</div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Multi-sucursal</div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f1">Reservas y agenda de clases</span></div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f2">Socios y membresías</span></div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f3">Check-in con QR</span></div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f4">Tu marca, tu app instalable</span></div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f5">Reportes de retención y churn</span></div>
+        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f6">Multi-sucursal</span></div>
       </div>
       <div class="sala-actions">
         <a href="https://salastudio.app" class="btn-sala" target="_blank" rel="noopener">
-          Conocer SALA Studio
+          <span data-i18n="sala.cta">Conocer SALA Studio</span>
           <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#contacto" class="btn-sala-ghost">Hablar con el equipo</a>
+        <a href="#contacto" class="btn-sala-ghost" data-i18n="sala.ghost">Hablar con el equipo</a>
       </div>
-      <p class="sala-note">7 días gratis · cancela cuando quieras</p>
+      <p class="sala-note" data-i18n="sala.note">7 días gratis · cancela cuando quieras</p>
     </div>
     <div class="sala-shots">
       <div class="sala-browser">
-        <img class="sala-bleed" src="assets/images/sala/sala-agenda.png" alt="Agenda y reservas en SALA" loading="lazy">
+        <img class="sala-bleed" src="assets/images/sala/sala-agenda.png" alt="Agenda y reservas en SALA" data-i18n-attr="alt:sala.alt" loading="lazy">
       </div>
+    </div>
+  </div>
+  <div class="prod-more">
+    <div class="prod-group reveal">
+      <h3 class="prod-group-title" data-i18n="prod.industryTitle">Sistemas por industria · En preparación</h3>
+      <ul class="prod-list">
+        <li class="prod-item">
+          <div class="prod-item-head"><span class="prod-name">STRYV Restaurant</span><span class="prod-status" data-i18n="prod.restaurant.status">En desarrollo</span></div>
+          <p class="prod-desc" data-i18n="prod.restaurant.desc">Plataforma para restaurantes.</p>
+        </li>
+        <li class="prod-item">
+          <div class="prod-item-head"><span class="prod-name">Notary Systems</span><span class="prod-status" data-i18n="prod.notary.status">Planeado</span></div>
+          <p class="prod-desc" data-i18n="prod.notary.desc">Sistema para notarías.</p>
+        </li>
+      </ul>
+    </div>
+    <div class="prod-group reveal d1">
+      <h3 class="prod-group-title" data-i18n="prod.appsTitle">Aplicaciones propias</h3>
+      <ul class="prod-list">
+        <li class="prod-item">
+          <div class="prod-item-head"><span class="prod-name">Healthy Space Club</span><span class="prod-status prod-status--app" data-i18n="prod.healthy.status">App de consumo</span></div>
+          <p class="prod-desc" data-i18n="prod.healthy.desc">Aplicación propia de fitness, nutrición y bienestar para personas. No es un servicio para empresas.</p>
+          <a class="prod-link" href="https://healthyspaceclub.com" target="_blank" rel="noopener" data-i18n="prod.healthy.link">healthyspaceclub.com ↗</a>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -635,10 +718,10 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <div>
       <div class="tag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Casos reales
+        <span data-i18n="proyectos.tag">Casos reales</span>
       </div>
-      <h2 class="section-title">Lo que hemos<br>construido.</h2>
-      <p class="section-sub" style="margin-top:10px;max-width:560px;">Una muestra de proyectos recientes. Da clic en cualquiera para verlo en acción.</p>
+      <h2 class="section-title" data-i18n-html="proyectos.title">Lo que hemos<br>construido.</h2>
+      <p class="section-sub" style="margin-top:10px;max-width:560px;" data-i18n="proyectos.sub">Una muestra de proyectos recientes. Da clic en cualquiera para verlo en acción.</p>
     </div>
   </div>
   <div class="proyectos-track" id="proyectos-track">
@@ -858,40 +941,40 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <div class="contacto-left reveal">
       <div class="tag">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Contacto
+        <span data-i18n="contacto.tag">Contacto</span>
       </div>
-      <h2 class="section-title">Escríbenos directo.<br>Respondemos en menos de 24h.</h2>
+      <h2 class="section-title" data-i18n-html="contacto.title">Escríbenos directo.<br>Respondemos en menos de 24h.</h2>
       <a href="https://wa.me/17373683464" class="nav-cta" target="_blank" style="margin-bottom:32px;padding:9px 18px;margin-top:16px;">
-        <svg><use href="#wa-icon"/></svg>Hablemos
+        <svg><use href="#wa-icon"/></svg><span data-i18n="common.talk">Hablemos</span>
       </a>
       <div class="contacto-img">
-        <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/4.jpg" alt="Equipo STRYV">
+        <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/4.jpg" alt="Equipo STRYV" data-i18n-attr="alt:contacto.alt">
       </div>
     </div>
     <div class="contacto-form reveal d2">
-      <h3>O déjanos tu mensaje</h3>
+      <h3 data-i18n="form.title">O déjanos tu mensaje</h3>
       <form id="contact-form" novalidate>
         <div class="hp-field" aria-hidden="true"><label for="website">Sitio web</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="form-row">
-          <div class="fg"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" maxlength="80" required></div>
-          <div class="fg"><label>Apellido</label><input type="text" name="apellido" placeholder="Apellido" maxlength="80"></div>
+          <div class="fg"><label data-i18n="form.nombre">Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" data-i18n-attr="placeholder:form.ph.nombre" maxlength="80" required></div>
+          <div class="fg"><label data-i18n="form.apellido">Apellido</label><input type="text" name="apellido" placeholder="Apellido" data-i18n-attr="placeholder:form.ph.apellido" maxlength="80"></div>
         </div>
         <div class="form-row">
-          <div class="fg"><label>Correo electrónico</label><input type="email" name="email" placeholder="email@empresa.com" maxlength="200" required></div>
-          <div class="fg"><label>WhatsApp</label><input type="tel" name="phone" placeholder="+52 55 1234 5678" maxlength="30"></div>
+          <div class="fg"><label data-i18n="form.email">Correo electrónico</label><input type="email" name="email" placeholder="email@empresa.com" data-i18n-attr="placeholder:form.ph.email" maxlength="200" required></div>
+          <div class="fg"><label data-i18n="form.wa">WhatsApp</label><input type="tel" name="phone" placeholder="+52 55 1234 5678" maxlength="30"></div>
         </div>
-        <div class="fg"><label>¿Qué necesita tu negocio?</label><textarea name="mensaje" placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar." maxlength="2000"></textarea></div>
+        <div class="fg"><label data-i18n="form.mensaje">¿Qué necesita tu negocio?</label><textarea name="mensaje" placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar." data-i18n-attr="placeholder:form.ph.mensaje" maxlength="2000"></textarea></div>
         <div class="form-check">
           <input type="checkbox" id="priv" required>
-          <label for="priv">Acepto la política de privacidad</label>
+          <label for="priv" data-i18n="form.priv">Acepto la política de privacidad</label>
         </div>
         <p class="form-error" id="form-error" role="alert" hidden></p>
         <button type="submit" class="btn-submit" id="submit-btn">Enviar mensaje</button>
       </form>
       <div id="form-success" style="display:none;text-align:center;padding:32px 0;">
         <div style="font-size:32px;margin-bottom:12px;">✓</div>
-        <p style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;">¡Mensaje enviado!</p>
-        <p style="font-size:13px;color:var(--ink-muted);">Te respondemos en menos de 24h.</p>
+        <p style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;" data-i18n="form.ok">¡Mensaje enviado!</p>
+        <p style="font-size:13px;color:var(--ink-muted);" data-i18n="form.okSub">Te respondemos en menos de 24h.</p>
       </div>
     </div>
   </div>
@@ -903,28 +986,28 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <div class="faq-head reveal">
       <div class="tag">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        Preguntas frecuentes
+        <span data-i18n="faq.tag">Preguntas frecuentes</span>
       </div>
-      <h2 class="section-title">Lo que suelen preguntar.</h2>
+      <h2 class="section-title" data-i18n="faq.title">Lo que suelen preguntar.</h2>
     </div>
     <div class="faq-list reveal">
 <div class="faq-item">
-        <button class="faq-question"><h4>¿Qué tipo de negocios atienden?</h4><span class="faq-icon"></span></button>
-        <div class="faq-answer"><p>Restaurantes, fábricas, infoproductores, coaches, e-commerce, negocios de servicios. Si ya tienes ventas y operación, podemos mejorarlo.</p></div>
+        <button class="faq-question"><h4 data-i18n="faq.items.q1">¿Qué tipo de negocios atienden?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p data-i18n="faq.items.a1">Restaurantes, fábricas, infoproductores, coaches, e-commerce, negocios de servicios. Si ya tienes ventas y operación, podemos mejorarlo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question"><h4>¿Cuánto tarda?</h4><span class="faq-icon"></span></button>
-        <div class="faq-answer"><p>Entre 4 y 6 semanas para una implementación base.</p></div>
+        <button class="faq-question"><h4 data-i18n="faq.items.q2">¿Cuánto tarda?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p data-i18n="faq.items.a2">Entre 4 y 6 semanas para una implementación base.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question"><h4>¿Cómo empieza el proceso?</h4><span class="faq-icon"></span></button>
-        <div class="faq-answer"><p>Con una conversación. Nos escribes, nos cuentas qué hace tu negocio y vemos juntos si tiene sentido trabajar. Sin costo, sin compromiso.</p></div>
+        <button class="faq-question"><h4 data-i18n="faq.items.q3">¿Cómo empieza el proceso?</h4><span class="faq-icon"></span></button>
+        <div class="faq-answer"><p data-i18n="faq.items.a3">Con una conversación. Nos escribes, nos cuentas qué hace tu negocio y vemos juntos si tiene sentido trabajar. Sin costo, sin compromiso.</p></div>
       </div>
     </div>
     <div class="faq-footer reveal">
-      <p>¿Otra pregunta?</p>
+      <p data-i18n="faq.more">¿Otra pregunta?</p>
       <a href="https://wa.me/17373683464" class="btn-lima" target="_blank">
-        <svg><use href="#wa-icon"/></svg>Escríbenos directo
+        <svg><use href="#wa-icon"/></svg><span data-i18n="common.writeUs">Escríbenos directo</span>
       </a>
     </div>
   </div>
@@ -936,15 +1019,15 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <div>
       <div class="footer-logo">
         <span class="footer-logo-name">STRYV</span>
-        <span class="footer-logo-sub">Sistemas Operativos Digitales</span>
+        <span class="footer-logo-sub" data-i18n-html="footer.sub">Ingeniería empresarial <span class="nw">AI-Native</span></span>
       </div>
       
     </div>
     <div class="footer-nav-wrap">
-      <a href="#soluciones">Soluciones</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#faq">Preguntas frecuentes</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#soluciones" data-i18n="nav.soluciones">Core Business</a>
+      <a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a>
+      <a href="#faq" data-i18n="footer.faq">Preguntas frecuentes</a>
+      <a href="#contacto" data-i18n="nav.contacto">Contacto</a>
     </div>
     <div class="footer-contact">
       <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5a6a1a7aca3fba6a1a0b1bcba95b2b8b4bcb9fbb6bab8">[email&#160;protected]</a></p>
@@ -955,7 +1038,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 STRYV. Todos los derechos reservados.</p>
+    <p data-i18n="footer.rights">© 2026 STRYV. Todos los derechos reservados.</p>
     <div class="social">
       <a href="https://www.instagram.com/stryv.studio/" target="_blank" rel="noopener">Instagram</a>
     </div>
@@ -964,7 +1047,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
 
 <!-- FLOAT BUTTONS -->
 <div class="float-stack">
-  <button class="chat-fab" id="chat-fab" aria-label="Chatear con Stryvi">
+  <button class="chat-fab" id="chat-fab" aria-label="Chatear con Stryvi" data-i18n-attr="aria-label:chat.fab">
     <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.17A7 7 0 0 1 14 23h-4a7 7 0 0 1-6.83-4H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 12 2zM9.5 13a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
     <span class="chat-fab-label">Stryvi</span>
   </button>
@@ -980,14 +1063,274 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <button class="chat-close" id="chat-close">&times;</button>
   </div>
   <div class="chat-body" id="chat-body">
-    <div class="chat-msg bot">¡Hola! Soy Stryvi, el agente de STRYV. ¿En qué puedo ayudarte?</div>
+    <div class="chat-msg bot" data-i18n="chat.hello">¡Hola! Soy Stryvi, el agente de STRYV. ¿En qué puedo ayudarte?</div>
   </div>
   <div class="chat-input-wrap">
-    <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+    <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." data-i18n-attr="placeholder:chat.ph" autocomplete="off">
     <button class="chat-send" id="chat-send"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
   </div>
 </div>
 
+<script>
+// ─── I18N · ES/EN ───
+// Un único diccionario con el mismo árbol en los dos idiomas. Los nodos llevan
+// data-i18n (texto), data-i18n-html (texto con <br>/<span> propios) o
+// data-i18n-attr="atributo:clave;atributo:clave". Nunca se clona ni se oculta nada.
+// Inglés: traducción provisional, pendiente de revisión editorial salvo hero.v3.
+const I18N = {
+  es: {
+    meta: { title: 'STRYV Studio | Sistemas Operativos Empresariales AI-Native' }, // provisional hasta SEO internacional
+    common: { talk: 'Hablemos', writeUs: 'Escríbenos directo' },
+    nav: { soluciones: 'Core Business', metodo: 'Metodología', sala: 'Productos', proyectos: 'Proyectos', faq: 'FAQ', contacto: 'Contacto', menu: 'Abrir menú', lang: 'Idioma' },
+    hero: {
+      kicker: '<span class="nw">AI-Native</span> Engineering Studio',
+      // Copy V3 aprobado. Kicker aprobado en V3-D1, igual en ambos idiomas.
+      v3: {
+        h1: 'No integramos tecnología a tu empresa. Reprogramamos cómo opera y genera ingresos.',
+        sub: 'Auditamos fugas de conversión, fricción operativa y arquitecturas de datos fragmentadas. Diseñamos pipelines end-to-end e infraestructura <span class="nw">AI-Native</span>, y desplegamos ingeniería directamente en la operación para conectar adquisición, ejecución, transacciones y crecimiento.',
+        cta1: 'Iniciar diagnóstico de arquitectura',
+        cta2: 'Explorar despliegues'
+      }
+    },
+    core: {
+      tag: 'Negocio principal',
+      lead: 'STRYV diseña, construye y evoluciona sistemas operativos empresariales <span class="nw">AI-Native</span>.',
+      body: 'Comenzamos entendiendo profundamente cómo funciona cada empresa, desarrollamos una arquitectura tecnológica propia desde sus cimientos e integramos progresivamente inteligencia artificial en sus procesos para mejorar continuamente su operación.',
+      forLabel: 'Para quién:',
+      for: 'empresas con ventas y operación en marcha cuyos procesos, áreas y datos ya no caben en herramientas sueltas.',
+      notTitle: 'Lo que no vendemos',
+      not: { n1: 'Aplicaciones independientes', n2: 'Páginas web', n3: 'CRMs y ERPs genéricos' },
+      isTitle: 'Lo que construimos',
+      is: { d1: 'Arquitectura construida alrededor del negocio', d2: 'Procesos, departamentos y roles conectados', d3: 'Una fuente de verdad compartida', d4: 'Sistemas propios adaptados a cada operación', d5: 'Inteligencia artificial incorporada donde aporte valor', d6: 'Evolución continua de capacidades' },
+      method: 'Vendemos una metodología consistente de transformación tecnológica, aplicada de forma personalizada a la operación de cada empresa. Cada implementación puede ser distinta, pero comparte una misma filosofía de ingeniería.'
+    },
+    metodo: {
+      tag: 'Metodología',
+      title: 'Una metodología, cinco etapas.',
+      s1: 'Entender profundamente la operación, departamentos, procesos, problemas y objetivos del negocio.',
+      s2: 'Diseñar desde los cimientos datos, roles, permisos, módulos y capacidades de IA para evolucionar a largo plazo.',
+      s3: 'Construir un sistema operativo propio, adaptado a la empresa, con una fuente de verdad compartida.',
+      s4: 'Incorporar progresivamente agentes, automatizaciones y flujos inteligentes en las áreas donde aporten valor.',
+      s5: 'Ampliar capacidades, integrar nuevos procesos y optimizar continuamente la operación.'
+    },
+    prod: {
+      tag: 'Productos propios',
+      title: 'También desarrollamos productos propios.',
+      sub: 'La misma ingeniería, aplicada a sistemas empaquetados por industria y a aplicaciones propias. Es una línea complementaria a nuestro negocio principal.',
+      industryTitle: 'Sistemas por industria · En preparación',
+      restaurant: { status: 'En desarrollo', desc: 'Plataforma para restaurantes.' },
+      notary: { status: 'Planeado', desc: 'Sistema para notarías.' },
+      appsTitle: 'Aplicaciones propias',
+      healthy: { status: 'App de consumo', desc: 'Aplicación propia de fitness, nutrición y bienestar para personas. No es un servicio para empresas.', link: 'healthyspaceclub.com ↗' }
+    },
+    sala: {
+      eyebrow: 'Plataforma por industria · Disponible',
+      title: 'El software que corre gimnasios y estudios.',
+      desc: 'La misma operación digital que implementamos a medida, ya empaquetada como producto. Reservas, membresías y check-in en una plataforma con tu marca y tu dominio — no la nuestra.',
+      feats: { f1: 'Reservas y agenda de clases', f2: 'Socios y membresías', f3: 'Check-in con QR', f4: 'Tu marca, tu app instalable', f5: 'Reportes de retención y churn', f6: 'Multi-sucursal' },
+      cta: 'Conocer SALA Studio',
+      ghost: 'Hablar con el equipo',
+      note: '7 días gratis · cancela cuando quieras',
+      alt: 'Agenda y reservas en SALA'
+    },
+    proyectos: {
+      tag: 'Casos reales',
+      title: 'Lo que hemos<br>construido.',
+      sub: 'Una muestra de proyectos recientes. Da clic en cualquiera para verlo en acción.'
+    },
+    contacto: { tag: 'Contacto', title: 'Escríbenos directo.<br>Respondemos en menos de 24h.', alt: 'Equipo STRYV' },
+    form: {
+      title: 'O déjanos tu mensaje',
+      nombre: 'Nombre', apellido: 'Apellido', email: 'Correo electrónico', wa: 'WhatsApp', mensaje: '¿Qué necesita tu negocio?',
+      ph: { nombre: 'Tu nombre', apellido: 'Apellido', email: 'email@empresa.com', mensaje: 'Contanos brevemente qué hace tu negocio y qué quieres mejorar.' },
+      priv: 'Acepto la política de privacidad',
+      submit: 'Enviar mensaje',
+      sending: 'Enviando...',
+      ok: '¡Mensaje enviado!',
+      okSub: 'Te respondemos en menos de 24h.',
+      err: {
+        review: 'Revisa los campos marcados',
+        fields: { nombre: 'Escribe tu nombre', email: 'El correo no tiene un formato válido', whatsapp: 'El WhatsApp debe tener entre 7 y 19 dígitos' },
+        rate: 'Ya recibimos tu mensaje. Te respondemos pronto.',
+        generic: 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos por WhatsApp.',
+        network: 'Sin conexión. Intenta de nuevo o escríbenos por WhatsApp.'
+      }
+    },
+    faq: {
+      tag: 'Preguntas frecuentes',
+      title: 'Lo que suelen preguntar.',
+      items: {
+        q1: '¿Qué tipo de negocios atienden?',
+        a1: 'Restaurantes, fábricas, infoproductores, coaches, e-commerce, negocios de servicios. Si ya tienes ventas y operación, podemos mejorarlo.',
+        q2: '¿Cuánto tarda?',
+        a2: 'Entre 4 y 6 semanas para una implementación base.',
+        q3: '¿Cómo empieza el proceso?',
+        a3: 'Con una conversación. Nos escribes, nos cuentas qué hace tu negocio y vemos juntos si tiene sentido trabajar. Sin costo, sin compromiso.'
+      },
+      more: '¿Otra pregunta?'
+    },
+    footer: { sub: 'Ingeniería empresarial <span class="nw">AI-Native</span>', faq: 'Preguntas frecuentes', rights: '© 2026 STRYV. Todos los derechos reservados.' },
+    chat: {
+      fab: 'Chatear con Stryvi',
+      hello: '¡Hola! Soy Stryvi, el agente de STRYV. ¿En qué puedo ayudarte?',
+      ph: 'Escribe tu mensaje...',
+      typing: 'Escribiendo...',
+      err: 'Lo siento, hubo un error. Intenta de nuevo.',
+      errNet: 'Error de conexión. Intenta de nuevo.'
+    }
+  },
+  en: {
+    meta: { title: 'STRYV Studio | AI-Native Business Operating Systems' },
+    common: { talk: "Let's talk", writeUs: 'Message us directly' },
+    nav: { soluciones: 'Core Business', metodo: 'Methodology', sala: 'Products', proyectos: 'Projects', faq: 'FAQ', contacto: 'Contact', menu: 'Open menu', lang: 'Language' },
+    hero: {
+      kicker: '<span class="nw">AI-Native</span> Engineering Studio',
+      v3: {
+        h1: "We don't just integrate technology. We reprogram how your business operates and generates revenue.",
+        sub: 'We audit conversion leaks, operational friction, and fragmented data architectures. We design end-to-end pipelines and <span class="nw">AI-Native</span> infrastructure, deploying engineering directly into live operations to connect acquisition, execution, transactions, and growth.',
+        cta1: 'Start Architecture Diagnosis',
+        cta2: 'Explore Deployments'
+      }
+    },
+    core: {
+      tag: 'Core business',
+      lead: 'STRYV designs, builds and evolves <span class="nw">AI-Native</span> business operating systems.',
+      body: 'We start by deeply understanding how each company works, develop a proprietary technology architecture from the ground up, and progressively integrate artificial intelligence into its processes to continuously improve its operation.',
+      forLabel: 'Who it is for:',
+      for: 'companies with sales and operations already running whose processes, departments and data no longer fit in separate tools.',
+      notTitle: 'What we don’t sell',
+      not: { n1: 'Standalone applications', n2: 'Websites', n3: 'Generic CRMs and ERPs' },
+      isTitle: 'What we build',
+      is: { d1: 'Architecture built around the business', d2: 'Connected processes, departments and roles', d3: 'One shared source of truth', d4: 'Proprietary systems adapted to each operation', d5: 'Artificial intelligence built in where it adds value', d6: 'Continuous evolution of capabilities' },
+      method: 'We sell a consistent methodology for technology transformation, applied specifically to each company’s operation. Every implementation can be different, but all share the same engineering philosophy.'
+    },
+    metodo: {
+      tag: 'Methodology',
+      title: 'One methodology, five stages.',
+      s1: 'Deeply understand the operation, departments, processes, problems and business goals.',
+      s2: 'Design data, roles, permissions, modules and AI capabilities from the ground up, built to evolve over the long term.',
+      s3: 'Build a proprietary operating system, adapted to the company, with one shared source of truth.',
+      s4: 'Progressively bring agents, automations and intelligent workflows into the areas where they add value.',
+      s5: 'Expand capabilities, integrate new processes and continuously optimize the operation.'
+    },
+    prod: {
+      tag: 'Our own products',
+      title: 'We also build our own products.',
+      sub: 'The same engineering, applied to packaged industry systems and to our own apps. It is a line that complements our core business.',
+      industryTitle: 'Industry systems · In preparation',
+      restaurant: { status: 'In development', desc: 'Platform for restaurants.' },
+      notary: { status: 'Planned', desc: 'System for notary offices.' },
+      appsTitle: 'Our own apps',
+      healthy: { status: 'Consumer app', desc: 'Our own fitness, nutrition and wellness app for individuals. It is not a service for companies.', link: 'healthyspaceclub.com ↗' }
+    },
+    sala: {
+      eyebrow: 'Industry platform · Available',
+      title: 'The software that runs gyms and studios.',
+      desc: 'The same digital operation we build to order, already packaged as a product. Bookings, memberships and check-in on a platform with your brand and your domain — not ours.',
+      feats: { f1: 'Class bookings and schedule', f2: 'Members and memberships', f3: 'QR check-in', f4: 'Your brand, your installable app', f5: 'Retention and churn reports', f6: 'Multi-location' },
+      cta: 'Discover SALA Studio',
+      ghost: 'Talk to the team',
+      note: '7-day free trial · cancel anytime',
+      alt: 'Schedule and bookings in SALA'
+    },
+    proyectos: {
+      tag: 'Real cases',
+      title: "What we've<br>built.",
+      sub: 'A selection of recent projects. Click any of them to see it in action.'
+    },
+    contacto: { tag: 'Contact', title: 'Message us directly.<br>We reply within 24h.', alt: 'STRYV team' },
+    form: {
+      title: 'Or leave us a message',
+      nombre: 'First name', apellido: 'Last name', email: 'Email', wa: 'WhatsApp', mensaje: 'What does your business need?',
+      ph: { nombre: 'Your first name', apellido: 'Last name', email: 'email@company.com', mensaje: 'Tell us briefly what your business does and what you want to improve.' },
+      priv: 'I accept the privacy policy',
+      submit: 'Send message',
+      sending: 'Sending...',
+      ok: 'Message sent!',
+      okSub: "We'll reply within 24h.",
+      err: {
+        review: 'Please check the highlighted fields',
+        fields: { nombre: 'Please enter your name', email: 'Please enter a valid email address', whatsapp: 'WhatsApp must have between 7 and 19 digits' },
+        rate: "We've already received several messages. We'll get back to you soon.",
+        generic: "We couldn't send your message. Please try again or message us on WhatsApp.",
+        network: 'No connection. Please try again or message us on WhatsApp.'
+      }
+    },
+    faq: {
+      tag: 'Frequently asked questions',
+      title: 'What people usually ask.',
+      items: {
+        q1: 'What kinds of businesses do you work with?',
+        a1: 'Restaurants, factories, digital product creators, coaches, e-commerce and service businesses. If you already have sales and operations, we can improve them.',
+        q2: 'How long does it take?',
+        a2: 'Between 4 and 6 weeks for a base implementation.',
+        q3: 'How does the process start?',
+        a3: 'With a conversation. You message us, tell us what your business does, and together we see whether it makes sense to work together. No cost, no commitment.'
+      },
+      more: 'Another question?'
+    },
+    footer: { sub: '<span class="nw">AI-Native</span> Enterprise Engineering', faq: 'Frequently asked questions', rights: '© 2026 STRYV. All rights reserved.' },
+    chat: {
+      fab: 'Chat with Stryvi',
+      hello: "Hi! I'm Stryvi, STRYV's agent. How can I help you?",
+      ph: 'Type your message...',
+      typing: 'Typing...',
+      err: 'Sorry, something went wrong. Please try again.',
+      errNet: 'Connection error. Please try again.'
+    }
+  }
+};
+
+const STRYV_LANGS = ['es', 'en'];
+let currentLang = STRYV_LANGS.includes(window.__STRYV_LANG) ? window.__STRYV_LANG : 'es';
+
+function i18nLookup(lang, key) {
+  return key.split('.').reduce((o, k) => (o == null ? undefined : o[k]), I18N[lang]);
+}
+// Devuelve el texto en el idioma activo; si faltara, cae al español (nunca muestra la clave).
+function t(key, lang) {
+  const v = i18nLookup(lang || currentLang, key);
+  return v !== undefined ? v : i18nLookup('es', key);
+}
+
+function applyI18n(root) {
+  const scope = root || document;
+  scope.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = t(el.dataset.i18n);
+    if (typeof v === 'string' && el.textContent !== v) el.textContent = v;
+  });
+  scope.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = t(el.dataset.i18nHtml);
+    if (typeof v === 'string' && el.innerHTML !== v) el.innerHTML = v; // sólo cadenas propias del diccionario
+  });
+  scope.querySelectorAll('[data-i18n-attr]').forEach(el => {
+    el.dataset.i18nAttr.split(';').forEach(pair => {
+      const [attr, key] = pair.split(':').map(s => s.trim());
+      const v = t(key);
+      if (attr && typeof v === 'string') el.setAttribute(attr, v);
+    });
+  });
+}
+
+function setLanguage(lang, opts) {
+  const persist = !opts || opts.persist !== false;
+  if (!STRYV_LANGS.includes(lang)) lang = 'es';
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  if (persist) { try { localStorage.setItem('stryv_lang', lang); } catch (e) {} }
+  applyI18n();
+  document.title = t('meta.title');
+  document.querySelectorAll('.lang-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  // Respuestas del FAQ abiertas: su altura depende del texto.
+  document.querySelectorAll('.faq-item.open .faq-answer').forEach(a => { a.style.maxHeight = a.scrollHeight + 'px'; });
+  document.dispatchEvent(new CustomEvent('stryv:lang', { detail: { lang } }));
+}
+
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
+  if (b.dataset.lang !== currentLang) setLanguage(b.dataset.lang);
+}));
+
+</script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24), {passive:true});
@@ -1009,73 +1352,6 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, {threshold: .08});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-const solData = {
-  sol1: {
-    num: '01 — Ventas Digitales',
-    title: 'Sistema de ventas y entrega',
-    when: 'Cuando vendes online — cursos, membresías, servicios, consultoría o productos digitales.',
-    desc: 'Del primer clic a la entrega, sin que nadie mueva nada a mano. El cobro, el alta de la cuenta y el acceso ocurren solos y quedan conciliados.',
-    structLabel: 'Lo que construimos:',
-    lista: ['Página de venta con checkout dentro de tu sitio, sin mandar al cliente a otro lado','Cobro único, suscripción o paquetes, con reintento automático cuando la tarjeta falla','Alta de cuenta y acceso al contenido en cuanto se acredita el pago','Portal donde tu cliente cambia su tarjeta o cancela sin escribirte','Cada pago trazable y conciliado, sin dobles cargos ni cobros perdidos','Seguimiento automático a quien no terminó de comprar']
-  },
-  sol2: {
-    num: '02 — Atención Automatizada con IA',
-    title: 'Sistema de atención y soporte',
-    when: 'Cuando te llegan demasiados WhatsApps, DMs, emails o tickets, y eso te hace perder tiempo, seguimiento y clientes.',
-    desc: 'Un agente que contesta con la información real de tu operación, no con respuestas genéricas. Y que sabe cuándo dejar de contestar.',
-    structLabel: 'Lo que construimos:',
-    lista: ['Agente que responde en WhatsApp y en tu sitio conectado a tus datos reales','Reglas explícitas de lo que puede y no puede decir: precios, promesas, consejo profesional','Escala a una persona cuando el caso lo amerita, con el historial completo','Seguimiento automático después de la venta','Cada conversación registrada y medible']
-  },
-  sol3: {
-    num: '03 — Conversión y Retención Local',
-    title: 'Sistema comercial para negocio local',
-    when: 'Cuando tienes un negocio físico — restaurante, clínica, barber, gym — y quieres convertir mejor, dar seguimiento y aumentar recurrencia.',
-    desc: 'El mostrador, la mesa y el celular del cliente corriendo sobre la misma base. Un solo inventario, un solo historial, una sola verdad.',
-    structLabel: 'Lo que construimos:',
-    lista: ['Menú o catálogo digital con pedido a domicilio, para recoger y desde la mesa','Punto de venta conectado al mismo inventario que tu tienda en línea','Kiosco de auto-pedido para bajar la fila y los errores de captura','Reservas o citas con recordatorio automático y control de asistencia','Panel con conversión, ticket promedio y qué se vende cada día','Flujo de reseñas en Google y reactivación por WhatsApp']
-  },
-  sol4: {
-    num: '04 — Operación Interna (OPS / Mini-ERP)',
-    title: 'Sistema de operación interna',
-    when: 'Cuando hay inventario, producción o varias personas operando, y empiezan los errores, pérdidas, retrasos o falta de control.',
-    desc: 'Las reglas de tu negocio viven en la base de datos, no en la cabeza de quien lleva más tiempo. Nadie puede saltárselas desde la pantalla.',
-    structLabel: 'Lo que construimos:',
-    lista: ['Roles con permisos reales: cada persona ve solo lo suyo, aplicado en la base de datos','Inventario por lote con caducidad y trazabilidad de cada movimiento','Pedidos de punta a punta: surtido, empaque, guía, cobro y factura','Bitácora inmutable de quién hizo qué, cuándo y por qué','Control de acceso y asistencia con QR firmado o huella','Tablero de dirección con las métricas que sí obligan a tomar una decisión']
-  },
-  sol5: {
-    num: '05 — Contenido con IA',
-    title: 'Sistema de contenido y presencia',
-    when: 'Cuando necesitas presencia digital constante pero no tienes tiempo ni equipo para producir contenido de forma consistente.',
-    desc: 'Un personaje y una voz que se sostienen pieza tras pieza, con un calendario que no depende de que te acuerdes.',
-    structLabel: 'Lo que construimos:',
-    lista: ['Personaje o mascota de marca que se mantiene idéntica en cada pieza','Video y foto generados con IA, listos para pautar','Guiones y copies con tu voz, no con la del modelo','Calendario de publicación sostenido, no una ráfaga y luego silencio','Campañas de Meta Ads con creativos hechos para probar variantes']
-  }
-};
-
-function openModal(id) {
-  const d = solData[id];
-  if(typeof fbq==='function') fbq('track','ViewContent',{content_name:d.title});
-  const li = d.lista.map(l => { const parts = l.split('('); return parts.length > 1 ? `<li><strong>${parts[0].trim()}</strong>(${parts.slice(1).join('(')}</li>` : `<li><strong>${l}</strong></li>`; }).join('');
-  document.getElementById('sol-modal-content').innerHTML = `
-    <div class="sol-modal-num">${d.num}</div>
-    <h2 class="sol-modal-title">${d.title}</h2>
-    <div class="sol-when"><span>⚡</span><span><strong>Cuándo aplica:</strong> ${d.when}</span></div>
-    <p class="sol-desc">${d.desc}</p>
-    <div class="sol-struct-label">${d.structLabel || 'Estructura del sistema'}</div>
-    <ul class="sol-lista">${li}</ul>
-    <a href="https://wa.me/17373683464" class="btn-lima" target="_blank" style="display:inline-flex;text-decoration:none;margin-top:4px">
-      <svg style="width:14px;height:14px;fill:var(--lima-text);flex-shrink:0"><use href="#wa-icon"/></svg>Escríbenos directo
-    </a>
-  `;
-  document.getElementById('sol-modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('sol-modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 const track = document.getElementById('proyectos-track');
 
@@ -1218,16 +1494,25 @@ if (contactForm) {
   const btn = document.getElementById('submit-btn');
   const errorBox = document.getElementById('form-error');
   const successBox = document.getElementById('form-success');
-  const IDLE_LABEL = btn.textContent;
   let sending = false; // una sola petición en vuelo por formulario
+  let errorMessage = null; // función que devuelve el mensaje en el idioma activo
 
-  const setState = (state, message = '') => {
+  const renderButton = () => { btn.textContent = sending ? t('form.sending') : t('form.submit'); };
+  const setState = (state, message = null) => {
     sending = state === 'sending';
     btn.disabled = sending;
-    btn.textContent = sending ? 'Enviando...' : IDLE_LABEL;
+    renderButton();
+    errorMessage = state === 'error' ? message : null;
     errorBox.hidden = state !== 'error';
-    errorBox.textContent = state === 'error' ? message : '';
+    errorBox.textContent = errorMessage ? errorMessage() : '';
   };
+  // En español se muestra el mensaje del servidor, como hasta ahora; en inglés, el del diccionario.
+  const serverOr = (serverMsg, key) => () => (currentLang === 'es' && serverMsg) ? serverMsg : t(key);
+  // El cambio de idioma sólo re-traduce: no toca valores, estado ni envíos en curso.
+  document.addEventListener('stryv:lang', () => {
+    renderButton();
+    if (!errorBox.hidden && errorMessage) errorBox.textContent = errorMessage();
+  });
 
   const markInvalid = (fields) => {
     contactForm.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
@@ -1288,21 +1573,26 @@ if (contactForm) {
 
       if (res.status === 422 && data.fields) {
         markInvalid(data.fields);
-        setState('error', Object.values(data.fields)[0] || data.error);
+        const field = Object.keys(data.fields)[0];
+        const fieldKey = t('form.err.fields.' + field) ? 'form.err.fields.' + field : 'form.err.review';
+        setState('error', serverOr(Object.values(data.fields)[0] || data.error, fieldKey));
         return;
       }
 
       if (res.status === 429) {
-        setState('error', data.error || 'Ya recibimos tu mensaje. Te respondemos pronto.');
+        setState('error', serverOr(data.error, 'form.err.rate'));
         return;
       }
 
-      setState('error', data.error || 'No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos por WhatsApp.');
+      setState('error', serverOr(data.error, 'form.err.generic'));
     } catch {
-      setState('error', 'Sin conexión. Intenta de nuevo o escríbenos por WhatsApp.');
+      setState('error', () => t('form.err.network'));
     }
   });
 }
+
+// i18n: aplica el idioma detectado en el head. No persiste: sólo la elección manual se guarda.
+setLanguage(currentLang, { persist: false });
 
 // Meta Pixel: track WhatsApp clicks as Contact
 document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
@@ -1686,7 +1976,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     sendBtn.disabled = true;
     addMsg(text, 'user');
     history.push({ role: 'user', content: text });
-    const typing = addMsg('Escribiendo...', 'bot typing');
+    const typing = addMsg(t('chat.typing'), 'bot typing');
     try {
       const res = await fetch(EDGE_URL, {
         method: 'POST',
@@ -1695,12 +1985,12 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       });
       const data = await res.json();
       typing.remove();
-      const reply = data.reply || 'Lo siento, hubo un error. Intenta de nuevo.';
+      const reply = data.reply || t('chat.err');
       addMsg(reply, 'bot');
       history.push({ role: 'assistant', content: reply });
     } catch(e) {
       typing.remove();
-      addMsg('Error de conexión. Intenta de nuevo.', 'bot');
+      addMsg(t('chat.errNet'), 'bot');
     }
     sendBtn.disabled = false;
     input.focus();
