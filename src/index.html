@@ -4,11 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>STRYV Studio | Sistemas Operativos Empresariales AI-Native</title>
+<meta name="description" content="Diseñamos, construimos y evolucionamos sistemas operativos empresariales AI-Native: procesos, datos, roles y equipos conectados en una arquitectura propia.">
+<link rel="canonical" href="https://stryvstudio.com/">
+<!-- Open Graph / X: estáticos en español (los rastreadores sociales no ejecutan JS) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="STRYV Studio">
+<meta property="og:url" content="https://stryvstudio.com/">
+<meta property="og:title" content="STRYV Studio | Sistemas Operativos Empresariales AI-Native">
+<meta property="og:description" content="Diseñamos, construimos y evolucionamos sistemas operativos empresariales AI-Native: procesos, datos, roles y equipos conectados en una arquitectura propia.">
+<meta property="og:image" content="https://stryvstudio.com/assets/images/brand/stryv-icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="STRYV">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="STRYV Studio | Sistemas Operativos Empresariales AI-Native">
+<meta name="twitter:description" content="Diseñamos, construimos y evolucionamos sistemas operativos empresariales AI-Native: procesos, datos, roles y equipos conectados en una arquitectura propia.">
+<meta name="twitter:image" content="https://stryvstudio.com/assets/images/brand/stryv-icon-512.png">
+<meta name="twitter:image:alt" content="STRYV">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://stryvstudio.com/#organization",
+      "name": "STRYV Studio",
+      "alternateName": "STRYV",
+      "url": "https://stryvstudio.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://stryvstudio.com/assets/images/brand/stryv-icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "STRYV Studio diseña, construye y evoluciona sistemas operativos empresariales AI-Native: procesos, datos, roles y equipos conectados en una arquitectura propia para cada empresa.",
+      "sameAs": [
+        "https://www.instagram.com/stryv.studio/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://stryvstudio.com/#website",
+      "name": "STRYV Studio",
+      "url": "https://stryvstudio.com/",
+      "inLanguage": "es",
+      "publisher": {
+        "@id": "https://stryvstudio.com/#organization"
+      }
+    }
+  ]
+}
+</script>
 <script>
-/* i18n: idioma inicial antes del primer pintado. Preferencia manual > navegador inglés > español. */
-(function(){var l=null;try{l=localStorage.getItem('stryv_lang');}catch(e){}
-if(l!=='es'&&l!=='en'){var n=(navigator.languages&&navigator.languages[0])||navigator.language||'';l=/^en\b/i.test(n)?'en':'es';}
-document.documentElement.lang=l;window.__STRYV_LANG=l;})();
+/* i18n: el idioma lo fija la ruta (/ = es, /en/ = en). Sin detección por navegador ni redirecciones. */
+window.__STRYV_LANG=document.documentElement.lang==='en'?'en':'es';
 </script>
 
 <!-- Meta Pixel Code -->
@@ -118,9 +167,9 @@ nav {
 nav { grid-template-columns: auto 1fr auto auto; }
 .nav-cta.nav-cta-desktop { grid-column: 4; }
 .lang-switch { grid-column: 3; grid-row: 1; display: inline-flex; align-items: center; gap: 2px; margin-right: 12px; padding: 2px; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; }
-.lang-btn { min-width: 34px; min-height: 28px; padding: 0 9px; border: 0; border-radius: 999px; background: transparent; color: rgba(255,255,255,0.55); font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .08em; cursor: pointer; transition: color .15s, background .15s; }
+.lang-btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; min-width: 34px; min-height: 28px; padding: 0 9px; border: 0; border-radius: 999px; background: transparent; color: rgba(255,255,255,0.55); font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .08em; cursor: pointer; transition: color .15s, background .15s; }
 .lang-btn:hover { color: #ffffff; }
-.lang-btn[aria-pressed="true"] { background: var(--accent); color: #ffffff; }
+.lang-btn[aria-current="page"] { background: var(--accent); color: #ffffff; }
 .lang-btn:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
 @media(max-width:900px){ .lang-switch { grid-column: 2; margin-right: 6px; } .lang-btn { min-width: 40px; min-height: 36px; } }
 /* Seis enlaces: entre 901 y 1180 px se compactan para no partir la barra en dos filas. */
@@ -553,8 +602,8 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <svg><use href="#wa-icon"/></svg><span data-i18n="common.talk">Hablemos</span>
   </a>
   <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:nav.lang">
-    <button type="button" class="lang-btn" data-lang="es" lang="es" aria-label="Español" aria-pressed="true">ES</button>
-    <button type="button" class="lang-btn" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+    <a class="lang-btn" href="/" hreflang="es" lang="es" data-lang="es" aria-label="Español" aria-current="page">ES</a>
+    <a class="lang-btn" href="/en/" hreflang="en" lang="en" data-lang="en" aria-label="English">EN</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Abrir menú" data-i18n-attr="aria-label:nav.menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -658,7 +707,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     <div class="sala-left">
       <div class="sala-eyebrow" data-i18n="sala.eyebrow">Plataforma por industria · Disponible</div>
       <div class="sala-logo-chip">
-        <img src="assets/images/sala/logo-sala.png" alt="SALA Studio">
+        <img src="/assets/images/sala/logo-sala.png" alt="SALA Studio">
       </div>
       <h3 class="sala-title" data-i18n="sala.title">El software que corre gimnasios y estudios.</h3>
       <p class="sala-desc" data-i18n="sala.desc">La misma operación digital que implementamos a medida, ya empaquetada como producto. Reservas, membresías y check-in en una plataforma con tu marca y tu dominio — no la nuestra.</p>
@@ -681,7 +730,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
     </div>
     <div class="sala-shots">
       <div class="sala-browser">
-        <img class="sala-bleed" src="assets/images/sala/sala-agenda.png" alt="Agenda y reservas en SALA" data-i18n-attr="alt:sala.alt" loading="lazy">
+        <img class="sala-bleed" src="/assets/images/sala/sala-agenda.png" alt="Agenda y reservas en SALA" data-i18n-attr="alt:sala.alt" loading="lazy">
       </div>
     </div>
   </div>
@@ -969,7 +1018,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
           <label for="priv" data-i18n="form.priv">Acepto la política de privacidad</label>
         </div>
         <p class="form-error" id="form-error" role="alert" hidden></p>
-        <button type="submit" class="btn-submit" id="submit-btn">Enviar mensaje</button>
+        <button type="submit" class="btn-submit" id="submit-btn" data-i18n="form.submit">Enviar mensaje</button>
       </form>
       <div id="form-success" style="display:none;text-align:center;padding:32px 0;">
         <div style="font-size:32px;margin-bottom:12px;">✓</div>
@@ -1079,9 +1128,9 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
 // Inglés: traducción provisional, pendiente de revisión editorial salvo hero.v3.
 const I18N = {
   es: {
-    meta: { title: 'STRYV Studio | Sistemas Operativos Empresariales AI-Native' }, // provisional hasta SEO internacional
+    meta: { title: 'STRYV Studio | Sistemas Operativos Empresariales AI-Native', description: 'Diseñamos, construimos y evolucionamos sistemas operativos empresariales AI-Native: procesos, datos, roles y equipos conectados en una arquitectura propia.', orgDescription: 'STRYV Studio diseña, construye y evoluciona sistemas operativos empresariales AI-Native: procesos, datos, roles y equipos conectados en una arquitectura propia para cada empresa.' }, // provisional
     common: { talk: 'Hablemos', writeUs: 'Escríbenos directo' },
-    nav: { soluciones: 'Core Business', metodo: 'Metodología', sala: 'Productos', proyectos: 'Proyectos', faq: 'FAQ', contacto: 'Contacto', menu: 'Abrir menú', lang: 'Idioma' },
+    nav: { switchConfirm: 'Tienes un mensaje sin enviar en el formulario. Si cambias de idioma se perderá. ¿Continuar?', soluciones: 'Core Business', metodo: 'Metodología', sala: 'Productos', proyectos: 'Proyectos', faq: 'FAQ', contacto: 'Contacto', menu: 'Abrir menú', lang: 'Idioma' },
     hero: {
       kicker: '<span class="nw">AI-Native</span> Engineering Studio',
       // Copy V3 aprobado. Kicker aprobado en V3-D1, igual en ambos idiomas.
@@ -1180,9 +1229,9 @@ const I18N = {
     }
   },
   en: {
-    meta: { title: 'STRYV Studio | AI-Native Business Operating Systems' },
+    meta: { title: 'STRYV Studio | AI-Native Business Operating Systems', description: 'We design, build and evolve AI-Native business operating systems: processes, data, roles and teams connected in a proprietary architecture.', orgDescription: 'STRYV Studio designs, builds and evolves AI-Native business operating systems: processes, data, roles and teams connected in a proprietary architecture for each company.' },
     common: { talk: "Let's talk", writeUs: 'Message us directly' },
-    nav: { soluciones: 'Core Business', metodo: 'Methodology', sala: 'Products', proyectos: 'Projects', faq: 'FAQ', contacto: 'Contact', menu: 'Open menu', lang: 'Language' },
+    nav: { switchConfirm: 'You have an unsent message in the form. Switching language will discard it. Continue?', soluciones: 'Core Business', metodo: 'Methodology', sala: 'Products', proyectos: 'Projects', faq: 'FAQ', contacto: 'Contact', menu: 'Open menu', lang: 'Language' },
     hero: {
       kicker: '<span class="nw">AI-Native</span> Engineering Studio',
       v3: {
@@ -1320,14 +1369,34 @@ function setLanguage(lang, opts) {
   if (persist) { try { localStorage.setItem('stryv_lang', lang); } catch (e) {} }
   applyI18n();
   document.title = t('meta.title');
-  document.querySelectorAll('.lang-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', t('meta.description'));
+  document.querySelectorAll('.lang-btn').forEach(b => { if (b.dataset.lang === lang) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
   // Respuestas del FAQ abiertas: su altura depende del texto.
   document.querySelectorAll('.faq-item.open .faq-answer').forEach(a => { a.style.maxHeight = a.scrollHeight + 'px'; });
   document.dispatchEvent(new CustomEvent('stryv:lang', { detail: { lang } }));
 }
 
-document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
-  if (b.dataset.lang !== currentLang) setLanguage(b.dataset.lang);
+// Cambio de idioma = navegación real entre / y /en/. Conserva la sección visible y
+// avisa antes de descartar un mensaje del formulario sin enviar.
+const LANG_PATHS = { es: '/', en: '/en/' };
+function currentSectionId() {
+  let id = '';
+  document.querySelectorAll('body > section[id]').forEach(sec => { if (sec.getBoundingClientRect().top <= 120) id = sec.id; });
+  return id;
+}
+function formHasDraft() {
+  const f = document.getElementById('contact-form');
+  if (!f || f.hidden) return false;
+  return [...f.querySelectorAll('input:not([type=checkbox]):not([name=website]), textarea')].some(el => el.value.trim() !== '');
+}
+document.querySelectorAll('.lang-btn').forEach(a => a.addEventListener('click', e => {
+  const target = a.dataset.lang;
+  if (target === currentLang) { e.preventDefault(); return; }
+  if (formHasDraft() && !window.confirm(t('nav.switchConfirm'))) { e.preventDefault(); return; }
+  const id = currentSectionId();
+  a.href = LANG_PATHS[target] + (id ? '#' + id : '');
+  try { localStorage.setItem('stryv_lang', target); } catch (err) {}
 }));
 
 </script>

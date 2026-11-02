@@ -1,0 +1,19 @@
+# STRYV Studio · https://stryvstudio.com/
+# Todo el sitio es público. Esta política no restringe a ningún rastreador:
+# replica el comportamiento previo (sin robots.txt) y declara el sitemap.
+# Los rastreadores de entrenamiento siguen la regla general, sin cambios.
+
+User-agent: *
+Allow: /
+
+# Buscadores y búsqueda con IA, declarados explícitamente para que un cambio
+# futuro en la regla general no los bloquee por accidente.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: OAI-SearchBot
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://stryvstudio.com/sitemap.xml
