@@ -144,5 +144,6 @@ ${Object.keys(LANGS).map(l => `  <url>\n    <loc>${url(l)}</loc>\n${links}\n  </
 </urlset>
 `);
 cpSync(join(ROOT, 'robots.txt'), join(DIST, 'robots.txt'));
-cpSync(join(ROOT, 'assets'), join(DIST, 'assets'), { recursive: true });
+// assets/videos/ son los originales viejos (cientos de MB) que la página ya no usa: no se publican.
+cpSync(join(ROOT, 'assets'), join(DIST, 'assets'), { recursive: true, filter: p => !p.startsWith(join(ROOT, 'assets', 'videos')) });
 console.log(report.join('\n') + '\nsitemap.xml · robots.txt · assets/ → dist/');
