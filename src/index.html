@@ -1015,7 +1015,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
         <div class="fg"><label data-i18n="form.mensaje">¿Qué necesita tu negocio?</label><textarea name="mensaje" placeholder="Contanos brevemente qué hace tu negocio y qué quieres mejorar." data-i18n-attr="placeholder:form.ph.mensaje" maxlength="2000"></textarea></div>
         <div class="form-check">
           <input type="checkbox" id="priv" required>
-          <label for="priv" data-i18n="form.priv">Acepto la política de privacidad</label>
+          <label for="priv" data-i18n-html="form.priv">Acepto el <a href="/privacidad/" target="_blank" rel="noopener">aviso de privacidad</a></label>
         </div>
         <p class="form-error" id="form-error" role="alert" hidden></p>
         <button type="submit" class="btn-submit" id="submit-btn" data-i18n="form.submit">Enviar mensaje</button>
@@ -1076,6 +1076,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
       <a href="#soluciones" data-i18n="nav.soluciones">Core Business</a>
       <a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a>
       <a href="#faq" data-i18n="footer.faq">Preguntas frecuentes</a>
+      <span data-i18n-html="footer.privlink"><a href="/privacidad/">Aviso de privacidad</a></span>
       <a href="#contacto" data-i18n="nav.contacto">Contacto</a>
     </div>
     <div class="footer-contact">
@@ -1192,7 +1193,7 @@ const I18N = {
       title: 'O déjanos tu mensaje',
       nombre: 'Nombre', apellido: 'Apellido', email: 'Correo electrónico', wa: 'WhatsApp', mensaje: '¿Qué necesita tu negocio?',
       ph: { nombre: 'Tu nombre', apellido: 'Apellido', email: 'email@empresa.com', mensaje: 'Contanos brevemente qué hace tu negocio y qué quieres mejorar.' },
-      priv: 'Acepto la política de privacidad',
+      priv: 'Acepto el <a href="/privacidad/" target="_blank" rel="noopener">aviso de privacidad</a>',
       submit: 'Enviar mensaje',
       sending: 'Enviando...',
       ok: '¡Mensaje enviado!',
@@ -1218,7 +1219,7 @@ const I18N = {
       },
       more: '¿Otra pregunta?'
     },
-    footer: { sub: 'Ingeniería empresarial <span class="nw">AI-Native</span>', faq: 'Preguntas frecuentes', rights: '© 2026 STRYV. Todos los derechos reservados.' },
+    footer: { sub: 'Ingeniería empresarial <span class="nw">AI-Native</span>', faq: 'Preguntas frecuentes', privlink: '<a href="/privacidad/">Aviso de privacidad</a>', rights: '© 2026 STRYV. Todos los derechos reservados.' },
     chat: {
       fab: 'Chatear con Stryvi',
       hello: '¡Hola! Soy Stryvi, el agente de STRYV. ¿En qué puedo ayudarte?',
@@ -1292,7 +1293,7 @@ const I18N = {
       title: 'Or leave us a message',
       nombre: 'First name', apellido: 'Last name', email: 'Email', wa: 'WhatsApp', mensaje: 'What does your business need?',
       ph: { nombre: 'Your first name', apellido: 'Last name', email: 'email@company.com', mensaje: 'Tell us briefly what your business does and what you want to improve.' },
-      priv: 'I accept the privacy policy',
+      priv: 'I accept the <a href="/en/privacy/" target="_blank" rel="noopener">privacy notice</a>',
       submit: 'Send message',
       sending: 'Sending...',
       ok: 'Message sent!',
@@ -1318,7 +1319,7 @@ const I18N = {
       },
       more: 'Another question?'
     },
-    footer: { sub: '<span class="nw">AI-Native</span> Enterprise Engineering', faq: 'Frequently asked questions', rights: '© 2026 STRYV. All rights reserved.' },
+    footer: { sub: '<span class="nw">AI-Native</span> Enterprise Engineering', faq: 'Frequently asked questions', privlink: '<a href="/en/privacy/">Privacy notice</a>', rights: '© 2026 STRYV. All rights reserved.' },
     chat: {
       fab: 'Chat with Stryvi',
       hello: "Hi! I'm Stryvi, STRYV's agent. How can I help you?",

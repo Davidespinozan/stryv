@@ -144,6 +144,11 @@ ${Object.keys(LANGS).map(l => `  <url>\n    <loc>${url(l)}</loc>\n${links}\n  </
 </urlset>
 `);
 cpSync(join(ROOT, 'robots.txt'), join(DIST, 'robots.txt'));
+// Aviso de privacidad: páginas estáticas, una por idioma.
+mkdirSync(join(DIST, 'privacidad'), { recursive: true });
+mkdirSync(join(DIST, 'en', 'privacy'), { recursive: true });
+cpSync(join(ROOT, 'src/legal/privacidad.html'), join(DIST, 'privacidad/index.html'));
+cpSync(join(ROOT, 'src/legal/privacy.html'), join(DIST, 'en/privacy/index.html'));
 // assets/videos/ son los originales viejos (cientos de MB) que la página ya no usa: no se publican.
 cpSync(join(ROOT, 'assets'), join(DIST, 'assets'), { recursive: true, filter: p => !p.startsWith(join(ROOT, 'assets', 'videos')) });
 console.log(report.join('\n') + '\nsitemap.xml · robots.txt · assets/ → dist/');
