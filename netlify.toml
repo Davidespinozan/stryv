@@ -1,0 +1,9 @@
+# STRYV · landing bilingüe. Netlify ejecuta el build (Node, sin dependencias)
+# y publica sólo dist/: las páginas ES y EN, sitemap, robots.txt y assets.
+# Los archivos fuente (src/, scripts/, supabase/) dejan de publicarse.
+[build]
+  command = "node scripts/build.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
