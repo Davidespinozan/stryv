@@ -801,6 +801,47 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 .proyectos-track { max-width: 1248px; padding: 4px 24px 20px; }
 .prod-head, .prod-more, .sala-ad { max-width: 1200px; }
 .sala { padding: 64px 24px; }
+/* ── Plataformas STRYV ── */
+.vplat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 46px; }
+.vpc, .vcaso { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: 0 1px 2px rgba(11,45,80,.04), 0 24px 50px -32px rgba(11,45,80,.3); transition: transform .25s, box-shadow .25s, border-color .25s; }
+.vpc:hover, .vcaso:hover { transform: translateY(-4px); border-color: rgba(14,165,233,.4); box-shadow: 0 30px 60px -30px rgba(14,165,233,.4); }
+.vpc-img, .vcaso-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #EAF2F8; border-bottom: 1px solid var(--line); }
+.vpc-img img, .vcaso-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.vpc:hover .vpc-img img, .vcaso:hover .vcaso-img img { transform: scale(1.04); }
+.vpc-duo { display: grid; grid-template-columns: 1fr 1fr; }
+.vpc-duo img + img { border-left: 2px solid #fff; }
+.vpc-mock { display: grid; place-items: center; padding: 18px; background: radial-gradient(70% 90% at 80% 0%, rgba(14,165,233,.18), transparent 70%), linear-gradient(160deg, #F8FBFE, #EAF2F8); }
+.vmock { width: 100%; max-width: 330px; background: #fff; border: 1px solid var(--line2); border-radius: 14px; padding: 12px 14px; box-shadow: 0 20px 40px -24px rgba(11,45,80,.4); font-size: 11.5px; }
+.vmock-h { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; margin-bottom: 4px; border-bottom: 1px solid var(--line); color: var(--ink-muted); }
+.vmock-h b { color: var(--ink); font-weight: 600; letter-spacing: .02em; }
+.vmock-r { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); color: var(--ink); }
+.vmock-r:last-child { border-bottom: 0; }
+.vmock-r i { font-style: normal; color: var(--ink-muted); white-space: nowrap; }
+.vmock-r i.ok { color: var(--ok); } .vmock-r i.warn { color: #D97706; }
+.vpc-body, .vcaso-body { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px 22px; flex: 1; }
+.vpc-giro { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: #0B7798; }
+.vpc h3, .vcaso h3 { margin: 0; font-size: 22px; letter-spacing: -.025em; font-weight: 700; color: var(--ink); }
+.vpc p, .vcaso p { margin: 0; color: var(--ink-muted); font-size: 15px; line-height: 1.55; }
+.vchips { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; padding: 0; }
+.vchips li { font-size: 12.5px; padding: 5px 10px; border-radius: 99px; background: var(--sky); color: #0B5F79; border: 1px solid rgba(14,165,233,.25); }
+.vpc-pie { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-muted); }
+.vpc-usan b { color: var(--ink); font-weight: 600; }
+.vlink { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; color: #0B7798; text-decoration: none; white-space: nowrap; }
+.vlink:hover { color: var(--cy); }
+/* ── Sistemas en operación ── */
+.vcasos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 46px; }
+.vcaso--top { grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 1fr; }
+.vcaso--top .vcaso-img { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--line); }
+.vcaso--top .vcaso-body { padding: 30px 32px; gap: 12px; justify-content: center; }
+.vcaso--top h3 { font-size: 30px; }
+.vcaso:nth-child(4) { grid-column: auto; }
+.vbul { list-style: none; margin: 2px 0 0; padding: 0; display: grid; gap: 7px; }
+.vbul li { position: relative; padding-left: 22px; font-size: 14.5px; color: var(--ink); line-height: 1.45; }
+.vbul li::before { content: ""; position: absolute; left: 2px; top: 6px; width: 10px; height: 10px; border-radius: 3px; background: linear-gradient(135deg, var(--cy), var(--in)); }
+.vtech { font-size: 12px !important; color: #0B7798 !important; background: #F1F8FC; border: 1px solid rgba(14,165,233,.2); border-radius: 10px; padding: 8px 11px; line-height: 1.5 !important; }
+.vcaso-body .vlink { margin-top: auto; padding-top: 4px; }
+@media(max-width:980px){ .vplat { grid-template-columns: 1fr; max-width: 560px; } .vcasos { grid-template-columns: 1fr; } .vcaso--top { grid-template-columns: 1fr; } .vcaso--top .vcaso-img { aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); } .vcaso--top .vcaso-body { padding: 22px; } .vcaso--top h3 { font-size: 24px; } }
+
 @media (prefers-reduced-motion: reduce) { .ia, .vfranja > div, .vbtn-p::after, .vh-anillo { animation: none !important; } }
 
 </style>
@@ -822,7 +863,7 @@ footer { background: #fff; border-top: 1px solid var(--line); }
   <ul class="nav-links" id="nav-links">
     <li><a href="#soluciones" data-i18n="nav.soluciones">Qué hacemos</a></li>
     <li><a href="#metodologia" data-i18n="nav.metodo">Metodología</a></li>
-    <li><a href="#sala-studio" data-i18n="nav.sala">Productos</a></li>
+    <li><a href="#sala-studio" data-i18n="nav.sala">Plataformas</a></li>
     <li><a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
     <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
     <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
@@ -914,293 +955,72 @@ footer { background: #fff; border-top: 1px solid var(--line); }
   </div>
 </section>
 
-<!-- SALA STUDIO -->
-<section class="sala" id="sala-studio" aria-labelledby="prod-title">
-  <div class="prod-head reveal">
-    <div class="tag"><span data-i18n="prod.tag">Productos propios</span></div>
-    <h2 class="prod-title" id="prod-title" data-i18n="prod.title">También desarrollamos productos propios.</h2>
-    <p class="prod-sub" data-i18n="prod.sub">La misma ingeniería, en productos listos para usar.</p>
-  </div>
-  <div class="sala-ad reveal">
-    <div class="sala-left">
-      <div class="sala-eyebrow" data-i18n="sala.eyebrow">Plataforma por industria · Disponible</div>
-      <div class="sala-logo-chip">
-        <img src="/assets/images/sala/logo-sala.png" alt="SALA Studio">
-      </div>
-      <h3 class="sala-title" data-i18n="sala.title">El software que corre gimnasios y estudios.</h3>
-      <p class="sala-desc" data-i18n="sala.desc">Reservas, membresías y check-in en una sola plataforma, con tu marca y tu dominio.</p>
-      <div class="sala-feats">
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f1">Reservas y agenda de clases</span></div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f2">Socios y membresías</span></div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f3">Check-in con QR</span></div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f4">Tu propia app con tu marca</span></div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f5">Quién sigue y quién se va</span></div>
-        <div class="sala-feat"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#a8d4bc" stroke-width="1.2"/><path d="M5 8l2.2 2.2L11 5.5" stroke="#a8d4bc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="sala.feats.f6">Varias sucursales</span></div>
-      </div>
-      <div class="sala-actions">
-        <a href="https://salastudio.app" class="btn-sala" target="_blank" rel="noopener">
-          <span data-i18n="sala.cta">Conocer SALA Studio</span>
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#contacto" class="btn-sala-ghost" data-i18n="sala.ghost">Hablar con el equipo</a>
-      </div>
-      <p class="sala-note" data-i18n="sala.note">7 días gratis · cancela cuando quieras</p>
-    </div>
-    <div class="sala-shots">
-      <div class="sala-browser">
-        <img class="sala-bleed" src="/assets/images/sala/sala-agenda.png" alt="Agenda y reservas en SALA" data-i18n-attr="alt:sala.alt" loading="lazy">
-      </div>
-    </div>
-  </div>
-  <div class="prod-more">
-    <div class="prod-group reveal">
-      <h3 class="prod-group-title" data-i18n="prod.industryTitle">Sistemas por industria · Próximamente</h3>
-      <ul class="prod-list">
-        <li class="prod-item">
-          <div class="prod-item-head"><span class="prod-name">STRYV Restaurant</span><span class="prod-status" data-i18n="prod.restaurant.status">En desarrollo</span></div>
-          <p class="prod-desc" data-i18n="prod.restaurant.desc">Plataforma para restaurantes.</p>
-        </li>
-        <li class="prod-item">
-          <div class="prod-item-head"><span class="prod-name">Notary Systems</span><span class="prod-status" data-i18n="prod.notary.status">Planeado</span></div>
-          <p class="prod-desc" data-i18n="prod.notary.desc">Sistema para notarías.</p>
-        </li>
-      </ul>
-    </div>
-    <div class="prod-group reveal d1">
-      <h3 class="prod-group-title" data-i18n="prod.appsTitle">Aplicaciones propias</h3>
-      <ul class="prod-list">
-        <li class="prod-item">
-          <div class="prod-item-head"><span class="prod-name">Healthy Space Club</span><span class="prod-status prod-status--app" data-i18n="prod.healthy.status">App de consumo</span></div>
-          <p class="prod-desc" data-i18n="prod.healthy.desc">App de fitness, nutrición y bienestar para personas.</p>
-          <a class="prod-link" href="https://healthyspaceclub.com" target="_blank" rel="noopener" data-i18n="prod.healthy.link">healthyspaceclub.com ↗</a>
-        </li>
-      </ul>
+<!-- PLATAFORMAS STRYV (ancla histórica #sala-studio) -->
+<section class="vs" id="sala-studio" aria-labelledby="plat-title">
+  <div class="vwrap">
+    <div class="reveal"><div class="tag"><span data-i18n="plat.tag">Plataformas</span></div>
+    <h2 class="section-title" id="plat-title" data-i18n="plat.title">Plataformas STRYV.</h2>
+    <p class="section-sub" data-i18n="plat.sub">Productos listos para operar, construidos con la misma ingeniería que nuestros sistemas a la medida.</p></div>
+    <div class="vplat">
+      <article class="vpc reveal">
+        <div class="vpc-img"><img src="/assets/casos/sala.jpg" alt="SALA" loading="lazy" width="1200" height="750"></div>
+        <div class="vpc-body"><span class="vpc-giro mono" data-i18n="plat.sala.giro">Gimnasios y estudios</span><h3>SALA</h3><p data-i18n="plat.sala.desc">Reservas, membresías, caja, tienda y acceso con huella, con la marca y el dominio de cada gimnasio.</p><ul class="vchips"><li data-i18n="plat.sala.f1">Cobros con tarjeta directo a cada gimnasio</li><li data-i18n="plat.sala.f2">App para socios</li><li data-i18n="plat.sala.f3">Check-in con QR o huella</li><li data-i18n="plat.sala.f4">Varias sucursales</li></ul>
+          <div class="vpc-pie"><span class="vpc-usan"><span data-i18n="plat.usa">Lo usa</span> <b>EKKO Studio</b></span><a class="vlink" href="https://salastudio.app" target="_blank" rel="noopener"><span data-i18n="plat.sala.cta">Conocer SALA</span> ↗</a></div></div>
+      </article>
+      <article class="vpc reveal d1">
+        <div class="vpc-img vpc-duo"><img src="/assets/casos/anastacio.jpg" alt="Anastacio Marisquería" loading="lazy" width="1200" height="750"><img src="/assets/casos/fukuroll.jpg" alt="Fukuroll" loading="lazy" width="1200" height="750"></div>
+        <div class="vpc-body"><span class="vpc-giro mono" data-i18n="plat.rest.giro">Restaurantes</span><h3>STRYV Restaurant</h3><p data-i18n="plat.rest.desc">Menú digital, pedidos con pago en línea, mesas por QR, cocina y caja, que siguen funcionando aunque se caiga el internet.</p><ul class="vchips"><li data-i18n="plat.rest.f1">Pedidos a domicilio y para recoger</li><li data-i18n="plat.rest.f2">Pedidos desde la mesa por QR</li><li data-i18n="plat.rest.f3">Cocina en tiempo real</li><li data-i18n="plat.rest.f4">Impresión de tickets</li></ul>
+          <div class="vpc-pie"><span class="vpc-usan"><span data-i18n="plat.usan">Lo usan</span> <b>Anastacio · Fukuroll</b></span><a class="vlink" href="https://anastaciomarisqueria.com" target="_blank" rel="noopener"><span data-i18n="plat.rest.cta">Ver en Anastacio</span> ↗</a></div></div>
+      </article>
+      <article class="vpc reveal d2">
+        <div class="vpc-img vpc-mock" aria-hidden="true"><div class="vmock mono"><div class="vmock-h"><b>Nuven</b><span>Expediente 2026/0142</span></div><div class="vmock-r"><span>Compraventa · inmueble</span><i class="ok">Requisitos 8/8</i></div><div class="vmock-r"><span>Protocolo · instrumento 4 512</span><i>Folio automático</i></div><div class="vmock-r"><span>Aviso UIF</span><i class="warn">Vence en 6 días</i></div><div class="vmock-r"><span>Escritura.pdf</span><i>Plantilla lista</i></div></div></div>
+        <div class="vpc-body"><span class="vpc-giro mono" data-i18n="plat.nuven.giro">Notarías</span><h3>Nuven</h3><p data-i18n="plat.nuven.desc">Expedientes, citas, protocolo, caja y avisos UIF en un solo lugar, con los datos de cada notaría blindados.</p><ul class="vchips"><li data-i18n="plat.nuven.f1">Expedientes y comparecientes</li><li data-i18n="plat.nuven.f2">Protocolo con folio automático</li><li data-i18n="plat.nuven.f3">Avisos UIF con plazos</li><li data-i18n="plat.nuven.f4">Plantillas a PDF</li></ul>
+          <div class="vpc-pie"><span></span><a class="vlink" href="#contacto"><span data-i18n="plat.nuven.cta">Solicita una demo</span> →</a></div></div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- PROYECTOS -->
-<section class="proyectos" id="proyectos">
-  <div class="proyectos-header reveal">
-    <div>
-      <div class="tag">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span data-i18n="proyectos.tag">Casos reales</span>
-      </div>
-      <h2 class="section-title" data-i18n-html="proyectos.title">Lo que hemos<br>construido.</h2>
-      <p class="section-sub" style="margin-top:10px;max-width:560px;" data-i18n="proyectos.sub">Una muestra de proyectos recientes. Da clic en cualquiera para verlo en acción.</p>
-    </div>
-  </div>
-  <div class="proyectos-track" id="proyectos-track">
-    <div class="proyecto-card reveal d1" data-categories="4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p01.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p01-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Cubopolar</strong><span>ERP de fábrica de hielo: pedidos, facturación CFDI y cobros</span></div>
-    </div>
-    <div class="proyecto-card reveal d2" data-categories="1,3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal2()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p02.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p02-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Anastacio</strong><span>Menú digital bilingüe con pedido a domicilio, para recoger y desde la mesa</span></div>
-    </div>
-    <div class="proyecto-card reveal d3" data-categories="1,3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal3()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p03.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p03-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="proyecto-card reveal d4" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal4()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p04.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p04-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal5()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p05.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p05-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Healthy Space Club</strong><span>Club digital: plan de alimentación, recetas en video y rutinas semanales</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="5" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal7()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p06.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p06-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Anastacio</strong><span>Personaje de marca generado con IA, idéntico en cada pieza</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal12()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p07.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p07-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>ArtFrame Studio</strong><span>Configurador de cuadros con precio instantáneo y pago con Stripe</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal8()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p08.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p08-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Anastacio</strong><span>Panel de pedidos con conversión, ticket promedio y exportación a CSV</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="5" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal9()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p09.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p09-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Anastacio</strong><span>Campaña de contenido con IA para redes</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal11()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p10.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p10-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal10()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p11.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p11-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>HOGAR</strong><span>Venta del programa con pago único y alta de cuenta automática</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal6()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p12.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p12-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Luz Espinoza</strong><span>Guía digital con checkout propio y acceso inmediato tras el pago</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal13()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p13.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p13-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Cravia</strong><span>Panel de administración de la operación</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal14()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p14.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p14-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Cravia</strong><span>Tienda en línea conectada al inventario</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="3,4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal15()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p15.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p15-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Cravia</strong><span>Punto de venta en mostrador</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal16()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p16.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p16-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Cravia</strong><span>Kiosco de auto-pedido</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="1,2" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal17()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p17.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p17-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="3" style="background:#000;border-color:#333;cursor:pointer;" onclick="openVideoModal18()">
-      <video muted loop playsinline preload="none" poster="/assets/proyectos/p18.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source data-src="/assets/proyectos/p18-vista.mp4" type="video/mp4">
-      </video>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0D1117"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>MetalMad</strong><span>Catálogo de acero CNC con carrito y pedido por WhatsApp</span></div>
-    </div>
-    <div class="proyecto-card reveal" data-categories="2,4" style="background:#000;border-color:#333;cursor:pointer;" onclick="openImageModal1()">
-      <img src="/assets/proyectos/automatizacion.jpg" alt="Workflow de automatización" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s;" class="play-overlay">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D1117" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-      </div>
-      <div class="proyecto-cap"><strong>Automatización</strong><span>Workflow que conecta los sistemas y corre sin intervención</span></div>
-    </div></div>
+<!-- SISTEMAS EN OPERACIÓN (ancla #proyectos) -->
+<section class="vs" id="proyectos" aria-labelledby="casos-title">
+  <div class="vwrap">
+    <div class="reveal"><div class="tag"><span data-i18n="casos.tag">Casos reales</span></div>
+    <h2 class="section-title" id="casos-title" data-i18n="casos.title">Sistemas en operación.</h2>
+    <p class="section-sub" data-i18n="casos.sub">Cada uno opera hoy un negocio real.</p></div>
+    <div class="vcasos">
+      <article class="vcaso vcaso--top reveal">
+        <a class="vcaso-img" href="https://renovacell.mx" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/assets/casos/renovacell.jpg" alt="" loading="lazy" width="1200" height="750"></a>
+        <div class="vcaso-body"><span class="vpc-giro mono" data-i18n="casos.reno.giro">Salud · Distribución a médicos</span><h3>Renovacell</h3><p data-i18n="casos.reno.desc">Un agente de IA atiende a los médicos por WhatsApp, Instagram, Messenger y el portal, con datos reales del negocio. El sistema verifica, surte, envía y factura.</p><ul class="vbul"><li data-i18n="casos.reno.b1">Verificación de médicos con cédula e INE</li><li data-i18n="casos.reno.b2">Almacén por caducidad, empaque y guías de envío</li><li data-i18n="casos.reno.b3">CRM, cobro con tarjeta y facturación CFDI</li></ul>
+          <p class="vtech mono" data-i18n="casos.reno.tech">Agente IA (Claude) · WhatsApp Cloud API · 9 roles · 33 funciones en la nube</p>
+          <a class="vlink" href="https://renovacell.mx" target="_blank" rel="noopener"><span data-i18n="casos.ver">Ver sitio</span> ↗</a></div>
+      </article>
+      <article class="vcaso reveal">
+        <a class="vcaso-img" href="https://cubopolar.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/assets/casos/cubopolar.jpg" alt="" loading="lazy" width="1200" height="750"></a>
+        <div class="vcaso-body"><span class="vpc-giro mono" data-i18n="casos.cubo.giro">Industria · Fábrica de hielo</span><h3>Cubopolar</h3><p data-i18n="casos.cubo.desc">Toda la fábrica en un sistema: producción, cuartos fríos, rutas de reparto, cobranza y facturas SAT.</p><ul class="vbul"><li data-i18n="casos.cubo.b1">App de chofer que funciona sin señal, con GPS</li><li data-i18n="casos.cubo.b2">Cobranza, crédito y corte de caja</li><li data-i18n="casos.cubo.b3">Nómina, asistencia y alertas automáticas</li></ul>
+          <p class="vtech mono" data-i18n="casos.cubo.tech">CFDI 4.0 · 7 roles · +950 pruebas automáticas · App instalable</p>
+          <a class="vlink" href="https://cubopolar.com" target="_blank" rel="noopener"><span data-i18n="casos.ver">Ver sitio</span> ↗</a></div>
+      </article>
+      <article class="vcaso reveal d1">
+        <a class="vcaso-img" href="https://ekkostudio.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/assets/casos/ekko.jpg" alt="" loading="lazy" width="1200" height="750"></a>
+        <div class="vcaso-body"><span class="vpc-giro mono" data-i18n="casos.ekko.giro">Estudios para creadores · SALA</span><h3>EKKO Studio</h3><p data-i18n="casos.ekko.desc">Membresías con cobro recurrente, reservas de estudios y check-in con QR desde el celular.</p>
+          <p class="vtech mono" data-i18n="casos.ekko.tech">Cobro recurrente · App instalable · Pruebas antes de cada publicación</p>
+          <a class="vlink" href="https://ekkostudio.app" target="_blank" rel="noopener"><span data-i18n="casos.ver">Ver sitio</span> ↗</a></div>
+      </article>
+      <article class="vcaso reveal">
+        <a class="vcaso-img" href="https://anastaciomarisqueria.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/assets/casos/anastacio.jpg" alt="" loading="lazy" width="1200" height="750"></a>
+        <div class="vcaso-body"><span class="vpc-giro mono" data-i18n="casos.anas.giro">Restaurante · STRYV Restaurant</span><h3>Anastacio Marisquería</h3><p data-i18n="casos.anas.desc">Menú digital bilingüe con pedidos a domicilio, para recoger y desde la mesa, más reservaciones.</p>
+          <p class="vtech mono" data-i18n="casos.anas.tech">Pago en línea · Mesas por QR · Pixel de Meta</p>
+          <a class="vlink" href="https://anastaciomarisqueria.com" target="_blank" rel="noopener"><span data-i18n="casos.ver">Ver sitio</span> ↗</a></div>
+      </article>
+      <article class="vcaso reveal d1">
+        <a class="vcaso-img" href="https://fukuroll.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/assets/casos/fukuroll.jpg" alt="" loading="lazy" width="1200" height="750"></a>
+        <div class="vcaso-body"><span class="vpc-giro mono" data-i18n="casos.fuku.giro">Restaurante · STRYV Restaurant</span><h3>Fukuroll</h3><p data-i18n="casos.fuku.desc">Pedidos con pago con tarjeta directo a su banco, seguimiento del pedido y tablero de cocina en tiempo real.</p>
+          <p class="vtech mono" data-i18n="casos.fuku.tech">Stripe Connect · Tiempo real · 0% comisión</p>
+          <a class="vlink" href="https://fukuroll.com" target="_blank" rel="noopener"><span data-i18n="casos.ver">Ver sitio</span> ↗</a></div>
+      </article>
     </div>
   </div>
 </section>
-
-
-
 
 <!-- CONTACTO -->
 <section class="contacto" id="contacto">
@@ -1349,7 +1169,7 @@ const I18N = {
   es: {
     meta: { title: 'STRYV Studio | Sistemas operativos con inteligencia artificial para negocios', description: 'Construimos el sistema operativo de tu negocio: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.', orgDescription: 'STRYV Studio construye sistemas operativos AI-Native para negocios: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.' }, // provisional
     common: { talk: 'Hablemos', writeUs: 'Escríbenos directo' },
-    nav: { switchConfirm: 'Tienes un mensaje sin enviar en el formulario. Si cambias de idioma se perderá. ¿Continuar?', soluciones: 'Qué hacemos', metodo: 'Cómo trabajamos', sala: 'Productos', proyectos: 'Proyectos', faq: 'FAQ', contacto: 'Contacto', menu: 'Abrir menú', lang: 'Idioma' },
+    nav: { switchConfirm: 'Tienes un mensaje sin enviar en el formulario. Si cambias de idioma se perderá. ¿Continuar?', soluciones: 'Qué hacemos', metodo: 'Cómo trabajamos', sala: 'Plataformas', proyectos: 'Proyectos', faq: 'FAQ', contacto: 'Contacto', menu: 'Abrir menú', lang: 'Idioma' },
     hero: { h1v: 'Convertimos tu negocio en un sistema que <span class="ia">opera con inteligencia artificial.</span>', sim: 'Simulación de un sistema STRYV en operación',
       kicker: '<span class="nw">AI-Native</span> Engineering Studio',
       // Copy V3 aprobado. Kicker aprobado en V3-D1, igual en ambos idiomas.
@@ -1424,6 +1244,8 @@ const I18N = {
         network: 'Sin conexión. Intenta de nuevo o escríbenos por WhatsApp.'
       }
     },
+    plat: { tag: 'Plataformas', title: 'Plataformas STRYV.', sub: 'Productos listos para operar, construidos con la misma ingeniería que nuestros sistemas a la medida.', usa: 'Lo usa', usan: 'Lo usan', sala: { giro: 'Gimnasios y estudios', desc: 'Reservas, membresías, caja, tienda y acceso con huella, con la marca y el dominio de cada gimnasio.', f1: 'Cobros con tarjeta directo a cada gimnasio', f2: 'App para socios', f3: 'Check-in con QR o huella', f4: 'Varias sucursales', cta: 'Conocer SALA' }, rest: { giro: 'Restaurantes', desc: 'Menú digital, pedidos con pago en línea, mesas por QR, cocina y caja, que siguen funcionando aunque se caiga el internet.', f1: 'Pedidos a domicilio y para recoger', f2: 'Pedidos desde la mesa por QR', f3: 'Cocina en tiempo real', f4: 'Impresión de tickets', cta: 'Ver en Anastacio' }, nuven: { giro: 'Notarías', desc: 'Expedientes, citas, protocolo, caja y avisos UIF en un solo lugar, con los datos de cada notaría blindados.', f1: 'Expedientes y comparecientes', f2: 'Protocolo con folio automático', f3: 'Avisos UIF con plazos', f4: 'Plantillas a PDF', cta: 'Solicita una demo' } },
+    casos: { tag: 'Casos reales', title: 'Sistemas en operación.', sub: 'Cada uno opera hoy un negocio real.', ver: 'Ver sitio', reno: { giro: 'Salud · Distribución a médicos', desc: 'Un agente de IA atiende a los médicos por WhatsApp, Instagram, Messenger y el portal, con datos reales del negocio. El sistema verifica, surte, envía y factura.', b1: 'Verificación de médicos con cédula e INE', b2: 'Almacén por caducidad, empaque y guías de envío', b3: 'CRM, cobro con tarjeta y facturación CFDI', tech: 'Agente IA (Claude) · WhatsApp Cloud API · 9 roles · 33 funciones en la nube' }, cubo: { giro: 'Industria · Fábrica de hielo', desc: 'Toda la fábrica en un sistema: producción, cuartos fríos, rutas de reparto, cobranza y facturas SAT.', b1: 'App de chofer que funciona sin señal, con GPS', b2: 'Cobranza, crédito y corte de caja', b3: 'Nómina, asistencia y alertas automáticas', tech: 'CFDI 4.0 · 7 roles · +950 pruebas automáticas · App instalable' }, anas: { giro: 'Restaurante · STRYV Restaurant', desc: 'Menú digital bilingüe con pedidos a domicilio, para recoger y desde la mesa, más reservaciones.', tech: 'Pago en línea · Mesas por QR · Pixel de Meta' }, fuku: { giro: 'Restaurante · STRYV Restaurant', desc: 'Pedidos con pago con tarjeta directo a su banco, seguimiento del pedido y tablero de cocina en tiempo real.', tech: 'Stripe Connect · Tiempo real · 0% comisión' }, ekko: { giro: 'Estudios para creadores · SALA', desc: 'Membresías con cobro recurrente, reservas de estudios y check-in con QR desde el celular.', tech: 'Cobro recurrente · App instalable · Pruebas antes de cada publicación' } },
     faq: {
       tag: 'Preguntas frecuentes',
       title: 'Lo que suelen preguntar.',
@@ -1450,7 +1272,7 @@ const I18N = {
   en: {
     meta: { title: 'STRYV Studio | AI-powered operating systems for businesses', description: 'We build your business operating system: sales, orders, payments and team on your own platform, with built-in AI agents.', orgDescription: 'STRYV Studio builds AI-Native operating systems for businesses: sales, orders, payments and team on their own platform, with built-in AI agents.' },
     common: { talk: "Let's talk", writeUs: 'Message us directly' },
-    nav: { switchConfirm: 'You have an unsent message in the form. Switching language will discard it. Continue?', soluciones: 'What we do', metodo: 'How we work', sala: 'Products', proyectos: 'Projects', faq: 'FAQ', contacto: 'Contact', menu: 'Open menu', lang: 'Language' },
+    nav: { switchConfirm: 'You have an unsent message in the form. Switching language will discard it. Continue?', soluciones: 'What we do', metodo: 'How we work', sala: 'Platforms', proyectos: 'Projects', faq: 'FAQ', contacto: 'Contact', menu: 'Open menu', lang: 'Language' },
     hero: { h1v: 'We turn your business into a system that <span class="ia">runs on artificial intelligence.</span>', sim: 'Simulation of a STRYV system in operation',
       kicker: '<span class="nw">AI-Native</span> Engineering Studio',
       v3: {
@@ -1524,6 +1346,8 @@ const I18N = {
         network: 'No connection. Please try again or message us on WhatsApp.'
       }
     },
+    plat: { tag: 'Platforms', title: 'STRYV platforms.', sub: 'Ready-to-run products, built with the same engineering as our custom systems.', usa: 'Used by', usan: 'Used by', sala: { giro: 'Gyms and studios', desc: 'Bookings, memberships, register, store and fingerprint access, with each gym’s own brand and domain.', f1: 'Card payments straight to each gym', f2: 'Member app', f3: 'QR or fingerprint check-in', f4: 'Multiple locations', cta: 'Discover SALA' }, rest: { giro: 'Restaurants', desc: 'Digital menu, orders with online payment, QR tables, kitchen and register, which keep running even if the internet goes down.', f1: 'Delivery and pickup orders', f2: 'Order from the table by QR', f3: 'Real-time kitchen', f4: 'Ticket printing', cta: 'See it at Anastacio' }, nuven: { giro: 'Notary offices', desc: 'Case files, appointments, protocol book, register and anti-money-laundering notices in one place, with each office’s data locked down.', f1: 'Case files and parties', f2: 'Protocol book with automatic numbering', f3: 'AML notices with deadlines', f4: 'Templates to PDF', cta: 'Request a demo' } },
+    casos: { tag: 'Case studies', title: 'Systems in operation.', sub: 'Each one runs a real business today.', ver: 'Visit site', reno: { giro: 'Health · Distribution to doctors', desc: 'An AI agent serves doctors on WhatsApp, Instagram, Messenger and the portal, using real business data. The system verifies, fulfills, ships and invoices.', b1: 'Doctor verification with license and ID', b2: 'Expiry-based warehouse, packing and shipping labels', b3: 'CRM, card payments and CFDI invoicing', tech: 'AI agent (Claude) · WhatsApp Cloud API · 9 roles · 33 cloud functions' }, cubo: { giro: 'Manufacturing · Ice factory', desc: 'The whole factory in one system: production, cold rooms, delivery routes, collections and SAT invoices.', b1: 'Driver app that works offline, with GPS', b2: 'Collections, credit and cash close', b3: 'Payroll, attendance and automatic alerts', tech: 'CFDI 4.0 · 7 roles · 950+ automated tests · Installable app' }, anas: { giro: 'Restaurant · STRYV Restaurant', desc: 'Bilingual digital menu with delivery, pickup and table orders, plus reservations.', tech: 'Online payment · QR tables · Meta Pixel' }, fuku: { giro: 'Restaurant · STRYV Restaurant', desc: 'Orders paid by card straight to their bank, order tracking and a real-time kitchen board.', tech: 'Stripe Connect · Real time · 0% commission' }, ekko: { giro: 'Creator studios · SALA', desc: 'Memberships with recurring billing, studio bookings and QR check-in from the phone.', tech: 'Recurring billing · Installable app · Tests before every release' } },
     faq: {
       tag: 'Frequently asked questions',
       title: 'What people usually ask.',
@@ -1641,139 +1465,6 @@ const io = new IntersectionObserver(entries => {
 }, {threshold: .08});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-const track = document.getElementById('proyectos-track');
-
-(function() {
-  const catLabels = document.documentElement.lang === 'en'
-    ? { '1': 'Sales', '2': 'AI', '3': 'Local business', '4': 'Operations', '5': 'Content' }
-    : { '1': 'Ventas', '2': 'IA', '3': 'Negocio local', '4': 'Operación', '5': 'Contenido' };
-  track.querySelectorAll('.proyecto-card[data-categories]').forEach(card => {
-    const cats = (card.getAttribute('data-categories') || '').split(',').map(c => c.trim()).filter(Boolean);
-    if (!cats.length) return;
-    const wrap = document.createElement('div');
-    wrap.className = 'proy-badges';
-    cats.forEach(c => {
-      if (!catLabels[c]) return;
-      const b = document.createElement('span');
-      b.className = 'proy-badge';
-      b.textContent = catLabels[c];
-      wrap.appendChild(b);
-    });
-    card.appendChild(wrap);
-  });
-
-  const cards = track.querySelectorAll('.proyecto-card:not(.coming)');
-  cards.forEach(card => {
-    const video = card.querySelector('video');
-    if (!video) return;
-    const source = video.querySelector('source');
-    if (!source || !source.src) return;
-    source.dataset.src = source.src;
-    source.removeAttribute('src');
-    video.removeAttribute('autoplay');
-    video.preload = 'none';
-  });
-  const vio = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const video = entry.target.querySelector('video');
-      if (!video) return;
-      const source = video.querySelector('source');
-      if (!source) return;
-      if (entry.isIntersecting) {
-        if (source.dataset.src && !source.getAttribute('src')) {
-          source.src = source.dataset.src;
-          video.load();
-        }
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    });
-  }, { rootMargin: '200px 100px', threshold: 0.01 });
-  cards.forEach(card => vio.observe(card));
-})();
-
-function openVideoModal() {
-  const m = document.getElementById('video-modal');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) {
-    p.catch(() => {
-      // iOS fallback: let user tap play button natively
-    });
-  }
-}
-function closeVideoModal() {
-  const m = document.getElementById('video-modal');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal(); });
-
-function openVideoModal2() {
-  const m = document.getElementById('video-modal-2');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-2');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) {
-    p.catch(() => {
-      // iOS fallback: let user tap play button natively
-    });
-  }
-}
-function closeVideoModal2() {
-  const m = document.getElementById('video-modal-2');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-2').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeVideoModal(); closeVideoModal2(); } });
-
-function openVideoModal3() {
-  const m = document.getElementById('video-modal-3');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-3');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) {
-    p.catch(() => {
-      // iOS fallback: let user tap play button natively
-    });
-  }
-}
-function closeVideoModal3() {
-  const m = document.getElementById('video-modal-3');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-3').pause();
-}
-
-function openVideoModal4() {
-  const m = document.getElementById('video-modal-4');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-4');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) {
-    p.catch(() => {
-      // iOS fallback: let user tap play button natively
-    });
-  }
-}
-function closeVideoModal4() {
-  const m = document.getElementById('video-modal-4');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-4').pause();
-}
 
 // ─── LEADS: envío directo a la Edge Function capture-lead ───
 const LEAD_ENDPOINT = 'https://lxpgqhghxfqsahwrdmzo.supabase.co/functions/v1/capture-lead';
@@ -1889,320 +1580,6 @@ document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
   a.addEventListener('click',()=>{
     if(typeof fbq==='function') fbq('track','Contact',{content_name:'WhatsApp click'});
   });
-});
-</script>
-
-<!-- VIDEO MODAL -->
-<div id="video-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal()">
-  <button onclick="closeVideoModal()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p01.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div id="video-modal-2" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal2()">
-  <button onclick="closeVideoModal2()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-2" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p02.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div id="video-modal-3" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal3()">
-  <button onclick="closeVideoModal3()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-3" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p03.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div id="video-modal-4" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal4()">
-  <button onclick="closeVideoModal4()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-4" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p04.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div id="video-modal-5" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal5()">
-  <button onclick="closeVideoModal5()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-5" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p05.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function openVideoModal5() {
-  const m = document.getElementById('video-modal-5');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-5');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) {
-    p.catch(() => {});
-  }
-}
-function closeVideoModal5() {
-  const m = document.getElementById('video-modal-5');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-5').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal5(); });
-</script>
-
-<div id="video-modal-6" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal6()">
-  <button onclick="closeVideoModal6()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-6" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p12.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function openVideoModal6() {
-  const m = document.getElementById('video-modal-6');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-6');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) { p.catch(() => {}); }
-}
-function closeVideoModal6() {
-  const m = document.getElementById('video-modal-6');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-6').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal6(); });
-</script>
-
-<div id="video-modal-7" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal7()">
-  <button onclick="closeVideoModal7()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-7" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p06.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function openVideoModal7() {
-  const m = document.getElementById('video-modal-7');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-7');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) { p.catch(() => {}); }
-}
-function closeVideoModal7() {
-  const m = document.getElementById('video-modal-7');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-7').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal7(); });
-</script>
-
-<div id="video-modal-8" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal8()">
-  <button onclick="closeVideoModal8()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-8" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p08.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function openVideoModal8() {
-  const m = document.getElementById('video-modal-8');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-8');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) { p.catch(() => {}); }
-}
-function closeVideoModal8() {
-  const m = document.getElementById('video-modal-8');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-8').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal8(); });
-</script>
-
-<div id="video-modal-9" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal9()">
-  <button onclick="closeVideoModal9()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-9" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p09.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function openVideoModal9() {
-  const m = document.getElementById('video-modal-9');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-9');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) { p.catch(() => {}); }
-}
-function closeVideoModal9() {
-  const m = document.getElementById('video-modal-9');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-9').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal9(); });
-</script>
-
-<div id="video-modal-10" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal10()">
-  <button onclick="closeVideoModal10()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-10" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p11.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function openVideoModal10() {
-  const m = document.getElementById('video-modal-10');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-10');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) { p.catch(() => {}); }
-}
-function closeVideoModal10() {
-  const m = document.getElementById('video-modal-10');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-10').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal10(); });
-</script>
-
-<div id="video-modal-11" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal11()">
-  <button onclick="closeVideoModal11()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-11" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p10.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function openVideoModal11() {
-  const m = document.getElementById('video-modal-11');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-11');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) { p.catch(() => {}); }
-}
-function closeVideoModal11() {
-  const m = document.getElementById('video-modal-11');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-11').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal11(); });
-</script>
-
-<div id="video-modal-12" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal12()">
-  <button onclick="closeVideoModal12()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-12" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p07.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function openVideoModal12() {
-  const m = document.getElementById('video-modal-12');
-  m.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const v = document.getElementById('modal-video-12');
-  v.load();
-  const p = v.play();
-  if (p !== undefined) { p.catch(() => {}); }
-}
-function closeVideoModal12() {
-  const m = document.getElementById('video-modal-12');
-  m.style.display = 'none';
-  document.body.style.overflow = '';
-  document.getElementById('modal-video-12').pause();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal12(); });
-</script>
-
-<div id="video-modal-13" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal13()">
-  <button onclick="closeVideoModal13()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-13" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p13.mp4" type="video/mp4">
-  </video>
-</div>
-<div id="video-modal-14" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal14()">
-  <button onclick="closeVideoModal14()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-14" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p14.mp4" type="video/mp4">
-  </video>
-</div>
-<div id="video-modal-15" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal15()">
-  <button onclick="closeVideoModal15()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-15" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p15.mp4" type="video/mp4">
-  </video>
-</div>
-<div id="video-modal-16" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal16()">
-  <button onclick="closeVideoModal16()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-16" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p16.mp4" type="video/mp4">
-  </video>
-</div>
-<div id="video-modal-17" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal17()">
-  <button onclick="closeVideoModal17()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-17" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p17.mp4" type="video/mp4">
-  </video>
-</div>
-<div id="video-modal-18" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeVideoModal18()">
-  <button onclick="closeVideoModal18()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <video id="modal-video-18" controls playsinline preload="none" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);" onclick="event.stopPropagation()">
-    <source src="/assets/proyectos/p18.mp4" type="video/mp4">
-  </video>
-</div>
-<div id="image-modal-1" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:24px;" onclick="closeImageModal1()">
-  <button onclick="closeImageModal1()" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:20px;padding:4px 10px;cursor:pointer;line-height:1;">&times;</button>
-  <img id="modal-image-1" src="/assets/proyectos/automatizacion.jpg" alt="Workflow de automatización" style="max-width:100%;max-height:85vh;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8);object-fit:contain;" onclick="event.stopPropagation()">
-</div>
-
-<script>
-[13,14,15,16,17,18].forEach(n => {
-  window['openVideoModal'+n] = function() {
-    const m = document.getElementById('video-modal-'+n);
-    m.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    const v = document.getElementById('modal-video-'+n);
-    v.load();
-    const p = v.play();
-    if (p !== undefined) { p.catch(() => {}); }
-  };
-  window['closeVideoModal'+n] = function() {
-    const m = document.getElementById('video-modal-'+n);
-    m.style.display = 'none';
-    document.body.style.overflow = '';
-    document.getElementById('modal-video-'+n).pause();
-  };
-});
-window.openImageModal1 = function() {
-  document.getElementById('image-modal-1').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-};
-window.closeImageModal1 = function() {
-  document.getElementById('image-modal-1').style.display = 'none';
-  document.body.style.overflow = '';
-};
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    [13,14,15,16,17,18].forEach(n => window['closeVideoModal'+n]());
-    window.closeImageModal1();
-  }
 });
 </script>
 
