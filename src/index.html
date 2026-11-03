@@ -606,8 +606,8 @@ nav#main-nav { position: sticky; top: 12px; margin: 12px auto 0; width: min(1180
   background: rgba(255,255,255,.75); border: 1px solid var(--line2); border-radius: 14px; backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
   box-shadow: 0 8px 30px -18px rgba(11,45,80,.25); }
 .nav-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
-.logo-mark { width: 18px; height: 18px; border-radius: 5px; background: conic-gradient(from 0deg, var(--cy), var(--in), #0B7798, var(--cy)); animation: vgira 6s linear infinite; box-shadow: 0 0 14px rgba(14,165,233,.45); }
-.logo-word { font-weight: 700; letter-spacing: .22em; font-size: 14px; }
+/* Logo original de STRYV (palabra en blanco) en negro para leerse sobre el fondo claro. */
+.nav-logo-img { filter: brightness(0); }
 .nav-links a { color: var(--ink-muted); font-size: 14px; }
 .nav-links a:hover { color: var(--ink); background: rgba(11,45,80,.05); }
 .nav-cta { color: #fff; background: linear-gradient(180deg, #38BDF8, #0B7798); border: 0; box-shadow: 0 8px 22px -10px rgba(14,165,233,.7); }
@@ -801,7 +801,7 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 .proyectos-track { max-width: 1248px; padding: 4px 24px 20px; }
 .prod-head, .prod-more, .sala-ad { max-width: 1200px; }
 .sala { padding: 64px 24px; }
-@media (prefers-reduced-motion: reduce) { .ia, .logo-mark, .vfranja > div, .vbtn-p::after, .vh-anillo { animation: none !important; } }
+@media (prefers-reduced-motion: reduce) { .ia, .vfranja > div, .vbtn-p::after, .vh-anillo { animation: none !important; } }
 
 </style>
 </head>
@@ -816,7 +816,9 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#" class="nav-logo" aria-label="STRYV"><span class="logo-mark" aria-hidden="true"></span><span class="logo-word">STRYV</span></a>
+  <a href="#" class="nav-logo">
+    <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/stryv_cvfufm.png" alt="STRYV" class="nav-logo-img">
+  </a>
   <ul class="nav-links" id="nav-links">
     <li><a href="#soluciones" data-i18n="nav.soluciones">Qué hacemos</a></li>
     <li><a href="#metodologia" data-i18n="nav.metodo">Metodología</a></li>
