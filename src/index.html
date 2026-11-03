@@ -52,6 +52,61 @@
       "publisher": {
         "@id": "https://stryvstudio.com/#organization"
       }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://stryvstudio.com/#service",
+      "name": "STRYV Studio",
+      "url": "https://stryvstudio.com/",
+      "image": "https://stryvstudio.com/assets/images/brand/og-stryv-2026.jpg",
+      "logo": "https://stryvstudio.com/assets/images/brand/stryv-icon-512.png",
+      "description": "",
+      "parentOrganization": {
+        "@id": "https://stryvstudio.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Mexico"
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        },
+        {
+          "@type": "Country",
+          "name": "Spain"
+        },
+        {
+          "@type": "Place",
+          "name": "Europe"
+        }
+      ],
+      "availableLanguage": [
+        "es",
+        "en"
+      ],
+      "email": "stryv.studio@gmail.com",
+      "telephone": "+1-737-368-3464",
+      "knowsAbout": [
+        "Custom software development",
+        "ERP",
+        "AI agents",
+        "WhatsApp Business API",
+        "Business automation",
+        "SaaS"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "",
+        "itemListElement": []
+      }
     }
   ]
 }
@@ -1215,7 +1270,7 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 // Inglés: traducción provisional, pendiente de revisión editorial salvo hero.v3.
 const I18N = {
   es: {
-    meta: { title: 'STRYV Studio | Sistemas operativos con inteligencia artificial para negocios', description: 'Construimos el sistema operativo de tu negocio: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.', orgDescription: 'STRYV Studio construye sistemas operativos AI-Native para negocios: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.' }, // provisional
+    meta: { svc: ['Software a la medida para empresas', 'Agentes de inteligencia artificial para WhatsApp e Instagram', 'ERP y sistemas de operación', 'Plataformas para gimnasios y restaurantes'], title: 'STRYV Studio | Software a la medida y agentes de IA para empresas', description: 'Software a la medida, ERP y agentes de IA para empresas: ventas, pedidos, cobros y WhatsApp en una plataforma propia. Atendemos México, Estados Unidos y Europa.', orgDescription: 'STRYV Studio construye sistemas operativos AI-Native para negocios: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.' }, // provisional
     common: { talk: 'Hablemos', writeUs: 'Escríbenos directo' },
     nav: { switchConfirm: 'Tienes un mensaje sin enviar en el formulario. Si cambias de idioma se perderá. ¿Continuar?', soluciones: 'Qué hacemos', metodo: 'Cómo trabajamos', sala: 'Plataformas', proyectos: 'Proyectos', faq: 'FAQ', contacto: 'Contacto', menu: 'Abrir menú', lang: 'Idioma' },
     hero: { h1v: 'Convertimos tu negocio en un sistema que <span class="ia">opera con inteligencia artificial.</span>', sim: 'Simulación de un sistema STRYV en operación',
@@ -1317,7 +1372,7 @@ const I18N = {
     }
   },
   en: {
-    meta: { title: 'STRYV Studio | AI-powered operating systems for businesses', description: 'We build your business operating system: sales, orders, payments and team on your own platform, with built-in AI agents.', orgDescription: 'STRYV Studio builds AI-Native operating systems for businesses: sales, orders, payments and team on their own platform, with built-in AI agents.' },
+    meta: { svc: ['Custom business software', 'AI agents for WhatsApp and Instagram', 'ERP and operations systems', 'Platforms for gyms and restaurants'], title: 'STRYV Studio | Custom Business Software & AI Agents', description: 'Custom software, ERP and AI agents for businesses: sales, orders, payments and WhatsApp on your own platform. Serving the US, Mexico and Europe.', orgDescription: 'STRYV Studio builds AI-Native operating systems for businesses: sales, orders, payments and team on their own platform, with built-in AI agents.' },
     common: { talk: "Let's talk", writeUs: 'Message us directly' },
     nav: { switchConfirm: 'You have an unsent message in the form. Switching language will discard it. Continue?', soluciones: 'What we do', metodo: 'How we work', sala: 'Platforms', proyectos: 'Projects', faq: 'FAQ', contacto: 'Contact', menu: 'Open menu', lang: 'Language' },
     hero: { h1v: 'We turn your business into a system that <span class="ia">runs on artificial intelligence.</span>', sim: 'Simulation of a STRYV system in operation',

@@ -15,7 +15,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://stryvstudio.com';
 const LANGS = {
-  es: { path: '/', file: 'index.html', ogLocale: 'es_ES' },
+  es: { path: '/', file: 'index.html', ogLocale: 'es_MX' },
   en: { path: '/en/', file: 'en/index.html', ogLocale: 'en_US' },
 };
 const DEFAULT_LANG = 'es';
@@ -110,6 +110,11 @@ function localizeHead(html, lang) {
   for (const node of ld['@graph']) {
     if (node['@type'] === 'Organization') node.description = t(lang, 'meta.orgDescription');
     if (node['@type'] === 'WebSite') node.inLanguage = lang;
+    if (node['@type'] === 'ProfessionalService') {
+      node.description = t(lang, 'meta.description');
+      node.hasOfferCatalog.name = lang === 'es' ? 'Servicios' : 'Services';
+      node.hasOfferCatalog.itemListElement = lookup(lang, 'meta.svc').map(n => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: n } }));
+    }
   }
   html = html.replace(ldRe, `$1${JSON.stringify(ld, null, 2)}$3`);
   return html;
@@ -136,11 +141,12 @@ for (const lang of Object.keys(LANGS)) {
   writeFileSync(out, html);
   report.push(`${lang}: ${LANGS[lang].file} · ${body.count} nodos traducidos · ${html.length} bytes`);
 }
-const links = Object.keys(LANGS).map(l => `    <xhtml:link rel="alternate" hreflang="${l}" href="${url(l)}"/>`)
-  .concat(`    <xhtml:link rel="alternate" hreflang="x-default" href="${url(DEFAULT_LANG)}"/>`).join('\n');
+const hoy = new Date().toISOString().slice(0, 10);
+const par = (es, en) => [`    <xhtml:link rel="alternate" hreflang="es" href="${SITE}${es}"/>`, `    <xhtml:link rel="alternate" hreflang="en" href="${SITE}${en}"/>`, `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${es}"/>`].join('\n');
+const urls = [['/', '/', '/en/', '1.0'], ['/en/', '/', '/en/', '1.0'], ['/privacidad/', '/privacidad/', '/en/privacy/', '0.3'], ['/en/privacy/', '/privacidad/', '/en/privacy/', '0.3']];
 writeFileSync(join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${Object.keys(LANGS).map(l => `  <url>\n    <loc>${url(l)}</loc>\n${links}\n  </url>`).join('\n')}
+${urls.map(([loc, es, en, pr]) => `  <url>\n    <loc>${SITE}${loc}</loc>\n    <lastmod>${hoy}</lastmod>\n    <priority>${pr}</priority>\n${par(es, en)}\n  </url>`).join('\n')}
 </urlset>
 `);
 cpSync(join(ROOT, 'robots.txt'), join(DIST, 'robots.txt'));
