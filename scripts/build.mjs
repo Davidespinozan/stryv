@@ -149,6 +149,11 @@ mkdirSync(join(DIST, 'privacidad'), { recursive: true });
 mkdirSync(join(DIST, 'en', 'privacy'), { recursive: true });
 cpSync(join(ROOT, 'src/legal/privacidad.html'), join(DIST, 'privacidad/index.html'));
 cpSync(join(ROOT, 'src/legal/privacy.html'), join(DIST, 'en/privacy/index.html'));
+// Propuesta de rediseño (sólo en esta rama): /diseno/vivo/.
+if (existsSync(join(ROOT, 'src/diseno/vivo.html'))) {
+  mkdirSync(join(DIST, 'diseno', 'vivo'), { recursive: true });
+  cpSync(join(ROOT, 'src/diseno/vivo.html'), join(DIST, 'diseno/vivo/index.html'));
+}
 // assets/videos/ son los originales viejos (cientos de MB) que la página ya no usa: no se publican.
 cpSync(join(ROOT, 'assets'), join(DIST, 'assets'), { recursive: true, filter: p => !p.startsWith(join(ROOT, 'assets', 'videos')) });
 console.log(report.join('\n') + '\nsitemap.xml · robots.txt · assets/ → dist/');
