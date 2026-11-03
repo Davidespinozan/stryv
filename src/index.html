@@ -1885,13 +1885,13 @@ const NS = 'http://www.w3.org/2000/svg';
 const el = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; };
 const T = EN ? {
   mods: ['Sales', 'Orders', 'Payments', 'Inventory', 'Customers', 'Team'], nucleo: 'AI CORE',
-  franja: ['Restaurants', 'Factories', 'Gyms & studios', 'Retail', 'E-commerce', 'Distributors', 'Services', 'Digital products'],
+  franja: ['Manufacturing', 'Distribution & logistics', 'Healthcare', 'Construction & real estate', 'Retail & e-commerce', 'Hospitality', 'Wellness', 'Professional services', 'Technology'],
   chat: [['cli', 'Customer · WhatsApp', 'Can you deliver to downtown today?'], ['ag', 'Stryvi · AI agent', 'Yes, before 6 pm. Should I confirm your usual order?'], ['cli', 'Customer · WhatsApp', 'Yes please 🙌'], ['ag', 'Stryvi · AI agent', 'Done: order #1043 confirmed and the payment link sent to your WhatsApp.']],
   notif: 'Payment received', pedido: 'Order', roles: ['Sales', 'Payments', 'Inventory'],
   vers: ['v1 · Sales & orders', 'v2 · Payments', 'v3 · AI agent', 'v4 · Inventory', 'v5 · Reports'],
 } : {
   mods: ['Ventas', 'Pedidos', 'Cobros', 'Inventario', 'Clientes', 'Equipo'], nucleo: 'NÚCLEO IA',
-  franja: ['Restaurantes', 'Fábricas', 'Gimnasios y estudios', 'Retail', 'E-commerce', 'Distribuidoras', 'Servicios', 'Infoproductos'],
+  franja: ['Manufactura', 'Distribución y logística', 'Salud', 'Construcción e inmobiliario', 'Retail y e-commerce', 'Hospitalidad', 'Bienestar', 'Servicios profesionales', 'Tecnología'],
   chat: [['cli', 'Cliente · WhatsApp', '¿Tienen entrega hoy en la colonia Centro?'], ['ag', 'Stryvi · Agente de IA', 'Sí, antes de las 6 pm. ¿Te confirmo el pedido de siempre?'], ['cli', 'Cliente · WhatsApp', 'Sí, porfa 🙌'], ['ag', 'Stryvi · Agente de IA', 'Listo: pedido #1043 confirmado y cobro enviado a tu WhatsApp.']],
   notif: 'Cobro registrado', pedido: 'Pedido', roles: ['Ventas', 'Cobros', 'Inventario'],
   vers: ['v1 · Ventas y pedidos', 'v2 · Cobros', 'v3 · Agente de IA', 'v4 · Inventario', 'v5 · Reportes'],
