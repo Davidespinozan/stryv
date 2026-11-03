@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/images/brand/isotipo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png">
 <title>STRYV Studio | Sistemas operativos con inteligencia artificial para negocios</title>
 <meta name="description" content="Construimos el sistema operativo de tu negocio: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.">
 <link rel="canonical" href="https://stryvstudio.com/">
@@ -989,9 +992,23 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 @media(max-width:600px){ .vst-mini { flex-direction: column; text-align: center; padding: 22px 18px; } .vst-mini > img { align-self: center; margin: 0; width: 84px; } .vst-preguntas, .vst-mini-acc { justify-content: center; } }
 @media (prefers-reduced-motion: reduce) { .ia, .vfranja > div, .vbtn-p::after, .vh-anillo { animation: none !important; } }
 
+/* ─── Isotipo: la V de convergencia (rutas → núcleo de IA) junto al logo ─── */
+.nav-iso { width: 30px; height: 30px; flex: none; overflow: visible; }
+.footer-iso { width: 22px; height: 22px; flex: none; }
+.iso-v { fill: none; stroke: var(--ink); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.iso-in { fill: var(--ink); }
+.iso-nucleo { fill: url(#iso-g); }
+.iso-paquete { fill: #fff; }
+.iso-pulso { fill: none; stroke: url(#iso-g); stroke-width: 3; opacity: 0; transform-box: view-box; transform-origin: 50px 76px; }
+.iso-pulso.on { animation: isoPulso .7s ease-out; }
+@keyframes isoPulso { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(2); } }
+.footer-logo-row { display: flex; align-items: center; gap: 8px; }
+@media(max-width:900px){ .nav-iso { width: 34px; height: 34px; } }
+
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="iso-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0EA5E9"/><stop offset="1" stop-color="#6366F1"/></linearGradient></defs><symbol id="iso" viewBox="0 0 100 100"><path class="iso-v" d="M24 22 L50 74 L76 22"/><circle class="iso-in" cx="24" cy="22" r="7"/><circle class="iso-in" cx="76" cy="22" r="7"/><circle class="iso-nucleo" cx="50" cy="76" r="11"/></symbol></svg>
 <div class="fondo-vivo" aria-hidden="true"></div>
 
 <svg style="display:none">
@@ -1003,6 +1020,7 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 <!-- NAV -->
 <nav id="main-nav">
   <a href="#" class="nav-logo">
+    <svg class="nav-iso" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path class="iso-v" d="M24 22 L50 74 L76 22"/><circle class="iso-in" cx="24" cy="22" r="7"/><circle class="iso-in" cx="76" cy="22" r="7"/><circle class="iso-pulso" cx="50" cy="76" r="11"/><g class="iso-paquetes"></g><circle class="iso-nucleo" cx="50" cy="76" r="11"/></svg>
     <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/stryv_cvfufm.png" alt="STRYV" class="nav-logo-img">
   </a>
   <ul class="nav-links" id="nav-links">
@@ -1307,7 +1325,7 @@ footer { background: #fff; border-top: 1px solid var(--line); }
   <div class="footer-top">
     <div>
       <div class="footer-logo">
-        <span class="footer-logo-name">STRYV</span>
+        <span class="footer-logo-row"><svg class="footer-iso" aria-hidden="true" focusable="false"><use href="#iso"/></svg><span class="footer-logo-name">STRYV</span></span>
         <span class="footer-logo-sub" data-i18n-html="footer.sub">Ingeniería <span class="nw">AI-Native</span> para negocios</span>
       </div>
       
@@ -1986,6 +2004,29 @@ const ms = [...document.querySelectorAll('#vmods span')], sw = [...document.quer
 let im = 0, iv = 0;
 const ciclo = () => { ms.forEach((m, i) => m.classList.toggle('on', i <= im)); im = (im + 1) % (ms.length + 2); sw.forEach((s) => s.classList.toggle('on', Math.random() > .4)); vs.forEach((v, i) => v.classList.toggle('on', i <= iv)); iv = (iv + 1) % (vs.length + 1); };
 if (quieto) { [...ms, ...sw, ...vs].forEach((x) => x.classList.add('on')); } else { ciclo(); setInterval(ciclo, 1300); }
+
+// Isotipo del menú: un paquete baja por cada ruta y el núcleo pulsa al recibirlos (al cargar y al pasar el cursor)
+const iso = $('.nav-iso');
+if (iso && !quieto) {
+  const capa = iso.querySelector('.iso-paquetes'), pulso = iso.querySelector('.iso-pulso');
+  let enCurso = 0;
+  const late = () => { pulso.classList.remove('on'); pulso.getBoundingClientRect(); pulso.classList.add('on'); };
+  const enviar = () => {
+    if (enCurso) return;
+    [[24, 22], [76, 22]].forEach(([x, y], i) => {
+      const c = el('circle', { r: 4.5, cx: x, cy: y, class: 'iso-paquete' }); capa.append(c); enCurso++;
+      const t0 = performance.now() + i * 220, dur = 650;
+      const paso = (t) => {
+        const k = Math.max(0, Math.min(1, (t - t0) / dur)), e = k * k * (3 - 2 * k);
+        c.setAttribute('cx', x + (50 - x) * e); c.setAttribute('cy', y + (74 - y) * e);
+        if (k < 1) requestAnimationFrame(paso); else { c.remove(); enCurso--; late(); }
+      };
+      requestAnimationFrame(paso);
+    });
+  };
+  setTimeout(enviar, 600);
+  iso.closest('a').addEventListener('mouseenter', enviar);
+}
 })();
 
 
