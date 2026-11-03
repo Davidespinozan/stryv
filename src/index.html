@@ -79,11 +79,11 @@ src="https://www.facebook.com/tr?id=1128489492448867&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ─── TOKENS ─── */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --bg:            #07131a;
   --bg-deep:       #050e14;
   --surface:       rgba(255,255,255,0.04);
@@ -570,9 +570,243 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   .hero-sub { font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
   .hero-right { max-width: 420px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   REDISEÑO «SISTEMA VIVO» · versión clara (blanco + azul cielo + teal STRYV)
+   Capa final: redefine los tokens (todo lo que usa var() se aclara solo) y
+   corrige lo que estaba fijo en oscuro. Las secciones nuevas usan prefijo v.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  --bg: #F5F9FD; --bg-deep: #F5F9FD; --bg2: #FFFFFF; --bg3: #F8FAFC; --bg4: #F1F5F9;
+  --surface: #FFFFFF; --surface-hover: #F1F7FC; --card: #FFFFFF; --card2: #F8FAFC; --card-h: #F1F7FC;
+  --border: rgba(11,45,80,.08); --border-hover: rgba(14,165,233,.45);
+  --ink: #0B1B2B; --text: #0B1B2B; --ink-muted: #55677A; --sub: #55677A; --ink-faint: #94A6B8; --muted: #94A6B8;
+  --line: rgba(11,45,80,.08); --line2: rgba(11,45,80,.14);
+  --cy: #0EA5E9; --in: #6366F1; --ok: #10B981; --sky: #E0F2FE;
+  --mx: 50%; --my: 20%;
+}
+html body *:not(svg):not(svg *) { font-family: Geist, system-ui, -apple-system, sans-serif !important; }
+html body .mono, html body .mono * { font-family: "Geist Mono", ui-monospace, monospace !important; }
+body { background: var(--bg); color: var(--ink); }
+body::after { opacity: .015; }
+.nw { white-space: nowrap; }
+
+/* Fondo vivo: malla de puntos + luz que sigue al cursor */
+.fondo-vivo { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(600px circle at var(--mx) var(--my), rgba(14,165,233,.12), transparent 60%),
+    radial-gradient(55% 45% at 85% 0%, rgba(125,211,252,.35), transparent 70%),
+    radial-gradient(45% 40% at 5% 5%, rgba(99,102,241,.10), transparent 70%),
+    linear-gradient(180deg, #EAF5FD 0%, var(--bg) 40%); }
+.fondo-vivo::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(11,45,80,.13) 1px, transparent 1px); background-size: 26px 26px;
+  mask-image: radial-gradient(700px circle at var(--mx) var(--my), #000 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.12) 100%); -webkit-mask-image: radial-gradient(700px circle at var(--mx) var(--my), #000 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.12) 100%); }
+
+/* ── Navegación flotante de vidrio ── */
+nav#main-nav { position: sticky; top: 12px; margin: 12px auto 0; width: min(1180px, calc(100% - 24px)); height: 60px; padding: 0 10px 0 18px;
+  background: rgba(255,255,255,.75); border: 1px solid var(--line2); border-radius: 14px; backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 8px 30px -18px rgba(11,45,80,.25); }
+.nav-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.logo-mark { width: 18px; height: 18px; border-radius: 5px; background: conic-gradient(from 0deg, var(--cy), var(--in), #0B7798, var(--cy)); animation: vgira 6s linear infinite; box-shadow: 0 0 14px rgba(14,165,233,.45); }
+.logo-word { font-weight: 700; letter-spacing: .22em; font-size: 14px; }
+.nav-links a { color: var(--ink-muted); font-size: 14px; }
+.nav-links a:hover { color: var(--ink); background: rgba(11,45,80,.05); }
+.nav-cta { color: #fff; background: linear-gradient(180deg, #38BDF8, #0B7798); border: 0; box-shadow: 0 8px 22px -10px rgba(14,165,233,.7); }
+.nav-cta:hover { background: linear-gradient(180deg, #38BDF8, #0B7798); color: #fff; filter: brightness(1.05); }
+.lang-switch { border-color: var(--line2); background: #fff; }
+.lang-btn { color: var(--ink-muted); }
+.lang-btn:hover { color: var(--ink); }
+.lang-btn:focus-visible { outline-color: var(--cy); }
+.hamburger span { background: var(--ink); }
+@media(max-width:900px){
+  nav#main-nav { top: 0; margin: 0; width: 100%; height: 56px; border-radius: 0; border-width: 0 0 1px; padding: 0 16px; }
+  .nav-links { background: #fff; box-shadow: 0 16px 32px -16px rgba(11,45,80,.35); }
+  .nav-links a { color: var(--ink); }
+}
+
+/* ── Botones ── */
+.vbtn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; padding: 13px 20px; font-weight: 600; font-size: 15px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.vbtn:hover { transform: translateY(-1px); }
+.vbtn-p, .btn-submit { color: #fff; background: linear-gradient(180deg, #38BDF8, #0B7798); box-shadow: 0 0 0 1px rgba(255,255,255,.25) inset, 0 12px 30px -10px rgba(14,165,233,.6); overflow: hidden; }
+.vbtn-p::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.5) 50%, transparent 70%); background-size: 250% 100%; animation: vbrillo 3.2s ease-in-out infinite; mix-blend-mode: overlay; pointer-events: none; }
+.vbtn-s { color: var(--ink); background: #fff; border: 1px solid var(--line2); box-shadow: 0 2px 8px -4px rgba(11,45,80,.15); }
+.btn-submit:hover { background: linear-gradient(180deg, #38BDF8, #0B7798); filter: brightness(1.05); }
+@keyframes vbrillo { 0%,40% { background-position: 120% 0; } 70%,100% { background-position: -60% 0; } }
+@keyframes vgira { to { transform: rotate(360deg); } }
+
+/* ── Portada ── */
+.vh { position: relative; padding: 70px 24px 60px; }
+.vh-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+.vh-estado { display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px 6px 8px; border-radius: 99px; border: 1px solid var(--line2); background: #fff; font-size: 12px; color: var(--ink-muted); }
+.vh-estado b { display: inline-flex; align-items: center; gap: 6px; color: var(--ok); font-weight: 500; }
+.vh-estado b::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); animation: vlatido 1.8s infinite; }
+@keyframes vlatido { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,.6); } 70%,100% { box-shadow: 0 0 0 8px rgba(16,185,129,0); } }
+.vh h1 { font-size: clamp(38px, 4.9vw, 64px); line-height: 1.03; letter-spacing: -.045em; font-weight: 700; color: var(--ink); margin: 22px 0 20px; text-wrap: balance; }
+.ia { background: linear-gradient(100deg, #0B7798 0%, var(--cy) 30%, var(--in) 62%, #0B7798 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: vflujo 6s linear infinite; }
+@keyframes vflujo { to { background-position: -200% 0; } }
+.vh-sub { color: var(--ink-muted); font-size: 18px; line-height: 1.65; max-width: 540px; }
+.vh-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.vh-sistema { position: relative; max-width: 560px; margin-left: auto; width: 100%; }
+.vh-sistema svg { width: 100%; height: auto; display: block; overflow: visible; }
+.vh-nota { position: absolute; top: -2%; right: 0; font-size: 11px; color: var(--ink-faint); }
+.vh-ruta { fill: none; stroke: url(#gRuta); stroke-width: 1.2; opacity: .55; }
+.vh-ruta-base { fill: none; stroke: rgba(11,45,80,.07); stroke-width: 1; }
+.vh-anillo { fill: none; stroke: rgba(14,165,233,.35); stroke-width: 1; transform-origin: 300px 300px; }
+.vh-nodo rect { fill: #fff; stroke: rgba(11,45,80,.14); stroke-width: 1; filter: drop-shadow(0 6px 14px rgba(11,45,80,.12)); transition: stroke .3s; }
+.vh-nodo text { fill: var(--ink); font: 500 13px Geist, sans-serif; }
+.vh-nodo .ic { fill: var(--cy); }
+.vh-nodo.on rect { stroke: var(--cy); filter: drop-shadow(0 0 10px rgba(14,165,233,.55)); }
+.vh-paquete { fill: #38BDF8; filter: url(#brilloF); }
+.vfranja { border-block: 1px solid var(--line); background: rgba(255,255,255,.7); overflow: hidden; white-space: nowrap; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.vfranja > div { display: inline-block; padding: 15px 0; animation: vtk 38s linear infinite; color: var(--ink-muted); font-size: 14px; }
+.vfranja span { margin: 0 30px; }
+.vfranja span::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--cy); box-shadow: 0 0 8px var(--cy); margin-right: 30px; vertical-align: middle; }
+@keyframes vtk { to { transform: translateX(-50%); } }
+
+/* ── Encabezados de sección ── */
+.vs { position: relative; padding: 110px 24px; }
+.vwrap { max-width: 1200px; margin: 0 auto; }
+.tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cy); font-weight: 500; }
+.tag::before { content: ""; width: 18px; height: 1px; background: var(--cy); }
+.tag svg { display: none; }
+.section-title { font-size: clamp(32px, 4.4vw, 54px); line-height: 1.04; letter-spacing: -.04em; font-weight: 700; color: var(--ink); max-width: 820px; margin: 12px 0 14px; }
+.section-sub { color: var(--ink-muted); font-size: 17px; line-height: 1.65; max-width: 620px; }
+
+/* ── «Qué hacemos»: tarjetas que hacen lo que dicen ── */
+.vb { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: minmax(150px, auto); gap: 14px; margin-top: 46px; }
+.vcard { position: relative; overflow: hidden; border-radius: 18px; padding: 22px; background: #fff; border: 1px solid var(--line); isolation: isolate; box-shadow: 0 1px 2px rgba(11,45,80,.04), 0 18px 40px -26px rgba(11,45,80,.22); }
+.vcard::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(380px circle at var(--cx,50%) var(--cy2,0%), rgba(14,165,233,.10), transparent 50%); opacity: 0; transition: opacity .3s; }
+.vcard:hover::before { opacity: 1; }
+.vcard h3 { margin: 0 0 6px; font-size: 19px; letter-spacing: -.02em; font-weight: 600; color: var(--ink); }
+.vcard p { margin: 0; color: var(--ink-muted); font-size: 14.5px; line-height: 1.55; max-width: 380px; }
+.vc-ag { grid-column: span 4; grid-row: span 2; } .vc-dt { grid-column: span 2; grid-row: span 2; }
+.vc-pl, .vc-cel, .vc-ro { grid-column: span 2; } .vc-ev { grid-column: span 6; }
+.vchat { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; max-width: 470px; }
+.vmsg { max-width: 80%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.45; opacity: 0; transform: translateY(6px); transition: all .45s; color: var(--ink); }
+.vmsg.v { opacity: 1; transform: none; }
+.vmsg.cli { align-self: flex-start; background: #F1F5F9; border: 1px solid var(--line); }
+.vmsg.ag { align-self: flex-end; background: linear-gradient(180deg, #E0F2FE, #F0F9FF); border: 1px solid rgba(14,165,233,.35); }
+.vmsg small { display: block; font-size: 10.5px; color: var(--ink-muted); margin-bottom: 3px; }
+.vpuntos { display: inline-flex; gap: 4px; } .vpuntos i { width: 6px; height: 6px; border-radius: 50%; background: var(--cy); animation: vpt 1s infinite; }
+.vpuntos i:nth-child(2) { animation-delay: .15s; } .vpuntos i:nth-child(3) { animation-delay: .3s; }
+@keyframes vpt { 50% { opacity: .25; transform: translateY(-2px); } }
+.vcifra { font-size: 34px; font-weight: 600; letter-spacing: -.03em; margin-top: 18px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.vcifra small { font-size: 13px; color: var(--ok); font-weight: 500; margin-left: 6px; }
+.vspark { width: 100%; height: 120px; margin-top: 10px; }
+.vcel { position: relative; width: 160px; height: 96px; margin-top: 16px; border-radius: 18px 18px 0 0; border: 1px solid var(--line2); border-bottom: 0; background: linear-gradient(180deg, #F1F7FC, #fff); overflow: hidden; }
+.vnotif { position: absolute; left: 8px; right: 8px; top: 10px; padding: 8px 10px; border-radius: 10px; background: #fff; border: 1px solid var(--line2); box-shadow: 0 8px 20px -10px rgba(11,45,80,.3); font-size: 11px; line-height: 1.35; color: var(--ink); transform: translateY(-130%); transition: transform .5s cubic-bezier(.2,.9,.3,1.2); }
+.vnotif.v { transform: none; } .vnotif b { color: var(--ok); font-weight: 500; }
+.vmods { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.vmods span { font-size: 12px; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--line2); color: var(--ink-muted); transition: all .4s; }
+.vmods span.on { color: var(--ink); border-color: rgba(14,165,233,.5); background: rgba(14,165,233,.1); }
+.vroles { margin-top: 14px; display: grid; gap: 7px; }
+.vrol { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--ink-muted); }
+.vsw { width: 30px; height: 17px; border-radius: 99px; background: rgba(11,45,80,.14); position: relative; transition: background .3s; }
+.vsw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 13px; height: 13px; border-radius: 50%; background: #fff; transition: transform .3s; }
+.vsw.on { background: var(--cy); } .vsw.on::after { transform: translateX(13px); }
+.vvers { display: flex; margin-top: 20px; }
+.vver { flex: 1; position: relative; padding-top: 18px; font-size: 12px; color: var(--ink-faint); transition: color .4s; }
+.vver::before { content: ""; position: absolute; top: 4px; left: 0; right: 0; height: 2px; background: var(--line2); }
+.vver::after { content: ""; position: absolute; top: 0; left: 0; width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid var(--ink-faint); transition: all .4s; }
+.vver.on { color: var(--ink); } .vver.on::before { background: linear-gradient(90deg, var(--cy), var(--in)); } .vver.on::after { border-color: var(--cy); background: var(--cy); box-shadow: 0 0 10px var(--cy); }
+
+/* ── «Cómo trabajamos»: la línea se llena al bajar ── */
+.vpasos { position: relative; list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin: 56px 0 0; padding: 0; }
+.vpasos::before { content: ""; position: absolute; top: 21px; left: 4%; right: 4%; height: 1px; background: var(--line2); }
+.vpasos-fill { position: absolute; top: 21px; left: 4%; height: 1px; width: 0; background: linear-gradient(90deg, var(--cy), var(--in)); box-shadow: 0 0 12px var(--cy); transition: width 2.2s cubic-bezier(.3,.7,.2,1); }
+.vpasos.in .vpasos-fill { width: 92%; }
+.vpaso { position: relative; opacity: .35; transform: translateY(10px); transition: all .6s; }
+.vpasos.in .vpaso { opacity: 1; transform: none; }
+.vpaso:nth-of-type(2) { transition-delay: .3s; } .vpaso:nth-of-type(3) { transition-delay: .6s; } .vpaso:nth-of-type(4) { transition-delay: .9s; } .vpaso:nth-of-type(5) { transition-delay: 1.2s; }
+.vpaso-n { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: #fff; border: 1px solid rgba(14,165,233,.4); color: var(--cy); font-size: 13px; box-shadow: 0 0 24px -6px rgba(14,165,233,.6); }
+.vpaso h3 { font-size: 17px; margin: 18px 0 6px; letter-spacing: -.02em; color: var(--ink); font-weight: 600; }
+.vpaso p { margin: 0; color: var(--ink-muted); font-size: 14px; line-height: 1.55; }
+
+/* ── SALA y productos (el anuncio verde se queda dentro de su marco) ── */
+.sala { background: transparent; border-bottom: 0; }
+.prod-title { color: var(--ink); } .prod-sub { color: var(--ink-muted); }
+.prod-group { background: #fff; border-color: var(--line); box-shadow: 0 18px 40px -30px rgba(11,45,80,.25); }
+.prod-group-title { color: var(--ink-muted); }
+.prod-item { background: #F8FAFC; }
+.prod-name { color: var(--ink); } .prod-desc { color: var(--ink-muted); }
+.prod-status { border-color: var(--line2); color: var(--ink-muted); }
+.prod-status--app, .prod-link { color: #0B7798; border-color: rgba(14,165,233,.45); }
+.sala-ad { box-shadow: 0 40px 80px -40px rgba(20,50,35,.45); }
+
+/* ── Proyectos ── */
+.proyectos { background: transparent; border-bottom: 0; }
+.proyectos::before, .proyectos::after, .soluciones::before, .soluciones::after { display: none; }
+.proyecto-card { background: #fff; border-color: var(--line); box-shadow: 0 20px 40px -28px rgba(11,45,80,.35); }
+.proyecto-card:hover { border-color: rgba(14,165,233,.45); box-shadow: 0 26px 50px -26px rgba(14,165,233,.45); }
+.proyecto-cap { left: 8px; right: 8px; bottom: 8px; padding: 12px 13px; border-radius: 12px; background: rgba(255,255,255,.93); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); }
+.proyecto-cap strong { color: var(--ink); font-size: 13.5px; }
+.proyecto-cap span { color: var(--ink-muted); }
+.proy-badge { color: #0B7798; background: rgba(255,255,255,.92); border-color: rgba(14,165,233,.3); }
+
+/* ── Contacto ── */
+.contacto { background: transparent; color: var(--ink); border-bottom: 0; }
+.contacto-left .tag { color: var(--cy); }
+.contacto-left .section-title { color: var(--ink); }
+.contacto-left .section-sub { color: var(--ink-muted); }
+.btn-text-lima, .btn-text-lima:hover { color: var(--ink); }
+.contacto-img img { border-color: var(--line); box-shadow: 0 24px 50px -30px rgba(11,45,80,.4); }
+.contacto-form { background: #fff; border-color: var(--line); box-shadow: 0 30px 60px -36px rgba(11,45,80,.35); }
+.contacto-form h3 { color: var(--ink); }
+.fg label { color: var(--ink-muted); }
+.fg input, .fg textarea { background: #F8FAFC; border-color: var(--line2); color: var(--ink); color-scheme: light; }
+.fg input::placeholder, .fg textarea::placeholder { color: var(--ink-faint); }
+.fg input:focus, .fg textarea:focus { border-color: var(--cy); box-shadow: 0 0 0 3px rgba(14,165,233,.15); background: #fff; }
+.form-error { color: #DC2626; } .fg input.invalid, .fg textarea.invalid { border-color: #DC2626; }
+.form-check, .form-check label { color: var(--ink-muted); }
+.form-check a { color: #0B7798; }
+
+/* ── Preguntas frecuentes ── */
+.faq { background: transparent; border-bottom: 0; }
+.faq-question h4 { color: var(--ink); font-size: 16px; }
+.faq-answer p { color: var(--ink-muted); }
+.faq-footer p { color: var(--ink-muted); }
+.faq-footer .btn-lima, .btn-lima { color: #fff; background: linear-gradient(180deg, #38BDF8, #0B7798); border-radius: 10px; }
+
+/* ── Pie ── */
+footer { background: #fff; border-top: 1px solid var(--line); }
+.footer-logo-name { color: var(--ink); }
+.footer-logo-sub, .footer-nav-wrap a, .footer-contact p, .footer-contact p a, .footer-bottom p, .social a, .fc-wa { color: var(--ink-muted); }
+.footer-nav-wrap a:hover, .social a:hover, .fc-wa:hover { color: var(--ink); }
+.fc-wa { background: #F1F5F9; border-color: var(--line); }
+
+/* ── Chat de Stryvi ── */
+.chat-fab { background: linear-gradient(180deg, #38BDF8, #0B7798); }
+.chat-modal { background: #fff; border-color: var(--line2); box-shadow: 0 30px 70px -30px rgba(11,45,80,.45); }
+.chat-header { background: #F8FAFC; border-color: var(--line); }
+.chat-msg.bot { background: #F1F5F9; color: var(--ink); }
+.chat-input-wrap { border-color: var(--line); }
+.chat-input-wrap input { background: #fff; border-color: var(--line2); color: var(--ink); }
+
+/* ── Responsive ── */
+@media(max-width:980px){
+  .vh-grid { grid-template-columns: 1fr; }
+  .vh-sistema { margin: 30px auto 0; }
+  .vb { grid-template-columns: 1fr 1fr; } .vc-ag, .vc-ev, .vc-dt { grid-column: span 2; grid-row: auto; } .vc-pl, .vc-cel, .vc-ro { grid-column: span 1; }
+  .vpasos { grid-template-columns: 1fr; gap: 26px; } .vpasos::before, .vpasos-fill { display: none; }
+}
+@media(max-width:600px){
+  .vh { padding: 36px 20px 40px; } .vs { padding: 80px 20px; }
+  .vh-ctas .vbtn { width: 100%; }
+  .vb { grid-template-columns: 1fr; } .vc-pl, .vc-cel, .vc-ro, .vc-ag, .vc-dt, .vc-ev { grid-column: auto; }
+  .vh-nodo text { font-size: 15px; }
+  .proyecto-cap { padding: 9px 10px; } .proyecto-cap span { display: none; }
+}
+#soluciones .tag, #metodologia .tag, #sala-studio .prod-head .tag, .proyectos .tag, .faq .tag, .contacto .tag { color: var(--cy); }
+.vh h1 { text-wrap: pretty; max-width: 640px; }
+.proyectos-header { max-width: 1200px; padding: 0 24px; }
+.proyectos-track { max-width: 1248px; padding: 4px 24px 20px; }
+.prod-head, .prod-more, .sala-ad { max-width: 1200px; }
+.sala { padding: 64px 24px; }
+@media (prefers-reduced-motion: reduce) { .ia, .logo-mark, .vfranja > div, .vbtn-p::after, .vh-anillo { animation: none !important; } }
+
 </style>
 </head>
 <body>
+<div class="fondo-vivo" aria-hidden="true"></div>
 
 <svg style="display:none">
   <symbol id="wa-icon" viewBox="0 0 24 24">
@@ -582,9 +816,7 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#" class="nav-logo">
-    <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/stryv_cvfufm.png" alt="STRYV" class="nav-logo-img">
-  </a>
+  <a href="#" class="nav-logo" aria-label="STRYV"><span class="logo-mark" aria-hidden="true"></span><span class="logo-word">STRYV</span></a>
   <ul class="nav-links" id="nav-links">
     <li><a href="#soluciones" data-i18n="nav.soluciones">Qué hacemos</a></li>
     <li><a href="#metodologia" data-i18n="nav.metodo">Metodología</a></li>
@@ -610,88 +842,72 @@ footer { background: var(--bg); padding: 52px 48px 28px; border-top: 1px solid v
   </button>
 </nav>
 
-<!-- HERO -->
-<div class="hero-wrap">
-  <section class="hero">
-    <div class="hero-left">
-      <div class="hero-kicker">
-        <span class="hero-kicker-text" data-i18n-html="hero.kicker" lang="en"><span class="nw">AI-Native</span> Engineering Studio</span>
-      </div>
-      <h1 data-i18n="hero.v3.h1">Convertimos tu negocio en un sistema que opera con inteligencia artificial.</h1>
-      <p class="hero-sub" data-i18n-html="hero.v3.sub">Conectamos ventas, pedidos, cobros y equipo en una plataforma propia, y ponemos agentes de IA a trabajar en tu operación: responden a tus clientes, dan seguimiento y ordenan tus datos. Tú ves todo en tiempo real desde el celular.</p>
-      <div class="hero-actions">
-        <a href="#contacto" class="btn-lima" data-i18n="hero.v3.cta1">Agenda tu diagnóstico</a>
-        <a href="#proyectos" class="btn-ghost" data-i18n="hero.v3.cta2">Ver proyectos</a>
+<!-- HERO · sistema vivo -->
+<header class="vh">
+  <div class="vh-grid">
+    <div class="vh-left">
+      <span class="vh-estado mono"><b>ONLINE</b> <span data-i18n-html="hero.kicker" lang="en"><span class="nw">AI-Native</span> Engineering Studio</span></span>
+      <h1 data-i18n-html="hero.h1v">Convertimos tu negocio en un sistema que <span class="ia">opera con inteligencia artificial.</span></h1>
+      <p class="vh-sub" data-i18n-html="hero.v3.sub">Conectamos ventas, pedidos, cobros y equipo en una plataforma propia, y ponemos agentes de IA a trabajar en tu operación: responden a tus clientes, dan seguimiento y ordenan tus datos. Tú ves todo en tiempo real desde el celular.</p>
+      <div class="vh-ctas">
+        <a href="#contacto" class="vbtn vbtn-p" data-i18n="hero.v3.cta1">Agenda tu diagnóstico</a>
+        <a href="#proyectos" class="vbtn vbtn-s" data-i18n="hero.v3.cta2">Ver proyectos</a>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-collage">
-        <div class="col-card col-c">
-          <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/1.jpg" alt="STRYV">
-        </div>
-        <div class="col-card col-l">
-          <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/2.jpg" alt="STRYV">
-        </div>
-        <div class="col-card col-r">
-          <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/3.jpg" alt="STRYV">
-        </div>
-      </div>
+    <div class="vh-sistema">
+      <span class="vh-nota mono" data-i18n="hero.sim">Simulación de un sistema STRYV en operación</span>
+      <svg viewBox="0 0 600 600" id="vh-svg" role="img" aria-label="STRYV">
+        <defs>
+          <linearGradient id="gRuta" x1="0" x2="1"><stop offset="0" stop-color="#0EA5E9" stop-opacity=".1"/><stop offset=".5" stop-color="#0EA5E9" stop-opacity=".7"/><stop offset="1" stop-color="#6366F1" stop-opacity=".2"/></linearGradient>
+          <radialGradient id="gNucleo"><stop offset="0" stop-color="#BAE6FD"/><stop offset=".45" stop-color="#38BDF8" stop-opacity=".8"/><stop offset="1" stop-color="#0B7798" stop-opacity="0"/></radialGradient>
+          <filter id="brilloF" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <g id="vh-rutas"></g><g id="vh-paquetes"></g>
+        <circle cx="300" cy="300" r="128" class="vh-anillo" stroke-dasharray="2 6" style="animation:vgira 40s linear infinite"/>
+        <circle cx="300" cy="300" r="92" class="vh-anillo" stroke-dasharray="40 14" style="animation:vgira 18s linear infinite reverse"/>
+        <circle cx="300" cy="300" r="70" fill="url(#gNucleo)" opacity=".28"><animate attributeName="r" values="62;78;62" dur="3.2s" repeatCount="indefinite"/></circle>
+        <circle cx="300" cy="300" r="44" fill="#fff" stroke="#0EA5E9" stroke-opacity=".7" style="filter:drop-shadow(0 8px 24px rgba(14,165,233,.35))"/>
+        <text x="300" y="296" text-anchor="middle" fill="#0B1B2B" style="font:700 13px Geist,sans-serif;letter-spacing:.2em">STRYV</text>
+        <text x="300" y="314" text-anchor="middle" fill="#0EA5E9" style="font:500 10px 'Geist Mono',monospace" id="vh-nucleo">NÚCLEO IA</text>
+        <g id="vh-nodos"></g>
+      </svg>
     </div>
-  </section>
-</div>
+  </div>
+</header>
+<div class="vfranja mono" aria-hidden="true"><div id="vfranja"></div></div>
 
-
-<!-- CORE BUSINESS (ancla histórica #soluciones) -->
-<section class="soluciones" id="soluciones" aria-labelledby="core-title">
-  <div class="core-inner">
-    <div class="core-intro reveal">
-      <div class="tag">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        <span data-i18n="core.tag">Negocio principal</span>
-      </div>
-      <h2 class="section-title core-title" id="core-title" data-i18n="core.title">El sistema operativo de tu negocio.</h2>
-      <p class="core-lead" data-i18n-html="core.lead">Una plataforma propia, construida alrededor de cómo trabajas, con inteligencia artificial integrada desde el inicio.</p>
-      <p class="section-sub core-body" data-i18n="core.body">Primero entendemos cómo opera tu negocio: quién vende, quién entrega y cómo se cobra. Con eso diseñamos la arquitectura, construimos tu sistema y conectamos agentes de IA donde ahorran tiempo o generan ventas.</p>
-      <p class="core-for"><strong data-i18n="core.forLabel">Para quién:</strong> <span data-i18n="core.for">negocios que ya venden y que hoy se organizan con WhatsApp, Excel y libretas.</span></p>
+<!-- QUÉ HACEMOS (ancla histórica #soluciones) -->
+<section class="vs" id="soluciones" aria-labelledby="core-title">
+  <div class="vwrap">
+    <div class="reveal">
+      <div class="tag"><span data-i18n="core.tag">Qué hacemos</span></div>
+      <h2 class="section-title" id="core-title" data-i18n="core.title">El sistema operativo de tu negocio.</h2>
+      <p class="section-sub vs-sub" data-i18n-html="core.lead">Una plataforma propia, construida alrededor de cómo trabajas, con inteligencia artificial integrada desde el inicio.</p>
     </div>
-    <div class="core-compare reveal d1">
-      <div class="core-col core-col--not">
-        <h3 class="core-col-title" data-i18n="core.notTitle">Lo que dejas atrás</h3>
-        <ul>
-          <li data-i18n="core.not.n1">Pedidos y datos regados entre WhatsApp, Excel y libretas</li>
-          <li data-i18n="core.not.n2">Capturar todo a mano y revisarlo dos veces</li>
-          <li data-i18n="core.not.n3">Saber cómo va el negocio hasta fin de mes</li>
-        </ul>
-      </div>
-      <div class="core-col core-col--is">
-        <h3 class="core-col-title" data-i18n="core.isTitle">Lo que obtienes</h3>
-        <ul>
-          <li data-i18n="core.is.d1">Plataforma propia, diseñada alrededor de tu operación</li>
-          <li data-i18n="core.is.d2">Ventas, pedidos, cobros y equipo en un solo lugar</li>
-          <li data-i18n="core.is.d3">Datos en tiempo real, en una sola fuente</li>
-          <li data-i18n="core.is.d4">Roles y permisos: cada persona ve lo que le toca</li>
-          <li data-i18n="core.is.d5">Agentes de IA que responden, dan seguimiento y ordenan datos</li>
-          <li data-i18n="core.is.d6">Evolución continua: nuevas capacidades conforme creces</li>
-        </ul>
-      </div>
+    <div class="vb">
+      <div class="vcard vc-ag reveal"><h3 data-i18n="core.b.ag.t">Agentes de IA que atienden por ti</h3><p data-i18n="core.b.ag.d">Responden a tus clientes, toman pedidos y dan seguimiento, a cualquier hora.</p><div class="vchat" id="vchat"></div></div>
+      <div class="vcard vc-dt reveal d1"><h3 data-i18n="core.b.dt.t">Datos en tiempo real</h3><p data-i18n="core.b.dt.d">Ventas, pedidos y cobros en una sola fuente.</p>
+        <div class="vcifra mono"><span id="vventas">$48,210</span><small>▲ 12%</small></div>
+        <svg class="vspark" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0EA5E9" stop-opacity=".35"/><stop offset="1" stop-color="#0EA5E9" stop-opacity="0"/></linearGradient></defs><path id="varea" fill="url(#gArea)"/><path id="vlinea" fill="none" stroke="#0EA5E9" stroke-width="2"/><circle id="vpunta" r="4" fill="#38BDF8" filter="url(#brilloF)"/></svg></div>
+      <div class="vcard vc-pl reveal"><h3 data-i18n="core.b.pl.t">Plataforma propia</h3><p data-i18n="core.b.pl.d">Hecha alrededor de tu operación.</p><div class="vmods mono" id="vmods"></div></div>
+      <div class="vcard vc-cel reveal d1"><h3 data-i18n="core.b.cel.t">Desde el celular</h3><p data-i18n="core.b.cel.d">Tu negocio a la vista, donde estés.</p><div class="vcel"><div class="vnotif" id="vnotif"></div></div></div>
+      <div class="vcard vc-ro reveal d2"><h3 data-i18n="core.b.ro.t">Roles y permisos</h3><p data-i18n="core.b.ro.d">Cada persona ve solo lo que le toca.</p><div class="vroles mono" id="vroles"></div></div>
+      <div class="vcard vc-ev reveal"><h3 data-i18n="core.b.ev.t">Evolución continua</h3><p data-i18n="core.b.ev.d">Tu sistema suma capacidades conforme tu negocio crece.</p><div class="vvers mono" id="vvers"></div></div>
     </div>
-    <p class="core-method reveal" data-i18n="core.method">Cada negocio es distinto, y por eso cada sistema también. Lo que se repite es la ingeniería: entender primero, construir después y evolucionar siempre.</p>
   </div>
 </section>
 
-<!-- METODOLOGÍA -->
-<section class="metodo" id="metodologia" aria-labelledby="metodo-title">
-  <div class="metodo-inner">
-    <div class="metodo-head reveal">
-      <div class="tag"><span data-i18n="metodo.tag">Metodología</span></div>
-      <h2 class="section-title" id="metodo-title" data-i18n="metodo.title">Cinco pasos, de la primera plática a tu sistema funcionando.</h2>
-    </div>
-    <ol class="metodo-steps">
-      <li class="metodo-step reveal d1"><span class="metodo-num" aria-hidden="true">01</span><h3 class="metodo-name" data-i18n="metodo.n1">Discovery en tu operación</h3><p class="metodo-desc" data-i18n="metodo.s1">Platicamos contigo y con tu equipo para entender cómo venden, entregan y cobran, y qué les quita más tiempo.</p></li>
-      <li class="metodo-step reveal d2"><span class="metodo-num" aria-hidden="true">02</span><h3 class="metodo-name" data-i18n="metodo.n2">Arquitectura AI‑Native</h3><p class="metodo-desc" data-i18n="metodo.s2">Definimos qué hará el sistema, quién usará cada parte y dónde conviene la inteligencia artificial.</p></li>
-      <li class="metodo-step reveal d3"><span class="metodo-num" aria-hidden="true">03</span><h3 class="metodo-name" data-i18n="metodo.n3">Sistema operativo propio</h3><p class="metodo-desc" data-i18n="metodo.s3">Construimos tu sistema a la medida, con toda la información de tu negocio en un solo lugar.</p></li>
-      <li class="metodo-step reveal d4"><span class="metodo-num" aria-hidden="true">04</span><h3 class="metodo-name" data-i18n="metodo.n4">Operación inteligente</h3><p class="metodo-desc" data-i18n="metodo.s4">Conectamos agentes de IA y automatizaciones a lo repetitivo: responder, dar seguimiento y ordenar datos.</p></li>
-      <li class="metodo-step reveal"><span class="metodo-num" aria-hidden="true">05</span><h3 class="metodo-name" data-i18n="metodo.n5">Evolución continua</h3><p class="metodo-desc" data-i18n="metodo.s5">Seguimos sumando funciones conforme tu negocio crece.</p></li>
+<!-- CÓMO TRABAJAMOS -->
+<section class="vs" id="metodologia" aria-labelledby="metodo-title">
+  <div class="vwrap">
+    <div class="reveal"><div class="tag"><span data-i18n="metodo.tag">Cómo trabajamos</span></div>
+    <h2 class="section-title" id="metodo-title" data-i18n="metodo.title">De la primera plática a tu sistema funcionando.</h2></div>
+    <ol class="vpasos reveal"><span class="vpasos-fill" aria-hidden="true"></span>
+      <li class="vpaso"><span class="vpaso-n mono" aria-hidden="true">01</span><h3 data-i18n="metodo.n1">.</h3><p data-i18n="metodo.s1">.</p></li>
+      <li class="vpaso"><span class="vpaso-n mono" aria-hidden="true">02</span><h3 data-i18n="metodo.n2">.</h3><p data-i18n="metodo.s2">.</p></li>
+      <li class="vpaso"><span class="vpaso-n mono" aria-hidden="true">03</span><h3 data-i18n="metodo.n3">.</h3><p data-i18n="metodo.s3">.</p></li>
+      <li class="vpaso"><span class="vpaso-n mono" aria-hidden="true">04</span><h3 data-i18n="metodo.n4">.</h3><p data-i18n="metodo.s4">.</p></li>
+      <li class="vpaso"><span class="vpaso-n mono" aria-hidden="true">05</span><h3 data-i18n="metodo.n5">.</h3><p data-i18n="metodo.s5">.</p></li>
     </ol>
   </div>
 </section>
@@ -1132,7 +1348,7 @@ const I18N = {
     meta: { title: 'STRYV Studio | Sistemas operativos con inteligencia artificial para negocios', description: 'Construimos el sistema operativo de tu negocio: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.', orgDescription: 'STRYV Studio construye sistemas operativos AI-Native para negocios: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.' }, // provisional
     common: { talk: 'Hablemos', writeUs: 'Escríbenos directo' },
     nav: { switchConfirm: 'Tienes un mensaje sin enviar en el formulario. Si cambias de idioma se perderá. ¿Continuar?', soluciones: 'Qué hacemos', metodo: 'Cómo trabajamos', sala: 'Productos', proyectos: 'Proyectos', faq: 'FAQ', contacto: 'Contacto', menu: 'Abrir menú', lang: 'Idioma' },
-    hero: {
+    hero: { h1v: 'Convertimos tu negocio en un sistema que <span class="ia">opera con inteligencia artificial.</span>', sim: 'Simulación de un sistema STRYV en operación',
       kicker: '<span class="nw">AI-Native</span> Engineering Studio',
       // Copy V3 aprobado. Kicker aprobado en V3-D1, igual en ambos idiomas.
       v3: {
@@ -1142,7 +1358,7 @@ const I18N = {
         cta2: 'Ver proyectos'
       }
     },
-    core: { title: 'El sistema operativo de tu negocio.',
+    core: { b: { ag: { t: 'Agentes de IA que atienden por ti', d: 'Responden a tus clientes, toman pedidos y dan seguimiento, a cualquier hora.' }, dt: { t: 'Datos en tiempo real', d: 'Ventas, pedidos y cobros en una sola fuente.' }, pl: { t: 'Plataforma propia', d: 'Hecha alrededor de tu operación.' }, cel: { t: 'Desde el celular', d: 'Tu negocio a la vista, donde estés.' }, ro: { t: 'Roles y permisos', d: 'Cada persona ve solo lo que le toca.' }, ev: { t: 'Evolución continua', d: 'Tu sistema suma capacidades conforme tu negocio crece.' } }, title: 'El sistema operativo de tu negocio.',
       tag: 'Qué hacemos',
       lead: 'Una plataforma propia, construida alrededor de cómo trabajas, con inteligencia artificial integrada desde el inicio.',
       body: 'Primero entendemos cómo opera tu negocio: quién vende, quién entrega y cómo se cobra. Con eso diseñamos la arquitectura, construimos tu sistema y conectamos agentes de IA donde ahorran tiempo o generan ventas.',
@@ -1156,7 +1372,7 @@ const I18N = {
     },
     metodo: { n1: 'Discovery en tu operación', n2: 'Arquitectura AI‑Native', n3: 'Sistema operativo propio', n4: 'Operación inteligente', n5: 'Evolución continua',
       tag: 'Cómo trabajamos',
-      title: 'Cinco pasos, de la primera plática a tu sistema funcionando.',
+      title: 'De la primera plática a tu sistema funcionando.',
       s1: 'Platicamos contigo y con tu equipo para entender cómo venden, entregan y cobran, y qué les quita más tiempo.',
       s2: 'Definimos qué hará el sistema, quién usará cada parte y dónde conviene la inteligencia artificial.',
       s3: 'Construimos tu sistema a la medida, con toda la información de tu negocio en un solo lugar.',
@@ -1233,7 +1449,7 @@ const I18N = {
     meta: { title: 'STRYV Studio | AI-powered operating systems for businesses', description: 'We build your business operating system: sales, orders, payments and team on your own platform, with built-in AI agents.', orgDescription: 'STRYV Studio builds AI-Native operating systems for businesses: sales, orders, payments and team on their own platform, with built-in AI agents.' },
     common: { talk: "Let's talk", writeUs: 'Message us directly' },
     nav: { switchConfirm: 'You have an unsent message in the form. Switching language will discard it. Continue?', soluciones: 'What we do', metodo: 'How we work', sala: 'Products', proyectos: 'Projects', faq: 'FAQ', contacto: 'Contact', menu: 'Open menu', lang: 'Language' },
-    hero: {
+    hero: { h1v: 'We turn your business into a system that <span class="ia">runs on artificial intelligence.</span>', sim: 'Simulation of a STRYV system in operation',
       kicker: '<span class="nw">AI-Native</span> Engineering Studio',
       v3: {
         h1: "We turn your business into a system that runs on artificial intelligence.",
@@ -1242,7 +1458,7 @@ const I18N = {
         cta2: 'See projects'
       }
     },
-    core: { title: 'Your business operating system.',
+    core: { b: { ag: { t: 'AI agents that serve customers for you', d: 'They answer your customers, take orders and follow up, at any hour.' }, dt: { t: 'Real-time data', d: 'Sales, orders and payments in a single source.' }, pl: { t: 'Your own platform', d: 'Built around how you operate.' }, cel: { t: 'From your phone', d: 'Your business in view, wherever you are.' }, ro: { t: 'Roles and permissions', d: 'Each person sees only what they need.' }, ev: { t: 'Continuous evolution', d: 'Your system gains capabilities as your business grows.' } }, title: 'Your business operating system.',
       tag: 'What we do',
       lead: 'Your own platform, built around how you work, with artificial intelligence built in from day one.',
       body: 'First we learn how your business runs: who sells, who delivers and how you get paid. Then we design the architecture, build your system and connect AI agents where they save time or drive sales.',
@@ -1256,7 +1472,7 @@ const I18N = {
     },
     metodo: { n1: 'Forward Deployed Discovery', n2: 'AI‑Native Architecture', n3: 'Custom Operating System', n4: 'Intelligent Operations', n5: 'Continuous Evolution',
       tag: 'How we work',
-      title: 'Five steps, from the first conversation to your system up and running.',
+      title: 'From the first conversation to your system up and running.',
       s1: 'We talk with you and your team to learn how you sell, deliver and get paid, and what takes up most of your time.',
       s2: 'We decide what the system will do, who will use each part, and where artificial intelligence makes sense.',
       s3: 'We build your system to fit, with all your business information in one place.',
@@ -2073,5 +2289,119 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 })();
 </script>
 
+<script>
+// ─── Rediseño «sistema vivo»: portada animada y tarjetas que hacen lo que dicen ───
+(() => {
+const EN = document.documentElement.lang === 'en';
+const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s) => document.querySelector(s);
+const NS = 'http://www.w3.org/2000/svg';
+const el = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; };
+const T = EN ? {
+  mods: ['Sales', 'Orders', 'Payments', 'Inventory', 'Customers', 'Team'], nucleo: 'AI CORE',
+  franja: ['Restaurants', 'Factories', 'Gyms & studios', 'Retail', 'E-commerce', 'Distributors', 'Services', 'Digital products'],
+  chat: [['cli', 'Customer · WhatsApp', 'Can you deliver to downtown today?'], ['ag', 'AI agent · STRYV', 'Yes, before 6 pm. Should I confirm your usual order?'], ['cli', 'Customer · WhatsApp', 'Yes please 🙌'], ['ag', 'AI agent · STRYV', 'Done: order #1043 confirmed and the payment link sent to your WhatsApp.']],
+  notif: 'Payment received', pedido: 'Order', roles: ['Sales', 'Payments', 'Inventory'],
+  vers: ['v1 · Sales & orders', 'v2 · Payments', 'v3 · AI agent', 'v4 · Inventory', 'v5 · Reports'],
+} : {
+  mods: ['Ventas', 'Pedidos', 'Cobros', 'Inventario', 'Clientes', 'Equipo'], nucleo: 'NÚCLEO IA',
+  franja: ['Restaurantes', 'Fábricas', 'Gimnasios y estudios', 'Retail', 'E-commerce', 'Distribuidoras', 'Servicios', 'Infoproductos'],
+  chat: [['cli', 'Cliente · WhatsApp', '¿Tienen entrega hoy en la colonia Centro?'], ['ag', 'Agente IA · STRYV', 'Sí, antes de las 6 pm. ¿Te confirmo el pedido de siempre?'], ['cli', 'Cliente · WhatsApp', 'Sí, porfa 🙌'], ['ag', 'Agente IA · STRYV', 'Listo: pedido #1043 confirmado y cobro enviado a tu WhatsApp.']],
+  notif: 'Cobro registrado', pedido: 'Pedido', roles: ['Ventas', 'Cobros', 'Inventario'],
+  vers: ['v1 · Ventas y pedidos', 'v2 · Cobros', 'v3 · Agente de IA', 'v4 · Inventario', 'v5 · Reportes'],
+};
+const ICON = ['◆', '▤', '$', '▦', '◉', '⚇'];
+
+// Luz que sigue al cursor (fondo y tarjetas)
+addEventListener('pointermove', (e) => {
+  document.documentElement.style.setProperty('--mx', e.clientX + 'px'); document.documentElement.style.setProperty('--my', e.clientY + 'px');
+  const c = e.target.closest && e.target.closest('.vcard'); if (!c) return; const r = c.getBoundingClientRect();
+  c.style.setProperty('--cx', e.clientX - r.left + 'px'); c.style.setProperty('--cy2', e.clientY - r.top + 'px');
+}, { passive: true });
+
+// Portada: núcleo de IA y módulos con datos viajando
+const svg = $('#vh-svg');
+if (svg) {
+  $('#vh-nucleo').textContent = T.nucleo;
+  const F = innerWidth < 560 ? 1.55 : 1, C = 300, R = innerWidth < 560 ? 214 : 228, rutas = [], nodos = [];
+  T.mods.forEach((nom, i) => {
+    const a = (-90 + i * 60) * Math.PI / 180, x = C + R * Math.cos(a), y = C + R * Math.sin(a);
+    const d = `M${C},${C} Q${C + R * .5 * Math.cos(a + .5)},${C + R * .5 * Math.sin(a + .5)} ${x},${y}`;
+    $('#vh-rutas').append(el('path', { d, class: 'vh-ruta-base' }));
+    const p = el('path', { d, class: 'vh-ruta', 'stroke-dasharray': '3 7' }); $('#vh-rutas').append(p); rutas.push(p);
+    const g = el('g', { class: 'vh-nodo', transform: `translate(${x},${y})` }), w = (30 + nom.length * 8.2) * F, h = 38 * F;
+    g.append(el('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 11 * F }));
+    const t1 = el('text', { x: -w / 2 + 13 * F, y: 5 * F, class: 'ic', style: `font-size:${14 * F}px` }); t1.textContent = ICON[i]; g.append(t1);
+    const t2 = el('text', { x: -w / 2 + 31 * F, y: 5 * F, style: `font-size:${13 * F}px` }); t2.textContent = nom; g.append(t2);
+    $('#vh-nodos').append(g); nodos.push(g);
+  });
+  let off = 0, visible = true;
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(svg);
+  const anima = () => { if (visible) { off -= .4; rutas.forEach((p) => p.setAttribute('stroke-dashoffset', off)); } requestAnimationFrame(anima); };
+  const enviar = () => {
+    if (!visible || document.hidden) return;
+    const i = Math.floor(Math.random() * rutas.length), ida = Math.random() > .4, ruta = rutas[i], L = ruta.getTotalLength();
+    const pq = el('circle', { r: 3.6, class: 'vh-paquete' }); $('#vh-paquetes').append(pq);
+    const t0 = performance.now(), dur = 1100 + Math.random() * 500;
+    const paso = (t) => {
+      const k = Math.min(1, (t - t0) / dur), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, pt = ruta.getPointAtLength((ida ? e : 1 - e) * L);
+      pq.setAttribute('cx', pt.x); pq.setAttribute('cy', pt.y);
+      if (k < 1) requestAnimationFrame(paso); else { pq.remove(); if (ida) { nodos[i].classList.add('on'); setTimeout(() => nodos[i].classList.remove('on'), 700); } }
+    };
+    requestAnimationFrame(paso);
+  };
+  if (!quieto) { anima(); setInterval(enviar, 900); }
+}
+const fr = $('#vfranja'); if (fr) fr.innerHTML = [...T.franja, ...T.franja].map((x) => `<span>${x}</span>`).join('');
+
+// Agente de IA contestando
+const chat = $('#vchat');
+const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+if (chat) {
+  if (quieto) chat.innerHTML = T.chat.map(([q, w, t]) => `<div class="vmsg ${q} v"><small>${w}</small>${t}</div>`).join('');
+  else (async () => { for (;;) {
+    chat.innerHTML = '';
+    for (const [q, who, txt] of T.chat) {
+      const m = document.createElement('div'); m.className = 'vmsg ' + q;
+      m.innerHTML = `<small>${who}</small>` + (q === 'ag' ? '<span class="vpuntos"><i></i><i></i><i></i></span>' : txt);
+      chat.append(m); await espera(60); m.classList.add('v');
+      if (q === 'ag') { await espera(1100); m.innerHTML = `<small>${who}</small>${txt}`; }
+      await espera(1500);
+    }
+    await espera(2500);
+  } })();
+}
+
+// Gráfica de ventas en tiempo real
+if ($('#vlinea')) {
+  let datos = Array.from({ length: 24 }, (_, i) => 50 + Math.sin(i / 3) * 14 + Math.random() * 10), ventas = 48210;
+  const dibuja = () => {
+    const W = 300, H = 120, mx = Math.max(...datos) + 8, mn = Math.min(...datos) - 8;
+    const pts = datos.map((v, i) => [i * (W / (datos.length - 1)), H - ((v - mn) / (mx - mn)) * (H - 10) - 5]);
+    const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+    $('#vlinea').setAttribute('d', d); $('#varea').setAttribute('d', d + ` L${W},${H} L0,${H} Z`);
+    const u = pts[pts.length - 1]; $('#vpunta').setAttribute('cx', u[0]); $('#vpunta').setAttribute('cy', u[1]);
+  };
+  dibuja();
+  if (!quieto) setInterval(() => { const u = datos[datos.length - 1]; datos = [...datos.slice(1), Math.max(25, Math.min(95, u + (Math.random() - .42) * 12))]; ventas += Math.floor(Math.random() * 900); $('#vventas').textContent = '$' + ventas.toLocaleString('en-US'); dibuja(); }, 1000);
+}
+
+// Notificación de cobro en el celular
+const notif = $('#vnotif'); let cob = 1042;
+const pinta = () => { notif.innerHTML = `<b>● ${T.notif}</b><br>${T.pedido} #${++cob} · $${(900 + Math.floor(Math.random() * 3800)).toLocaleString('en-US')}`; };
+if (notif) { pinta(); if (quieto) notif.classList.add('v'); else setInterval(() => { notif.classList.remove('v'); setTimeout(() => { pinta(); notif.classList.add('v'); }, 600); }, 3400); }
+
+// Módulos, permisos y versiones
+const mods = $('#vmods'), roles = $('#vroles'), vers = $('#vvers');
+if (mods) mods.innerHTML = T.mods.map((m) => `<span>${m}</span>`).join('');
+if (roles) roles.innerHTML = T.roles.map((r) => `<div class="vrol">${r}<span class="vsw"></span></div>`).join('');
+if (vers) vers.innerHTML = T.vers.map((v) => `<div class="vver">${v}</div>`).join('');
+const ms = [...document.querySelectorAll('#vmods span')], sw = [...document.querySelectorAll('#vroles .vsw')], vs = [...document.querySelectorAll('#vvers .vver')];
+let im = 0, iv = 0;
+const ciclo = () => { ms.forEach((m, i) => m.classList.toggle('on', i <= im)); im = (im + 1) % (ms.length + 2); sw.forEach((s) => s.classList.toggle('on', Math.random() > .4)); vs.forEach((v, i) => v.classList.toggle('on', i <= iv)); iv = (iv + 1) % (vs.length + 1); };
+if (quieto) { [...ms, ...sw, ...vs].forEach((x) => x.classList.add('on')); } else { ciclo(); setInterval(ciclo, 1300); }
+})();
+
+</script>
 </body>
 </html>
