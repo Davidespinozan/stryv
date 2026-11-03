@@ -150,6 +150,7 @@ ${urls.map(([loc, es, en, pr]) => `  <url>\n    <loc>${SITE}${loc}</loc>\n    <l
 </urlset>
 `);
 cpSync(join(ROOT, 'robots.txt'), join(DIST, 'robots.txt'));
+cpSync(join(ROOT, 'assets/images/brand/favicon.ico'), join(DIST, 'favicon.ico'));
 // Aviso de privacidad: páginas estáticas, una por idioma.
 mkdirSync(join(DIST, 'privacidad'), { recursive: true });
 mkdirSync(join(DIST, 'en', 'privacy'), { recursive: true });
