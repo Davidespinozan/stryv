@@ -843,6 +843,30 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 .vcaso-body .vlink { margin-top: auto; padding-top: 4px; }
 @media(max-width:980px){ .vplat { grid-template-columns: 1fr; max-width: 560px; } .vcasos { grid-template-columns: 1fr; } .vcaso--top { grid-template-columns: 1fr; } .vcaso--top .vcaso-img, .vcaso--rev .vcaso-img { aspect-ratio: 16 / 10; order: 0; border-right: 0; border-left: 0; border-bottom: 1px solid var(--line); } .vcaso--top .vcaso-body { padding: 22px; } .vcaso--top h3 { font-size: 24px; } }
 
+/* ── Contacto: oferta + formulario ── */
+.vct { display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; border-radius: 28px; overflow: hidden; background: #fff; border: 1px solid var(--line); box-shadow: 0 40px 80px -46px rgba(11,45,80,.45); }
+.vct-oferta { position: relative; overflow: hidden; isolation: isolate; padding: 48px 44px; color: #fff; background: radial-gradient(70% 60% at 100% 0%, rgba(255,255,255,.22), transparent 70%), linear-gradient(150deg, #0B7798 0%, #0EA5E9 60%, #6FC9F3 100%); }
+.vct-oferta .tag { color: #fff; } .vct-oferta .tag::before { background: #fff; }
+.vct-oferta .section-title { color: #fff; margin: 14px 0 12px; }
+.vct-sub { color: rgba(255,255,255,.88); font-size: 17px; line-height: 1.6; max-width: 440px; }
+.vct-pasos { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+.vct-pasos li { display: flex; gap: 14px; align-items: flex-start; }
+.vct-pasos span { flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 12px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); }
+.vct-pasos p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.45; color: #fff; }
+.vct-canales { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 32px; }
+.vct-wa { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: #0B7798; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 14.5px; text-decoration: none; box-shadow: 0 14px 30px -14px rgba(11,45,80,.55); transition: transform .15s; }
+.vct-wa:hover { transform: translateY(-1px); }
+.vct-wa svg { width: 17px; height: 17px; fill: currentColor; }
+.vct-mail { color: #fff; font-size: 14.5px; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.5); }
+.vct-nota { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 12.5px; color: rgba(255,255,255,.9); }
+.vct-nota b { width: 8px; height: 8px; border-radius: 50%; background: #34F5B0; animation: vlatido 1.8s infinite; }
+.vct-anillos { position: absolute; right: -120px; bottom: -120px; width: 360px; height: 360px; z-index: -1; }
+.vct-anillos i { position: absolute; inset: 0; border-radius: 50%; border: 1px dashed rgba(255,255,255,.35); animation: vgira 40s linear infinite; }
+.vct-anillos i:nth-child(2) { inset: 50px; border-style: solid; border-color: rgba(255,255,255,.22); animation-duration: 24s; animation-direction: reverse; }
+.vct-anillos i:nth-child(3) { inset: 110px; border: 0; background: radial-gradient(circle, rgba(255,255,255,.5), transparent 70%); animation: none; }
+.vct .vct-form { background: #fff; border: 0; border-radius: 0; box-shadow: none; padding: 44px 40px; }
+.vct .vct-form h3 { font-size: 22px; letter-spacing: -.02em; margin-bottom: 22px; }
+@media(max-width:980px){ .vct { grid-template-columns: 1fr; } .vct-oferta { padding: 36px 26px; } .vct .vct-form { padding: 30px 22px; } }
 @media (prefers-reduced-motion: reduce) { .ia, .vfranja > div, .vbtn-p::after, .vh-anillo { animation: none !important; } }
 
 </style>
@@ -1042,23 +1066,27 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 </section>
 
 <!-- CONTACTO -->
-<section class="contacto" id="contacto">
-  <div class="contacto-inner">
-    <div class="contacto-left reveal">
-      <div class="tag">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span data-i18n="contacto.tag">Contacto</span>
+<section class="vs" id="contacto" aria-labelledby="contacto-title">
+  <div class="vwrap">
+    <div class="vct reveal">
+      <div class="vct-oferta">
+        <div class="vct-anillos" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="tag"><span data-i18n="contacto.tag">Diagnóstico sin costo</span></div>
+        <h2 class="section-title" id="contacto-title" data-i18n-html="contacto.title">Agenda tu diagnóstico.</h2>
+        <p class="vct-sub" data-i18n="contacto.sub">Nos cuentas cómo opera tu negocio y te decimos qué conviene automatizar primero, y con qué sistema.</p>
+        <ol class="vct-pasos">
+          <li><span class="mono">01</span><p data-i18n="contacto.p1">Nos cuentas cómo vendes, entregas y cobras.</p></li>
+          <li><span class="mono">02</span><p data-i18n="contacto.p2">Te mostramos qué automatizar primero y dónde entra la IA.</p></li>
+          <li><span class="mono">03</span><p data-i18n="contacto.p3">Si hace sentido, te enviamos una propuesta.</p></li>
+        </ol>
+        <div class="vct-canales">
+          <a href="https://wa.me/17373683464" class="vct-wa" target="_blank" rel="noopener"><svg><use href="#wa-icon"/></svg><span data-i18n="contacto.wa">Escríbenos por WhatsApp</span></a>
+          <a href="mailto:stryv.studio@gmail.com" class="vct-mail">stryv.studio@gmail.com</a>
+        </div>
+        <p class="vct-nota mono"><b></b><span data-i18n="contacto.resp">Respondemos en menos de 24 h</span></p>
       </div>
-      <h2 class="section-title" data-i18n-html="contacto.title">Escríbenos directo.<br>Respondemos en menos de 24h.</h2>
-      <a href="https://wa.me/17373683464" class="nav-cta" target="_blank" style="margin-bottom:32px;padding:9px 18px;margin-top:16px;">
-        <svg><use href="#wa-icon"/></svg><span data-i18n="common.talk">Hablemos</span>
-      </a>
-      <div class="contacto-img">
-        <img src="https://lxpgqhghxfqsahwrdmzo.supabase.co/storage/v1/object/public/stryv/4.jpg" alt="Equipo STRYV" data-i18n-attr="alt:contacto.alt">
-      </div>
-    </div>
-    <div class="contacto-form reveal d2">
-      <h3 data-i18n="form.title">O déjanos tu mensaje</h3>
+    <div class="contacto-form vct-form">
+      <h3 data-i18n="form.title">Cuéntanos de tu negocio</h3>
       <form id="contact-form" novalidate>
         <div class="hp-field" aria-hidden="true"><label for="website">Sitio web</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="form-row">
@@ -1082,6 +1110,7 @@ footer { background: #fff; border-top: 1px solid var(--line); }
         <p style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;" data-i18n="form.ok">¡Mensaje enviado!</p>
         <p style="font-size:13px;color:var(--ink-muted);" data-i18n="form.okSub">Te respondemos en menos de 24h.</p>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -1244,9 +1273,9 @@ const I18N = {
       title: 'Lo que hemos<br>construido.',
       sub: 'Una muestra de proyectos recientes. Da clic en cualquiera para verlo en acción.'
     },
-    contacto: { tag: 'Contacto', title: 'Escríbenos directo.<br>Respondemos en menos de 24h.', alt: 'Equipo STRYV' },
+    contacto: { tag: 'Diagnóstico sin costo', title: 'Agenda tu diagnóstico.', sub: 'Nos cuentas cómo opera tu negocio y te decimos qué conviene automatizar primero, y con qué sistema.', p1: 'Nos cuentas cómo vendes, entregas y cobras.', p2: 'Te mostramos qué automatizar primero y dónde entra la IA.', p3: 'Si hace sentido, te enviamos una propuesta.', wa: 'Escríbenos por WhatsApp', resp: 'Respondemos en menos de 24 h' },
     form: {
-      title: 'O déjanos tu mensaje',
+      title: 'Cuéntanos de tu negocio',
       nombre: 'Nombre', apellido: 'Apellido', email: 'Correo electrónico', wa: 'WhatsApp', mensaje: '¿Qué necesita tu negocio?',
       ph: { nombre: 'Tu nombre', apellido: 'Apellido', email: 'email@empresa.com', mensaje: 'Cuéntanos qué hace tu negocio y qué te gustaría mejorar.' },
       priv: 'Acepto el <a href="/privacidad/" target="_blank" rel="noopener">aviso de privacidad</a>',
@@ -1345,9 +1374,9 @@ const I18N = {
       title: "What we've<br>built.",
       sub: 'A selection of recent projects. Click any of them to see it in action.'
     },
-    contacto: { tag: 'Contact', title: 'Message us directly.<br>We reply within 24h.', alt: 'STRYV team' },
+    contacto: { tag: 'Free diagnosis', title: 'Book your diagnosis.', sub: 'Tell us how your business runs and we will tell you what to automate first, and with which system.', p1: 'You tell us how you sell, deliver and get paid.', p2: 'We show you what to automate first and where AI fits.', p3: 'If it makes sense, we send you a proposal.', wa: 'Message us on WhatsApp', resp: 'We reply within 24 hours' },
     form: {
-      title: 'Or leave us a message',
+      title: 'Tell us about your business',
       nombre: 'First name', apellido: 'Last name', email: 'Email', wa: 'WhatsApp', mensaje: 'What does your business need?',
       ph: { nombre: 'Your first name', apellido: 'Last name', email: 'email@company.com', mensaje: 'Tell us briefly what your business does and what you want to improve.' },
       priv: 'I accept the <a href="/en/privacy/" target="_blank" rel="noopener">privacy notice</a>',
