@@ -705,6 +705,29 @@ nav#main-nav { position: sticky; top: 12px; margin: 12px auto 0; width: min(1180
 @keyframes vflujo { to { background-position: -200% 0; } }
 .vh-sub { color: var(--ink-muted); font-size: 18px; line-height: 1.65; max-width: 540px; }
 .vh-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+/* VSL: chip compacto en la portada → video en ventana flotante */
+.vvsl-chip { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; padding: 6px 16px 6px 6px; border: 1px solid var(--line2); border-radius: 99px; background: #fff; color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; box-shadow: 0 2px 8px -4px rgba(11,45,80,.15); transition: transform .15s, box-shadow .15s, border-color .15s; }
+.vvsl-chip:hover { transform: translateY(-1px); border-color: var(--cy); box-shadow: 0 10px 24px -12px rgba(14,165,233,.55); }
+.vvsl-chip:focus-visible { outline: 2px solid var(--cy); outline-offset: 3px; }
+.vvsl-cara { position: relative; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex: none; background: #0B1220; }
+.vvsl-cara img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vvsl-cara::after { content: ""; position: absolute; inset: 0; background: rgba(11,18,32,.35) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l9 5-9 5z' fill='%23fff'/%3E%3C/svg%3E") center/18px no-repeat; }
+.vvsl-txt { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.25; text-align: left; }
+.vvsl-txt b { font-weight: 600; }
+.vvsl-txt small { font-size: 12px; color: var(--ink-faint); }
+.vvsl-dlg { width: min(1100px, 94vw); max-width: none; padding: 0; border: 0; border-radius: 16px; background: #000; overflow: hidden; box-shadow: 0 40px 100px -30px rgba(0,0,0,.7); }
+.vvsl-dlg::backdrop { background: rgba(6,12,24,.78); backdrop-filter: blur(6px); }
+.vvsl-dlg video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.vvsl-x { position: absolute; top: 10px; right: 10px; z-index: 2; width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(0,0,0,.55); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; }
+.vvsl-x:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.vvsl-card { position: relative; display: block; width: 100%; max-width: 920px; margin: 44px auto 8px; padding: 0; border: 1px solid var(--line2); border-radius: 18px; overflow: hidden; background: #0B1220; cursor: pointer; aspect-ratio: 16 / 9; box-shadow: 0 30px 70px -35px rgba(11,45,80,.55); transition: transform .2s, box-shadow .2s; }
+.vvsl-card:hover { transform: translateY(-2px); box-shadow: 0 40px 80px -35px rgba(14,165,233,.55); }
+.vvsl-card:focus-visible { outline: 3px solid var(--cy); outline-offset: 4px; }
+.vvsl-prev { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vvsl-play { position: absolute; right: 20px; top: 20px; display: inline-flex; align-items: center; gap: 12px; padding: 8px 18px 8px 8px; border-radius: 99px; background: rgba(255,255,255,.94); color: var(--ink); font-size: 14px; line-height: 1.2; text-align: left; box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); white-space: nowrap; }
+.vvsl-play small { display: block; font-size: 12px; color: var(--ink-faint); }
+.vvsl-ico { width: 38px; height: 38px; border-radius: 50%; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l9 5-9 5z' fill='%23fff'/%3E%3C/svg%3E") center/20px no-repeat, linear-gradient(180deg, #38BDF8, #0B7798); flex: none; }
+@media(max-width:600px){ .vvsl-chip { width: 100%; } .vvsl-card { margin-top: 32px; border-radius: 14px; } .vvsl-play { right: 10px; top: 10px; padding: 5px 12px 5px 5px; font-size: 13px; } .vvsl-ico { width: 30px; height: 30px; background-size: 16px, auto; } .vvsl-dlg { width: 100vw; border-radius: 0; } }
 .vh-sistema { position: relative; max-width: 560px; margin-left: auto; width: 100%; }
 .vh-sistema svg { width: 100%; height: auto; display: block; overflow: visible; }
 .vh-nota { position: absolute; top: -2%; right: 0; font-size: 11px; color: var(--ink-faint); }
@@ -1059,6 +1082,10 @@ footer { background: #fff; border-top: 1px solid var(--line); }
         <a href="#contacto" class="vbtn vbtn-p" data-i18n="hero.v3.cta1">Agenda tu diagnóstico</a>
         <a href="#proyectos" class="vbtn vbtn-s" data-i18n="hero.v3.cta2">Ver proyectos</a>
       </div>
+      <button type="button" class="vvsl-chip" id="vvsl-abrir" data-src="/assets/video/stryv-vsl-es.mp4" data-poster="/assets/video/stryv-vsl-es.jpg" data-i18n-attr="data-src:vsl.src;data-poster:vsl.poster;aria-label:vsl.aria" aria-label="Ver el video: Stryvi te explica STRYV en un minuto" aria-haspopup="dialog">
+        <span class="vvsl-cara" aria-hidden="true"><img src="/assets/images/stryvi/stryvi-cara.png" alt="" width="40" height="40" loading="lazy"></span>
+        <span class="vvsl-txt"><b data-i18n="vsl.t">Stryvi te lo explica</b><small data-i18n="vsl.d">AI-Native y Forward Deployed Engineering · 50 s</small></span>
+      </button>
     </div>
     <div class="vh-sistema">
       <span class="vh-nota mono" data-i18n="hero.sim">Simulación de un sistema STRYV en operación</span>
@@ -1088,6 +1115,10 @@ footer { background: #fff; border-top: 1px solid var(--line); }
     <div class="reveal"><div class="tag"><span data-i18n="why.tag">Por qué AI-Native</span></div>
     <h2 class="section-title vwhy-title" id="why-title" data-i18n-html="why.title">El software ya no solo guarda datos. <span class="ia">Ahora trabaja.</span></h2>
     <p class="section-sub" data-i18n="why.sub">En un sistema AI-Native la inteligencia artificial no es un botón agregado: vive en el centro de la operación y trabaja junto a tu equipo, las 24 horas.</p></div>
+    <button type="button" class="vvsl-card reveal" id="vvsl-card" data-src="/assets/video/stryv-vsl-es.mp4" data-poster="/assets/video/stryv-vsl-es.jpg" data-i18n-attr="data-src:vsl.src;data-poster:vsl.poster;aria-label:vsl.aria" aria-label="Ver el video: Stryvi te explica STRYV en un minuto" aria-haspopup="dialog">
+      <video class="vvsl-prev" muted loop playsinline preload="none" poster="/assets/video/stryv-vsl-es.jpg" data-src="/assets/video/stryv-vsl-es-prev.mp4" data-i18n-attr="poster:vsl.poster;data-src:vsl.prev" aria-hidden="true"></video>
+      <span class="vvsl-play"><span class="vvsl-ico" aria-hidden="true"></span><span><b data-i18n="vsl.ver">Ver con audio</b><small data-i18n="vsl.dur">50 s</small></span></span>
+    </button>
     <ol class="veras reveal"><span class="veras-fill" aria-hidden="true"></span>
         <li class="vera"><span class="vera-l mono" data-i18n="why.e1l">Ayer</span><span class="vera-dot" aria-hidden="true"></span><h3 data-i18n="why.e1t">Registrar</h3><p data-i18n="why.e1d">Papel, Excel y WhatsApp. La información existe, pero alguien tiene que buscarla.</p></li>
         <li class="vera"><span class="vera-l mono" data-i18n="why.e2l">Hoy</span><span class="vera-dot" aria-hidden="true"></span><h3 data-i18n="why.e2t">Digitalizar</h3><p data-i18n="why.e2d">Software y ERP tradicionales. Todo queda ordenado y tu equipo lo opera a mano.</p></li>
@@ -1365,6 +1396,10 @@ footer { background: #fff; border-top: 1px solid var(--line); }
 </div>
 
 <!-- CHAT MODAL -->
+<dialog class="vvsl-dlg" id="vvsl-dlg" aria-label="Video de STRYV" data-i18n-attr="aria-label:vsl.dlg">
+  <button type="button" class="vvsl-x" id="vvsl-cerrar" aria-label="Cerrar video" data-i18n-attr="aria-label:vsl.close">×</button>
+  <video id="vvsl-video" controls playsinline preload="none"></video>
+</dialog>
 <div class="chat-modal" id="chat-modal">
   <div class="chat-header">
     <div class="chat-who"><img src="/assets/images/stryvi/stryvi-cara.png" alt="" width="36" height="36"><div><span>Stryvi</span><small data-i18n="chat.rol">Agente de IA · en línea</small></div></div>
@@ -1391,6 +1426,7 @@ const I18N = {
     meta: { svc: ['Software a la medida para empresas', 'Agentes de inteligencia artificial para WhatsApp e Instagram', 'ERP y sistemas de operación', 'Plataformas para gimnasios y restaurantes'], title: 'STRYV Studio | Software a la medida y agentes de IA para empresas', description: 'Software a la medida, ERP y agentes de IA para empresas: ventas, pedidos, cobros y WhatsApp en una plataforma propia. Atendemos México, Estados Unidos y Europa.', orgDescription: 'STRYV Studio construye sistemas operativos AI-Native para negocios: ventas, pedidos, cobros y equipo en una plataforma propia, con agentes de inteligencia artificial integrados.' }, // provisional
     common: { talk: 'Hablemos', writeUs: 'Escríbenos directo' },
     nav: { switchConfirm: 'Tienes un mensaje sin enviar en el formulario. Si cambias de idioma se perderá. ¿Continuar?', soluciones: 'Qué hacemos', metodo: 'Cómo trabajamos', sala: 'Plataformas', proyectos: 'Proyectos', faq: 'FAQ', contacto: 'Contacto', menu: 'Abrir menú', lang: 'Idioma' },
+    vsl: { t: 'Stryvi te lo explica', d: 'AI-Native y Forward Deployed Engineering · 50 s', aria: 'Ver el video: Stryvi te explica STRYV en un minuto', dlg: 'Video de STRYV', close: 'Cerrar video', src: '/assets/video/stryv-vsl-es.mp4', prev: '/assets/video/stryv-vsl-es-prev.mp4', ver: 'Ver con audio', dur: '50 s', poster: '/assets/video/stryv-vsl-es.jpg' },
     hero: { h1v: 'Convertimos tu negocio en un sistema que <span class="ia">opera con inteligencia artificial.</span>', sim: 'Simulación de un sistema STRYV en operación',
       kicker: '<span class="nw">AI-Native</span> Engineering Studio',
       // Copy V3 aprobado. Kicker aprobado en V3-D1, igual en ambos idiomas.
@@ -1496,6 +1532,7 @@ const I18N = {
     meta: { svc: ['Custom business software', 'AI agents for WhatsApp and Instagram', 'ERP and operations systems', 'Platforms for gyms and restaurants'], title: 'STRYV Studio | Custom Business Software & AI Agents', description: 'Custom software, ERP and AI agents for businesses: sales, orders, payments and WhatsApp on your own platform. Serving the US, Mexico and Europe.', orgDescription: 'STRYV Studio builds AI-Native operating systems for businesses: sales, orders, payments and team on their own platform, with built-in AI agents.' },
     common: { talk: "Let's talk", writeUs: 'Message us directly' },
     nav: { switchConfirm: 'You have an unsent message in the form. Switching language will discard it. Continue?', soluciones: 'What we do', metodo: 'How we work', sala: 'Platforms', proyectos: 'Projects', faq: 'FAQ', contacto: 'Contact', menu: 'Open menu', lang: 'Language' },
+    vsl: { t: 'Stryvi explains it', d: 'AI-Native & Forward Deployed Engineering · 46 s', aria: 'Watch the video: Stryvi explains STRYV in one minute', dlg: 'STRYV video', close: 'Close video', src: '/assets/video/stryv-vsl-en.mp4', prev: '/assets/video/stryv-vsl-en-prev.mp4', ver: 'Watch with sound', dur: '46 s', poster: '/assets/video/stryv-vsl-en.jpg' },
     hero: { h1v: 'We turn your business into a system that <span class="ia">runs on artificial intelligence.</span>', sim: 'Simulation of a STRYV system in operation',
       kicker: '<span class="nw">AI-Native</span> Engineering Studio',
       v3: {
@@ -2039,6 +2076,30 @@ if (iso && !quieto) {
     if (i && s && !s.disabled) { i.value = b.textContent.trim(); setTimeout(() => s.click(), 350); }
   }));
   const c = document.querySelector('.vst-cta'); if (c) c.addEventListener('click', abrir);
+})();
+
+// VSL: el video se descarga sólo al abrirlo; se pausa al cerrar.
+(() => {
+  const btn = document.getElementById('vvsl-abrir'), dlg = document.getElementById('vvsl-dlg'), v = document.getElementById('vvsl-video');
+  if (!btn || !dlg || !v || typeof dlg.showModal !== 'function') { if (btn) btn.hidden = true; const c = document.getElementById('vvsl-card'); if (c) c.hidden = true; return; }
+  const abrir = () => {
+    if (!v.src) { v.poster = btn.dataset.poster; v.src = btn.dataset.src; }
+    dlg.showModal(); v.currentTime = 0; v.play().catch(() => {});
+    if (window.fbq) fbq('trackCustom', 'VSLPlay', { lang: document.documentElement.lang });
+  };
+  btn.addEventListener('click', abrir);
+  const card = document.getElementById('vvsl-card'), prev = card && card.querySelector('.vvsl-prev');
+  if (card) card.addEventListener('click', abrir);
+  // Vista previa muda: carga y corre sólo cuando la tarjeta está en pantalla.
+  if (prev && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { if (!prev.src) prev.src = prev.dataset.src; prev.play().catch(() => {}); } else prev.pause();
+    }, { threshold: .35 }).observe(card);
+  }
+  const cerrar = () => dlg.close();
+  document.getElementById('vvsl-cerrar').addEventListener('click', cerrar);
+  dlg.addEventListener('click', e => { if (e.target === dlg) cerrar(); });
+  dlg.addEventListener('close', () => v.pause());
 })();
 </script>
 </body>
