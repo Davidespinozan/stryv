@@ -1874,12 +1874,40 @@ if (contactForm) {
 // i18n: aplica el idioma detectado en el head. No persiste: sólo la elección manual se guarda.
 setLanguage(currentLang, { persist: false });
 
-// Meta Pixel: track WhatsApp clicks as Contact
-document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
-  a.addEventListener('click',()=>{
-    if(typeof fbq==='function') fbq('track','Contact',{content_name:'WhatsApp click'});
+// ─── Medición para anuncios (Meta Pixel) ───
+(() => {
+  const px = (...a) => { if (typeof fbq === 'function') fbq(...a); };
+  // 1) Campaña de origen: se toma de la URL (utm_campaign / utm_source / ref) y se recuerda durante la visita
+  const q = new URLSearchParams(location.search);
+  let ref = (q.get('utm_campaign') || q.get('ref') || q.get('utm_source') || '').trim().slice(0, 60);
+  try { if (ref) sessionStorage.setItem('stryv_ref', ref); else ref = sessionStorage.getItem('stryv_ref') || ''; } catch (e) {}
+  const en = document.documentElement.lang === 'en';
+  document.querySelectorAll('a[href*="wa.me"]').forEach((a) => {
+    if (ref && !/[?&]text=/.test(a.href)) {
+      const msg = en ? `Hi, I saw your ad (ref: ${ref}) and would like more information.` : `Hola, vi su anuncio (ref: ${ref}) y quiero información.`;
+      a.href = a.href + (a.href.includes('?') ? '&' : '?') + 'text=' + encodeURIComponent(msg);
+    }
+    a.addEventListener('click', () => px('track', 'Contact', { content_name: 'WhatsApp click', campaign: ref || 'organico' }));
   });
-});
+  // 2) Chat con Stryvi: abrir el chat y primer mensaje enviado
+  const modal = document.getElementById('chat-modal'), input = document.getElementById('chat-input'), sendBtn = document.getElementById('chat-send');
+  if (modal) {
+    let abierto = false;
+    new MutationObserver(() => { const o = modal.classList.contains('open'); if (o && !abierto) px('trackCustom', 'ChatOpen', { campaign: ref || 'organico' }); abierto = o; }).observe(modal, { attributes: true, attributeFilter: ['class'] });
+  }
+  let primer = true;
+  const alEnviar = () => { if (primer && input && input.value.trim()) { primer = false; px('trackCustom', 'ChatMessage', { campaign: ref || 'organico' }); } };
+  if (sendBtn) sendBtn.addEventListener('click', alEnviar, true);
+  if (input) input.addEventListener('keydown', (e) => { if (e.key === 'Enter') alEnviar(); }, true);
+  // 3) Interés: llegó a Proyectos o a Contacto (para audiencias de remarketing)
+  if ('IntersectionObserver' in window) {
+    [['proyectos', 'Proyectos'], ['contacto', 'Contacto']].forEach(([id, nombre]) => {
+      const s = document.getElementById(id); if (!s) return;
+      const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { px('track', 'ViewContent', { content_name: nombre }); io.disconnect(); } }, { rootMargin: '-45% 0px -45% 0px' });
+      io.observe(s);
+    });
+  }
+})();
 </script>
 
 <script>
