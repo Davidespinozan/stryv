@@ -745,9 +745,11 @@ nav#main-nav { position: sticky; top: 12px; margin: 12px auto 0; width: min(1180
 .vfranja-op figcaption small { font: 400 clamp(13px, 1.2vw, 16px)/1.6 Geist, sans-serif; color: rgba(255,255,255,.78); }
 @keyframes vfranjaZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
 @media (max-width: 640px) {
-  .vfranja-op { aspect-ratio: 4 / 5; margin-top: 40px; border-radius: 20px; }
-  .vfranja-op::after { background: linear-gradient(0deg, rgba(5,14,20,.85) 0%, rgba(5,14,20,.4) 45%, rgba(5,14,20,0) 70%); }
-  .vfranja-op figcaption { top: auto; bottom: 24px; transform: none; right: 20px; }
+  .vfranja-op { aspect-ratio: auto; margin-top: 40px; border-radius: 20px; }
+  .vfranja-op picture { aspect-ratio: 16 / 10; overflow: hidden; }
+  .vfranja-op img { object-position: 52% 70%; }
+  .vfranja-op::after { display: none; }
+  .vfranja-op figcaption { position: static; transform: none; max-width: none; padding: 22px 22px 26px; gap: 10px; background: #050e14; }
 }
 @media (prefers-reduced-motion: reduce) { .vfranja-op img { animation: none; } }
 .vh-nodo rect { fill: #fff; stroke: rgba(11,45,80,.14); stroke-width: 1; filter: drop-shadow(0 6px 14px rgba(11,45,80,.12)); transition: stroke .3s; }
@@ -1159,7 +1161,6 @@ footer { background: #fff; border-top: 1px solid var(--line); }
     <p class="vwhy-frase reveal" data-i18n-html="why.frase">Las empresas que operen con IA en su núcleo se moverán a otra velocidad. <span class="ia">Nosotros construimos ese núcleo.</span></p>
     <figure class="vfranja-op reveal">
       <picture>
-        <source media="(max-width: 640px)" srcset="/assets/images/franja/operacion-m.webp" type="image/webp">
         <source srcset="/assets/images/franja/operacion.webp" type="image/webp">
         <img src="/assets/images/franja/operacion.jpg" alt="" width="1800" height="686" loading="lazy" decoding="async">
       </picture>
