@@ -1847,7 +1847,12 @@ if (contactForm) {
         contactForm.hidden = true;
         successBox.style.display = 'block';
         // El Pixel sólo cuenta leads realmente guardados (201). El 200 del honeypot no cuenta.
-        if (res.status === 201 && typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Formulario contacto' });
+        if (res.status === 201 && typeof fbq === 'function') {
+          fbq('track', 'Lead', { content_name: 'Formulario contacto' });
+          // El conjunto de España optimiza por «Contact»: ahí el contacto real es el formulario enviado.
+          let refEs = ''; try { refEs = sessionStorage.getItem('stryv_ref') || ''; } catch (e) {}
+          if (/^operacion-es/.test(refEs)) fbq('track', 'Contact', { content_name: 'Formulario contacto', campaign: refEs });
+        }
         return;
       }
 
@@ -1882,10 +1887,22 @@ setLanguage(currentLang, { persist: false });
   let ref = (q.get('utm_campaign') || q.get('ref') || q.get('utm_source') || '').trim().slice(0, 60);
   try { if (ref) sessionStorage.setItem('stryv_ref', ref); else ref = sessionStorage.getItem('stryv_ref') || ''; } catch (e) {}
   const en = document.documentElement.lang === 'en';
+  // España: por la diferencia de horario y el número de EE. UU., los anuncios llevan al formulario, no a WhatsApp.
+  const esEspana = /^operacion-es/.test(ref);
+  // Mensaje listo que filtra: quien no tiene negocio no lo envía. Cada campaña con su frase, sin códigos visibles.
+  const MSG = en
+    ? { 'operacion-us': 'Hi, I have a business and I am interested in connecting my systems.', _: 'Hi, I have a business and want to connect my systems.' }
+    : { 'operacion-mx': 'Hola, tengo un negocio y quiero conectar mis sistemas.', 'operacion-us': 'Hola, tengo un negocio y me interesa conectar mis sistemas.', _: 'Hola, tengo un negocio y quiero información para conectar mis sistemas.' };
   document.querySelectorAll('a[href*="wa.me"]').forEach((a) => {
+    if (esEspana) {
+      // Los botones que dicen «WhatsApp» o sólo muestran el ícono se ocultan; los demás («Hablemos», «Escríbenos directo») van al formulario.
+      if (a.matches('.vct-wa, .fc-wa, .wa-float')) { a.hidden = true; a.style.display = 'none'; return; }
+      a.href = '#contacto'; a.removeAttribute('target'); a.removeAttribute('rel');
+      const ico = a.querySelector('svg'); if (ico) ico.style.display = 'none';
+      return;
+    }
     if (ref && !/[?&]text=/.test(a.href)) {
-      const msg = en ? `Hi, I saw your ad (ref: ${ref}) and would like more information.` : `Hola, vi su anuncio (ref: ${ref}) y quiero información.`;
-      a.href = a.href + (a.href.includes('?') ? '&' : '?') + 'text=' + encodeURIComponent(msg);
+      a.href = a.href + (a.href.includes('?') ? '&' : '?') + 'text=' + encodeURIComponent(MSG[ref] || MSG._);
     }
     a.addEventListener('click', () => px('track', 'Contact', { content_name: 'WhatsApp click', campaign: ref || 'organico' }));
   });
